@@ -137,10 +137,12 @@
         .collapsed .collapse-arrow {
             transform: rotate(-90deg);
         }
+        
+        /* 🛠️ 已修復：將 max-height 放大至 3000px 確保大庫存不被切掉，並配合 JS 動態釋放 */
         .collapse-content {
             overflow: hidden;
             transition: max-height 0.3s ease-out;
-            max-height: 1200px;
+            max-height: 3000px;
         }
         .collapsed + .collapse-content {
             max-height: 0 !important;
@@ -356,7 +358,7 @@
             🔗 其他連結：<a href="https://isoyblack.github.io/" target="_blank">燕雲十六聲兌換碼小助手</a>
         </div>
         <div class="footer-right">
-            Made by <span>豆漿紅</span> × AI ｜ v0.89
+            Made by <span>豆漿紅</span> × AI ｜ v0.90
         </div>
     </footer>
 </div>
@@ -423,11 +425,32 @@
     let currentHighlightType = null;
     let currentUserLevel = 10;
 
+    // 🛠️ 已修復：動態調整收縮邏輯，展開後清除 max-height 限制防止長表格截斷
     function toggleSection(id) {
         const titleEl = document.querySelector(`[onclick="toggleSection('${id}')"]`);
-        titleEl.classList.toggle('collapsed');
+        const contentEl = document.getElementById(id);
         const arrow = titleEl.querySelector('.collapse-arrow');
-        arrow.textContent = titleEl.classList.contains('collapsed') ? '▼' : '▲';
+        
+        if (titleEl.classList.contains('collapsed')) {
+            // 執行展開
+            titleEl.classList.remove('collapsed');
+            arrow.textContent = '▲';
+            contentEl.style.maxHeight = "3000px";
+            // 待 0.3 秒動畫播完後，完全釋放高度限制
+            setTimeout(() => {
+                if (!titleEl.classList.contains('collapsed')) {
+                    contentEl.style.maxHeight = "none";
+                }
+            }, 300);
+        } else {
+            // 執行收縮
+            contentEl.style.maxHeight = contentEl.scrollHeight + "px";
+            // 強制重繪以觸發過渡動畫
+            contentEl.offsetHeight; 
+            titleEl.classList.add('collapsed');
+            arrow.textContent = '▼';
+            contentEl.style.maxHeight = "0px";
+        }
     }
 
     function getRankClass(level) {
