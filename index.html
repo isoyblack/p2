@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>《燕雲十六聲》家業客棧助手</title>
+    <title id="pageTitle">《燕雲十六聲》家業客棧助手</title>
     <style>
         body {
             background-color: #121212;
@@ -24,7 +24,7 @@
             padding: 25px;
             border-radius: 12px;
             box-shadow: 0 4px 20px rgba(0,0,0,0.5);
-            position: relative; /* 為了讓右上角定位 */
+            position: relative;
         }
         
         /* 🌐 右上角快捷導航區 */
@@ -33,6 +33,9 @@
             top: 25px;
             right: 25px;
             font-size: 13px;
+            display: flex;
+            gap: 10px;
+            align-items: center;
         }
         .nav-link-btn {
             background: #252526;
@@ -50,19 +53,18 @@
             border-color: #fbbf24;
         }
 
-        /* 為了在手機版上避免右上角按鈕跟大標題撞在一起 */
         @media (max-width: 600px) {
             .top-nav-links {
                 position: static;
                 text-align: center;
                 margin-bottom: 15px;
+                justify-content: center;
             }
         }
 
         h2 { text-align: center; color: #fff; margin-top: 0; margin-bottom: 5px; }
         .subtitle { text-align: center; color: #888; font-size: 13px; margin-bottom: 20px; }
         
-        /* 版面配置 */
         .main-layout {
             display: flex;
             flex-direction: column;
@@ -78,7 +80,6 @@
             .panel-grid { grid-template-columns: 1.8fr 1.2fr; }
         }
 
-        /* 控制面板區 */
         .control-panel {
             background: #1a1a1a;
             border: 1px solid #333;
@@ -109,7 +110,6 @@
             padding-left: 8px;
         }
         
-        /* 收縮按鈕標題樣式 */
         .collapse-title {
             font-size: 15px;
             font-weight: bold;
@@ -138,7 +138,6 @@
             transform: rotate(-90deg);
         }
         
-        /* 🛠️ 已修復：將 max-height 放大至 3000px 確保大庫存不被切掉，並配合 JS 動態釋放 */
         .collapse-content {
             overflow: hidden;
             transition: max-height 0.3s ease-out;
@@ -159,7 +158,6 @@
         .tag-label input { display: none; }
         .tag-label.checked { background: #4f46e5; color: #fff; border-color: #6366f1; }
 
-        /* 舒適藍灰調：孤品囤貨區 */
         .rare-box {
             background: #1e2530;
             border: 1px solid #3b4252;
@@ -184,7 +182,6 @@
             margin-bottom: 4px;
         }
 
-        /* 囤貨計數器 */
         .counter-btn {
             background: #2e3440; color: #d8dee9; border: 1px solid #4c566a;
             padding: 1px 6px; font-size: 11px; cursor: pointer; border-radius: 3px;
@@ -196,7 +193,6 @@
             font-weight: bold; color: #a3be8c; margin: 0 2px;
         }
 
-        /* 智慧推薦區 */
         .recommend-box {
             background: #1e293b;
             border: 1px solid #3b82f6;
@@ -209,7 +205,6 @@
             padding: 2px 6px; border-radius: 4px; font-weight: bold; margin-left: 6px;
         }
 
-        /* 表格樣式 */
         table { width: 100%; border-collapse: collapse; margin-top: 5px; font-size: 13px; margin-bottom: 15px; }
         th, td { padding: 8px 10px; text-align: left; border-bottom: 1px solid #333; }
         th { background-color: #252526; color: #fff; font-weight: bold; }
@@ -225,25 +220,30 @@
             display: inline-block; background: #2a2a2a; padding: 2px 6px;
             border-radius: 4px; margin-right: 4px; margin-bottom: 4px;
             cursor: pointer; border: 1px solid #444; font-size: 12px;
+            position: relative;
         }
         .interactive-item:hover { background: #3a3a3a; border-color: #888; }
         
+        .container-tip {
+            border-bottom: 1px dashed currentColor !important;
+        }
+        
         tr.highlighted-row { background-color: #3f2d13 !important; border-left: 4px solid #fbbf24; }
-        .interactive-item.active-highlight { background-color: #fbbf24 !important; color: #121212 !important; font-weight: bold; }
+        .interactive-item.active-highlight { background-color: #fbbf24 !important; color: #121212 !important; font-weight: bold; border-color: #fbbf24 !important; }
         .tag-label.active-highlight { background-color: #fbbf24 !important; color: #121212 !important; font-weight: bold; border-color: #fbbf24; }
 
         .type-badge { font-size: 11px; padding: 2px 5px; border-radius: 4px; font-weight: bold; }
         .type-food { background: #b45309; color: #fff; }
         .type-wine { background: #047857; color: #fff; }
+        .type-container { background: #4b5563; color: #fff; }
 
-        /* 🎮 RPG 裝備階級色定義 */
+        /* 🎮 RPG 裝備階級色 */
         .color-rank-1 { color: #e5e7eb !important; }
         .color-rank-2 { color: #a3be8c !important; }
         .color-rank-3 { color: #81a1c1 !important; }
         .color-rank-4 { color: #b48ead !important; }
         .color-rank-5 { color: #ebcb8b !important; }
 
-        /* 頁尾排版 */
         footer { 
             margin-top: 30px; 
             width: 100%;
@@ -269,17 +269,17 @@
 
 <div class="container">
     <div class="top-nav-links">
-        <a href="https://isoyblack.github.io/" target="_blank" class="nav-link-btn">🎁 燕雲十六聲兌換碼小助手</a>
+        <a href="https://isoyblack.github.io/" target="_blank" class="nav-link-btn" id="navPromoBtn">🎁 燕雲十六聲兌換碼小助手</a>
     </div>
 
-    <h2>《燕雲十六聲》家業客棧助手</h2>
-    <div class="subtitle">設定家業等級自動篩選 ｜ 稀有孤品安全預警 ｜ 點擊標籤材料全網頁連動高亮</div>
+    <h2 id="mainTitle">《燕雲十六聲》家業客棧助手</h2>
+    <div class="subtitle" id="mainSubtitle">設定家業等級自動篩選 ｜ 稀有孤品安全預警 ｜ 點擊標籤材料全網頁連動高亮</div>
 
     <div class="main-layout">
         <div class="panel-grid">
             <div class="control-panel">
                 <div class="filter-row">
-                    <span class="filter-label">🛠️ 請設定您目前的家業等級：</span>
+                    <span class="filter-label" id="lblUserLevel">🛠️ 請設定您目前的家業等級：</span>
                     <select id="userLevelSelect" class="level-select" onchange="handleLevelChange()">
                         <option value="1">1 級</option>
                         <option value="2">2 級</option>
@@ -293,24 +293,25 @@
                         <option value="10" selected>10 級 (顯示全部)</option>
                     </select>
                 </div>
-                <div class="section-title" style="margin-bottom: 10px;">每週活動隨機標籤勾選 (可複選)</div>
+                <div class="section-title" id="lblTagSectionTitle" style="margin-bottom: 10px;">每週活動隨機標籤勾選 (可複選)</div>
                 <div class="tag-group" id="tagGroup"></div>
             </div>
 
             <div class="rare-box">
-                <div class="section-title" style="color: #d08770; border-left-color: #d08770;">🕒 孤品/稀有標籤預警（建議提早囤貨）</div>
+                <div class="section-title" id="lblRareSectionTitle" style="color: #d08770; border-left-color: #d08770;">🕒 孤品/稀有標籤預警（建議提早囤貨）</div>
                 <div class="rare-list" id="rareListContent">正在計算稀有標籤...</div>
             </div>
         </div>
 
         <div class="recommend-box" id="recommendBox">
-            <div class="section-title" style="color: #6ee7b7; border-left-color: #6ee7b7;">活動速解組合推薦</div>
+            <div class="section-title" id="lblRecSectionTitle" style="color: #6ee7b7; border-left-color: #6ee7b7;">活動速解組合推薦</div>
             <div id="recommendContent" style="font-size: 14px; line-height: 1.6;"></div>
         </div>
 
         <div>
+            <!-- 🍳 料理總覽移動到上方 -->
             <div class="collapse-title" onclick="toggleSection('foodSection')">
-                <span>🍳 全家業料理總覽</span>
+                <span id="titleFoodSection">🍳 全家業料理總覽</span>
                 <span class="collapse-arrow">▲</span>
             </div>
             <div class="collapse-content" id="foodSection">
@@ -318,11 +319,11 @@
                     <table>
                         <thead>
                             <tr>
-                                <th style="width: 18%;">產品名稱</th>
-                                <th style="width: 10%;">類型</th>
-                                <th style="width: 12%;">家業等級</th>
-                                <th style="width: 25%;">標籤</th>
-                                <th style="width: 35%;">材料清單</th>
+                                <th style="width: 20%;" class="th-name">產品名稱</th>
+                                <th style="width: 10%;" class="th-type">類型</th>
+                                <th style="width: 10%;" class="th-level">家業等級</th>
+                                <th style="width: 25%;" class="th-tags">標籤</th>
+                                <th style="width: 35%;" class="th-items">材料清單</th>
                             </tr>
                         </thead>
                         <tbody id="foodTableBody"></tbody>
@@ -330,8 +331,9 @@
                 </div>
             </div>
 
+            <!-- 🍶 酒品總覽在中間 -->
             <div class="collapse-title" onclick="toggleSection('wineSection')">
-                <span>🍶 全家業酒品總覽</span>
+                <span id="titleWineSection">🍶 全家業酒品總覽</span>
                 <span class="collapse-arrow">▲</span>
             </div>
             <div class="collapse-content" id="wineSection">
@@ -339,14 +341,35 @@
                     <table>
                         <thead>
                             <tr>
-                                <th style="width: 18%;">產品名稱</th>
-                                <th style="width: 10%;">類型</th>
-                                <th style="width: 12%;">家業等級</th>
-                                <th style="width: 25%;">標籤</th>
-                                <th style="width: 35%;">材料清單</th>
+                                <th style="width: 20%;" class="th-name">產品名稱</th>
+                                <th style="width: 10%;" class="th-type">類型</th>
+                                <th style="width: 10%;" class="th-level">家業等級</th>
+                                <th style="width: 25%;" class="th-tags">標籤</th>
+                                <th style="width: 35%;" class="th-items">材料清單</th>
                             </tr>
                         </thead>
                         <tbody id="wineTableBody"></tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- 🏺 容器總覽已成功移動到最下方 -->
+            <div class="collapse-title" onclick="toggleSection('containerSection')">
+                <span id="titleContainerSection">🏺 全家業容器總覽</span>
+                <span class="collapse-arrow">▲</span>
+            </div>
+            <div class="collapse-content" id="containerSection">
+                <div style="overflow-x: auto;">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th style="width: 25%;" class="th-name">產品名稱</th>
+                                <th style="width: 10%;" class="th-type">類型</th>
+                                <th style="width: 15%;" class="th-level">家業等級</th>
+                                <th style="width: 50%;" class="th-items">製作材料</th>
+                            </tr>
+                        </thead>
+                        <tbody id="containerTableBody"></tbody>
                     </table>
                 </div>
             </div>
@@ -354,98 +377,167 @@
     </div>
 
     <footer>
-        <div class="footer-left">
+        <div class="footer-left" id="footerLinks">
             🔗 其他連結：<a href="https://isoyblack.github.io/" target="_blank">燕雲十六聲兌換碼小助手</a>
         </div>
         <div class="footer-right">
-            Made by <span>豆漿紅</span> × AI ｜ v0.90
+            Made by <span>豆漿紅</span> × AI ｜ v0.95
         </div>
     </footer>
 </div>
 
 <script>
-    const productData = [
-        { name: "漿果麥羹", type: "料理", level: 1, tags: ["清淡", "湯類"], items: ["小麥6"] },
-        { name: "燉馬鈴薯", type: "料理", level: 1, tags: [], items: ["馬鈴薯2"] },
-        { name: "生薑煨魚", type: "料理", level: 1, tags: ["燜菜", "鮮香"], items: [] },
-        { name: "豬肉餡餅", type: "料理", level: 1, tags: ["小吃", "酥脆"], items: [] },
-        { name: "馬鈴薯煨肉", type: "料理", level: 1, tags: ["鹹香", "燜菜"], items: [] },
-        { name: "梨薑肉膾", type: "料理", level: 2, tags: ["炒菜", "鮮香"], items: [] },
-        { name: "清蒸鱸魚", type: "料理", level: 2, tags: ["鮮香", "蒸煮"], items: [] },
-        { name: "胡蘿蔔燉肉", type: "料理", level: 2, tags: ["鹹香", "燴菜"], items: [] },
-        { name: "薑絲鱸膾", type: "料理", level: 2, tags: ["湯類", "滋補"], items: [] },
-        { name: "紅燒麋肉", type: "料理", level: 3, tags: [], items: ["大豆6", "生薑3", "大麋肉2"] },
-        { name: "胡蘿蔔絲炒肉", type: "料理", level: 3, tags: [], items: ["胡蘿蔔6", "生薑3", "厚脂肉塊2"] },
-        { name: "豆薑鱸魚湯", type: "料理", level: 3, tags: [], items: ["大豆6", "生薑3", "江鱸2"] },
-        { name: "大豆燉烏鱧", type: "料理", level: 4, tags: [], items: ["大豆6", "大蒜3", "烏鱧2"] },
-        { name: "蒜蓉茄子", type: "料理", level: 4, tags: [], items: ["茄子6", "大蒜3", "碎肉塊2"] },
-        { name: "雙瓜蒜蓉炙", type: "料理", level: 4, tags: [], items: ["寒瓜6", "大蒜3", "東陵瓜2"] },
-        { name: "鴇府燴紫茄", type: "料理", level: 4, tags: [], items: ["茄子6", "大蒜3", "野鴇肉2"] },
-        { name: "梨蒜蒸鳙鱠", type: "料理", level: 5, tags: ["蒸煮", "清香"], items: ["梨花6", "大蒜3", "鳙魚2"] },
-        { name: "番茄燴鹿腩", type: "料理", level: 5, tags: ["酸甜", "燴菜"], items: ["番茄6", "大蒜3", "吠鹿肉2"] },
-        { name: "番茄魚片湯", type: "料理", level: 5, tags: ["酸甜", "湯類"], items: ["番茄6", "大蒜3", "洛口石首魚2"] },
-        { name: "鴇片炒油菜", type: "料理", level: 5, tags: ["鮮香", "炒菜"], items: ["油菜6", "大蒜3", "野鴇肉2"] },
-        { name: "洋蔥燉鹿肉", type: "料理", level: 6, tags: ["燜菜", "滋補"], items: ["洋蔥6", "大蒜3", "吠鹿肉2"] },
-        { name: "洋蔥蒸鯚魚", type: "料理", level: 6, tags: ["蒸煮", "滋補"], items: ["洋蔥6", "大蒜3", "鯚魚2"] },
-        { name: "蕈菇炒油菜", type: "料理", level: 6, tags: ["鮮香", "炒菜"], items: ["油菜6", "大蒜3", "蕈菇2"] },
-        { name: "闖肉寒瓜炙", type: "料理", level: 6, tags: ["鹹香", "炒菜"], items: ["寒瓜6", "大蒜3", "大麋肉2"] },
-        { name: "桃脯炒肉", type: "料理", level: 7, tags: ["甜香", "炒菜"], items: ["桃子6", "辣椒3", "豬肉2"] },
-        { name: "河豚辣伴瓜", type: "料理", level: 7, tags: ["香辣", "小吃"], items: ["黃瓜6", "辣椒3", "河豚2"] },
-        { name: "紫茄河豚辣膾", type: "料理", level: 7, tags: ["麻辣", "炒菜"], items: ["茄子6", "辣椒3", "河豚2"] },
-        { name: "辣子麥飯", type: "料理", level: 7, tags: ["香辣", "炒飯"], items: ["小麥6", "辣椒3", "豬肉2"] },
-        { name: "參炒胡蘿蔔", type: "料理", level: 8, tags: ["香辣", "炒菜"], items: ["胡蘿蔔6", "辣椒3", "野山參2"] },
-        { name: "山參辣茄膾", type: "料理", level: 8, tags: ["香辣", "小吃"], items: ["茄子6", "辣椒3", "野山參2"] },
-        { name: "辣炙鯉魚", type: "料理", level: 8, tags: ["香辣", "燒烤"], items: ["洋蔥6", "辣椒3", "鯉魚2"] },
-        { name: "馬鈴薯炒魚酥", type: "料理", level: 8, tags: ["酥脆", "炒菜"], items: ["馬鈴薯6", "辣椒3", "鯉魚2"] },
-        { name: "茶辣鯽魚膾", type: "料理", level: 9, tags: ["燜菜", "醬香"], items: ["茶樹6", "辣椒3", "鯽魚2"] },
-        { name: "辣伴菜菇", type: "料理", level: 9, tags: ["香辣", "小吃"], items: ["生菜6", "辣椒3", "蕈菇2"] },
-        { name: "香烤兔肉", type: "料理", level: 9, tags: ["鹹香", "燒烤"], items: ["生菜6", "辣椒3", "兔肉2"] },
-        { name: "香辣鹿肉", type: "料理", level: 9, tags: ["香辣", "炒菜"], items: ["茶樹6", "辣椒3", "大麋肉2"] },
-        { name: "番茄燴兔丁", type: "料理", level: 10, tags: ["燴菜", "炒菜"], items: ["番茄6", "辣椒3", "兔肉2"] },
-        { name: "豆酥煨鯰腩", type: "料理", level: 10, tags: ["燜菜", "醇香"], items: ["大豆6", "辣椒3", "鯰魚2"] },
-        { name: "野鴇炒黃瓜", type: "料理", level: 10, tags: ["鮮香", "炒菜"], items: ["黃瓜6", "辣椒3", "野鴇肉2"] },
-        { name: "鯚魚伴生菜", type: "料理", level: 10, tags: ["鮮香", "蒸煮"], items: ["生菜6", "辣椒3", "鯚魚2"] },
-        { name: "麥酒", type: "酒", level: 1, tags: ["糧食酒"], items: ["小麥6", "玉米3", "容器1"] },
-        { name: "苞穀酒", type: "酒", level: 2, tags: ["糧食酒"], items: ["梨花6", "玉米3", "容器2"] },
-        { name: "桑落酒", type: "酒", level: 3, tags: ["混合酒"], items: ["棉花6", "玉米3", "容器3"] },
-        { name: "西瓜果釀", type: "酒", level: 4, tags: ["果酒"], items: ["寒瓜6", "水稻3", "容器4"] },
-        { name: "新豐酒", type: "酒", level: 5, tags: ["糧食酒"], items: ["油菜6", "水稻3", "容器5"] },
-        { name: "青紅酒", type: "酒", level: 6, tags: ["糧食酒"], items: ["番茄6", "水稻3", "容器6"] },
-        { name: "杜康酒", type: "酒", level: 7, tags: ["糧食酒"], items: ["甘蔗6", "高粱3", "容器7"] },
-        { name: "鵝黃酒", type: "酒", level: 8, tags: ["經濟作物酒"], items: ["批把6", "高粱3", "容器8"] },
-        { name: "松醪酒", type: "酒", level: 9, tags: ["經濟作物酒"], items: ["茶樹6", "高粱3", "容器9"] },
-        { name: "屠蘇酒", type: "酒", level: 10, tags: ["經濟作物酒"], items: ["櫻桃6", "高粱3", "容器10"] }
-    ];
+    // 🌐 字典定義（已移除英文切換對應，僅保留核心結構與繁中）
+    const i18n = {
+        zh: {
+            pageTitle: "《燕雲十六聲》家業客棧助手",
+            mainTitle: "《燕雲十六聲》家業客棧助手",
+            mainSubtitle: "設定家業等級自動篩選 ｜ 稀有孤品安全預警 ｜ 點擊標籤材料全網頁連動高亮",
+            lblUserLevel: "🛠️ 請設定您目前的家業等級：",
+            lblTagSectionTitle: "每週活動隨機標籤勾選 (可複選)",
+            lblRareSectionTitle: "🕒 孤品/稀有標籤預警（建議提早囤貨）",
+            lblRecSectionTitle: "活動速解組合推薦",
+            titleContainerSection: "🏺 全家業容器總覽",
+            titleFoodSection: "🍳 全家業料理總覽",
+            titleWineSection: "🍶 全家業酒品總覽",
+            thName: "產品名稱",
+            thType: "類型",
+            thLevel: "家業等級",
+            thTags: "標籤",
+            thItems: "材料清單",
+            navPromoBtn: "🎁 燕雲十六聲兌換碼小助手",
+            footerLinks: "🔗 其他連結：",
+            shopDirect: "🏪商店直購",
+            noRare: "當前等級內暫無高度稀有的孤品標籤。",
+            noMatch: "⚠️ 在您目前的家業等級限制下，沒有任何菜品符合勾選標籤。",
+            recSingle: "🎯 優先推薦單品：",
+            recCombo: "💡 最省力組合建議：",
+            shopPull: "[🏪 商店直接拉]",
+            shopCanPull: "[🏪 商店可拉]",
+            tagSolved: "解決標籤",
+            tagUnsolved: "⚠️ 剩餘標籤 當前等級內無解。",
+            levelText: " 級",
+            levelDisplayAll: "10 級 (顯示全部)",
+            rareAlertTag: "標籤",
+            rareAlertExt: "限定料理堤供："
+        }
+    };
 
-    let allTags = new Set();
-    productData.forEach(p => p.tags.forEach(t => allTags.add(t)));
-    allTags = [...allTags].sort();
+    let currentLang = 'zh';
+
+    // 🏺 容器資料庫：不論等級原木配方數量皆已修正為 1 
+    const containerDatabase = {
+        "容器1": { name: { zh: "木理紋酒壺" }, recipe: { zh: "粗曠1、原木1" } },
+        "容器2": { name: { zh: "白釉執壺" }, recipe: { zh: "酒香玉1、粗曠1、原木1" } },
+        "容器3": { name: { zh: "藍玉雲紋壺" }, recipe: { zh: "獨山藍玉1、粗曠1、原木1" } },
+        "容器4": { name: { zh: "青釉雞首壺" }, recipe: { zh: "獨山玉1、粗曠1、原木1" } },
+        "容器5": { name: { zh: "青瓷刻花酒壺" }, recipe: { zh: "青礞石1、粗曠1、原木1" } },
+        "容器6": { name: { zh: "青黃釉銅嘴壺" }, recipe: { zh: "黃銅1、粗曠1、原木1" } },
+        "容器7": { name: { zh: "銅胎陶膽松紋壺" }, recipe: { zh: "黃銅1、粗曠1、原木1" } },
+        "容器8": { name: { zh: "藍釉執壺" }, recipe: { zh: "寒鐵1、粗曠1、原木1" } },
+        "容器9": { name: { zh: "三彩酒壺" }, recipe: { zh: "寒鐵1、粗曠1、原木1" } },
+        "容器10": { name: { zh: "描金刻花執壺" }, recipe: { zh: "寒鐵1、粗曠1、原木1" } }
+    };
+
+    const productData = [
+        { name: { zh: "漿果麥羹" }, type: "料理", level: 1, tags: { zh: ["清淡", "湯類"] }, items: { zh: ["小麥6"] } },
+        { name: { zh: "燉馬鈴薯" }, type: "料理", level: 1, tags: { zh: [] }, items: { zh: ["馬鈴薯2"] } },
+        { name: { zh: "生薑煨魚" }, type: "料理", level: 1, tags: { zh: ["燜菜", "鮮香"] }, items: { zh: [] } },
+        { name: { zh: "豬肉餡餅" }, type: "料理", level: 1, tags: { zh: ["小吃", "酥脆"] }, items: { zh: [] } },
+        { name: { zh: "馬鈴薯煨肉" }, type: "料理", level: 1, tags: { zh: ["鹹香", "燜菜"] }, items: { zh: [] } },
+        { name: { zh: "梨薑肉膾" }, type: "料理", level: 2, tags: { zh: ["炒菜", "鮮香"] }, items: { zh: [] } },
+        { name: { zh: "清蒸鱸魚" }, type: "料理", level: 2, tags: { zh: ["鮮香", "蒸煮"] }, items: { zh: [] } },
+        { name: { zh: "胡蘿蔔燉肉" }, type: "料理", level: 2, tags: { zh: ["鹹香", "燴菜"] }, items: { zh: [] } },
+        { name: { zh: "薑絲鱸膾" }, type: "料理", level: 2, tags: { zh: ["湯類", "滋補"] }, items: { zh: [] } },
+        { name: { zh: "紅燒麋肉" }, type: "料理", level: 3, tags: { zh: [] }, items: { zh: ["大豆6", "生薑3", "大麋肉2"] } },
+        { name: { zh: "胡蘿蔔絲炒肉" }, type: "料理", level: 3, tags: { zh: [] }, items: { zh: ["胡蘿蔔6", "生薑3", "厚脂肉塊2"] } },
+        { name: { zh: "豆薑鱸魚湯" }, type: "料理", level: 3, tags: { zh: [] }, items: { zh: ["大豆6", "生薑3", "江鱸2"] } },
+        { name: { zh: "大豆燉烏鱧" }, type: "料理", level: 4, tags: { zh: [] }, items: { zh: ["大豆6", "大蒜3", "烏鱧2"] } },
+        { name: { zh: "蒜蓉茄子" }, type: "料理", level: 4, tags: { zh: [] }, items: { zh: ["茄子6", "大蒜3", "碎肉塊2"] } },
+        { name: { zh: "雙瓜蒜蓉炙" }, type: "料理", level: 4, tags: { zh: [] }, items: { zh: ["寒瓜6", "大蒜3", "東陵瓜2"] } },
+        { name: { zh: "鴇府燴紫茄" }, type: "料理", level: 4, tags: { zh: [] }, items: { zh: ["茄子6", "大蒜3", "野鴇肉2"] } },
+        { name: { zh: "梨蒜蒸鳙鱠" }, type: "料理", level: 5, tags: { zh: ["蒸煮", "清香"] }, items: { zh: ["梨花6", "大蒜3", "鳙魚2"] } },
+        { name: { zh: "番茄燴鹿腩" }, type: "料理", level: 5, tags: { zh: ["酸甜", "燴菜"] }, items: { zh: ["番茄6", "大蒜3", "吠鹿肉2"] } },
+        { name: { zh: "番茄魚片湯" }, type: "料理", level: 5, tags: { zh: ["酸甜", "湯類"] }, items: { zh: ["番茄6", "大蒜3", "洛口石首魚2"] } },
+        { name: { zh: "鴇片炒油菜" }, type: "料理", level: 5, tags: { zh: ["鮮香", "炒菜"] }, items: { zh: ["油菜6", "大蒜3", "野鴇肉2"] } },
+        { name: { zh: "洋蔥燉鹿肉" }, type: "料理", level: 6, tags: { zh: ["專門", "滋補", "燜菜"] }, items: { zh: ["洋蔥6", "大蒜3", "吠鹿肉2"] } },
+        { name: { zh: "洋蔥蒸鯚魚" }, type: "料理", level: 6, tags: { zh: ["蒸煮", "滋補"] }, items: { zh: ["洋蔥6", "大蒜3", "鯚魚2"] } },
+        { name: { zh: "蕈菇炒油菜" }, type: "料理", level: 6, tags: { zh: ["鮮香", "炒菜"] }, items: { zh: ["油菜6", "大蒜3", "蕈菇2"] } },
+        { name: { zh: "闖肉寒瓜炙" }, type: "料理", level: 6, tags: { zh: ["鹹香", "炒菜"] }, items: { zh: ["寒瓜6", "大蒜3", "大麋肉2"] } },
+        { name: { zh: "桃脯炒肉" }, type: "料理", level: 7, tags: { zh: ["甜香", "炒菜"] }, items: { zh: ["桃子6", "辣椒3", "豬肉2"] } },
+        { name: { zh: "河豚辣伴瓜" }, type: "料理", level: 7, tags: { zh: ["香辣", "小吃"] }, items: { zh: ["黃瓜6", "辣椒3", "河豚2"] } },
+        { name: { zh: "紫茄河豚辣膾" }, type: "料理", level: 7, tags: { zh: ["麻辣", "炒菜"] }, items: { zh: ["茄子6", "辣椒3", "河豚2"] } },
+        { name: { zh: "辣子麥飯" }, type: "料理", level: 7, tags: { zh: ["香辣", "炒飯"] }, items: { zh: ["小麥6", "辣椒3", "豬肉2"] } },
+        { name: { zh: "參炒胡蘿蔔" }, type: "料理", level: 8, tags: { zh: ["香辣", "炒菜"] }, items: { zh: ["胡蘿蔔6", "辣椒3", "野山參2"] } },
+        { name: { zh: "山參辣茄膾" }, type: "料理", level: 8, tags: { zh: ["香辣", "小吃"] }, items: { zh: ["茄子6", "辣椒3", "野山參2"] } },
+        { name: { zh: "辣炙鯉魚" }, type: "料理", level: 8, tags: { zh: ["香辣", "燒烤"] }, items: { zh: ["洋蔥6", "辣椒3", "鯉魚2"] } },
+        { name: { zh: "馬鈴薯炒魚酥" }, type: "料理", level: 8, tags: { zh: ["酥脆", "炒菜"] }, items: { zh: ["馬鈴薯6", "辣椒3", "鯉魚2"] } },
+        { name: { zh: "茶辣鯽魚膾" }, type: "料理", level: 9, tags: { zh: ["專門", "醬香", "組裝", "燜菜"] }, items: { zh: ["茶樹6", "辣椒3", "鯽魚2"] } },
+        { name: { zh: "辣伴菜菇" }, type: "料理", level: 9, tags: { zh: ["香辣", "小吃"] }, items: { zh: ["生菜6", "辣椒3", "蕈菇2"] } },
+        { name: { zh: "香烤兔肉" }, type: "料理", level: 9, tags: { zh: ["鹹香", "燒烤"] }, items: { zh: ["生菜6", "辣椒3", "兔肉2"] } },
+        { name: { zh: "香辣鹿肉" }, type: "料理", level: 9, tags: { zh: ["香辣", "炒菜"] }, items: { zh: ["茶樹6", "辣椒3", "大麋肉2"] } },
+        { name: { zh: "番茄燴兔丁" }, type: "料理", level: 10, tags: { zh: ["燴菜", "炒菜"] }, items: { zh: ["番茄6", "辣椒3", "兔肉2"] } },
+        { name: { zh: "豆酥煨鯰腩" }, type: "料理", level: 10, tags: { zh: ["燜菜", "醇香"] }, items: { zh: ["大豆6", "辣椒3", "鯰魚2"] } },
+        { name: { zh: "野鴇炒黃瓜" }, type: "料理", level: 10, tags: { zh: ["鮮香", "炒菜"] }, items: { zh: ["黃瓜6", "辣椒3", "野鴇肉2"] } },
+        { name: { zh: "鯚魚伴生菜" }, type: "料理", level: 10, tags: { zh: ["鮮香", "蒸煮"] }, items: { zh: ["生菜6", "辣椒3", "鯚魚2"] } },
+        { name: { zh: "麥酒" }, type: "酒", level: 1, tags: { zh: ["糧食酒"] }, items: { zh: ["小麥6", "玉米3", "容器1"] } },
+        { name: { zh: "苞穀酒" }, type: "酒", level: 2, tags: { zh: ["糧食酒"] }, items: { zh: ["梨花6", "玉米3", "容器2"] } },
+        { name: { zh: "桑落酒" }, type: "酒", level: 3, tags: { zh: ["混合酒"] }, items: { zh: ["棉花6", "玉米3", "容器3"] } },
+        { name: { zh: "西瓜果釀" }, type: "酒", level: 4, tags: { zh: ["果酒"] }, items: { zh: ["寒瓜6", "水稻3", "容器4"] } },
+        { name: { zh: "新豐酒" }, type: "酒", level: 5, tags: { zh: ["糧食酒"] }, items: { zh: ["油菜6", "水稻3", "容器5"] } },
+        { name: { zh: "青紅酒" }, type: "酒", level: 6, tags: { zh: ["糧食酒"] }, items: { zh: ["番茄6", "水稻3", "容器6"] } },
+        { name: { zh: "杜康酒" }, type: "酒", level: 7, tags: { zh: ["糧食酒"] }, items: { zh: ["甘蔗6", "高粱3", "容器7"] } },
+        { name: { zh: "鵝黃酒" }, type: "酒", level: 8, tags: { zh: ["經濟作物酒"] }, items: { zh: ["枇杷6", "高粱3", "容器8"] } },
+        { name: { zh: "松醪酒" }, type: "酒", level: 9, tags: { zh: ["經濟作物酒"] }, items: { zh: ["茶樹6", "高粱3", "容器9"] } },
+        { name: { zh: "屠蘇酒" }, type: "酒", level: 10, tags: { zh: ["經濟作物酒"] }, items: { zh: ["櫻桃6", "高粱3", "容器10"] } }
+    ];
 
     let currentHighlightText = null;
     let currentHighlightType = null;
     let currentUserLevel = 10;
 
-    // 🛠️ 已修復：動態調整收縮邏輯，展開後清除 max-height 限制防止長表格截斷
+    function applyLanguage() {
+        const l = i18n[currentLang];
+        document.getElementById('pageTitle').textContent = l.pageTitle;
+        document.getElementById('mainTitle').textContent = l.mainTitle;
+        document.getElementById('mainSubtitle').textContent = l.mainSubtitle;
+        document.getElementById('lblUserLevel').textContent = l.lblUserLevel;
+        document.getElementById('lblTagSectionTitle').textContent = l.lblTagSectionTitle;
+        document.getElementById('lblRareSectionTitle').textContent = l.lblRareSectionTitle;
+        document.getElementById('lblRecSectionTitle').textContent = l.lblRecSectionTitle;
+        
+        document.getElementById('titleContainerSection').textContent = l.titleContainerSection;
+        document.getElementById('titleFoodSection').textContent = l.titleFoodSection;
+        document.getElementById('titleWineSection').textContent = l.titleWineSection;
+        
+        document.querySelectorAll('.th-name').forEach(el => el.textContent = l.thName);
+        document.querySelectorAll('.th-type').forEach(el => el.textContent = l.thType);
+        document.querySelectorAll('.th-level').forEach(el => el.textContent = l.thLevel);
+        document.querySelectorAll('.th-tags').forEach(el => el.textContent = l.thTags);
+        document.querySelectorAll('.th-items').forEach(el => el.textContent = l.thItems);
+        
+        document.getElementById('navPromoBtn').textContent = l.navPromoBtn;
+        document.getElementById('footerLinks').childNodes[0].nodeValue = l.footerLinks;
+
+        const select = document.getElementById('userLevelSelect');
+        for (let i = 0; i < 9; i++) {
+            select.options[i].text = (i + 1) + l.levelText;
+        }
+        select.options[9].text = l.levelDisplayAll;
+    }
+
     function toggleSection(id) {
         const titleEl = document.querySelector(`[onclick="toggleSection('${id}')"]`);
         const contentEl = document.getElementById(id);
         const arrow = titleEl.querySelector('.collapse-arrow');
         
         if (titleEl.classList.contains('collapsed')) {
-            // 執行展開
             titleEl.classList.remove('collapsed');
             arrow.textContent = '▲';
             contentEl.style.maxHeight = "3000px";
-            // 待 0.3 秒動畫播完後，完全釋放高度限制
-            setTimeout(() => {
-                if (!titleEl.classList.contains('collapsed')) {
-                    contentEl.style.maxHeight = "none";
-                }
-            }, 300);
+            setTimeout(() => { if (!titleEl.classList.contains('collapsed')) contentEl.style.maxHeight = "none"; }, 300);
         } else {
-            // 執行收縮
             contentEl.style.maxHeight = contentEl.scrollHeight + "px";
-            // 強制重繪以觸發過渡動畫
             contentEl.offsetHeight; 
             titleEl.classList.add('collapsed');
             arrow.textContent = '▼';
@@ -462,37 +554,47 @@
     }
 
     function getStockCount(name) {
-        return parseInt(localStorage.getItem('stock_' + name)) || 0;
+        return parseInt(localStorage.getItem('inn_stock_' + name)) || 0;
     }
     function updateStockCount(name, change) {
         let val = getStockCount(name) + change;
         if (val < 0) val = 0;
-        localStorage.setItem('stock_' + name, val);
+        localStorage.setItem('inn_stock_' + name, val);
         renderRareTagsAlert();
     }
 
-    const tagGroupDiv = document.getElementById('tagGroup');
-    allTags.forEach(tag => {
-        const label = document.createElement('label');
-        label.className = 'tag-label';
-        label.setAttribute('data-tag', tag);
-        label.innerHTML = `<input type="checkbox" value="${tag}" onchange="calculateLogic()">${tag}`;
-        tagGroupDiv.appendChild(label);
-    });
+    function rebuildTagUI() {
+        let allTags = new Set();
+        productData.forEach(p => p.tags[currentLang].forEach(t => allTags.add(t)));
+        allTags = [...allTags].sort();
 
-    const foodTbody = document.getElementById('foodTableBody');
-    const wineTbody = document.getElementById('wineTableBody');
-    
+        const tagGroupDiv = document.getElementById('tagGroup');
+        tagGroupDiv.innerHTML = '';
+        allTags.forEach(tag => {
+            const label = document.createElement('label');
+            label.className = 'tag-label';
+            label.setAttribute('data-tag', tag);
+            label.innerHTML = `<input type="checkbox" value="${tag}" onchange="calculateLogic()">${tag}`;
+            tagGroupDiv.appendChild(label);
+        });
+    }
+
     function renderRareTagsAlert() {
+        const l = i18n[currentLang];
         const rareContent = document.getElementById('rareListContent');
+        
+        let allTags = new Set();
+        productData.forEach(p => p.tags[currentLang].forEach(t => allTags.add(t)));
+        allTags = [...allTags].sort();
+
         const tagCounts = {};
         allTags.forEach(t => tagCounts[t] = { count: 0, items: [] });
 
         productData.forEach(p => {
             if (p.level <= currentUserLevel) {
-                p.tags.forEach(t => {
+                p.tags[currentLang].forEach(t => {
                     tagCounts[t].count++;
-                    tagCounts[t].items.push({ name: p.name, level: p.level });
+                    tagCounts[t].items.push({ name: p.name[currentLang], rawName: p.name['zh'], level: p.level });
                 });
             }
         });
@@ -506,23 +608,23 @@
                 hasRare = true;
                 
                 let itemsString = info.items.map(item => {
-                    const count = getStockCount(item.name);
-                    const shopHint = (item.level <= 2) ? `<span style="color:#60a5fa; font-weight:normal; font-size:11px; margin-left:4px;">🏪商店直購</span>` : '';
+                    const count = getStockCount(item.rawName);
+                    const shopHint = (item.level <= 2) ? `<span style="color:#60a5fa; font-weight:normal; font-size:11px; margin-left:4px;">${l.shopDirect}</span>` : '';
                     const rankClass = getRankClass(item.level);
                     
                     return `<div style="margin-left: 15px; margin-top: 2px;">
                         → <span class="${rankClass}" style="font-weight:bold;">${item.name}</span>${shopHint}
                         <span style="margin-left:10px;">
-                            <button class="counter-btn" onclick="updateStockCount('${item.name}', -1)">-</button>
+                            <button class="counter-btn" onclick="updateStockCount('${item.rawName}', -1)">-</button>
                             <span class="counter-val">${count}</span>
-                            <button class="counter-btn" onclick="updateStockCount('${item.name}', 1)">+</button>
+                            <button class="counter-btn" onclick="updateStockCount('${item.rawName}', 1)">+</button>
                         </span>
                     </div>`;
                 }).join('');
 
                 rareHtml += `<div class="rare-item">
                     <div class="rare-header">
-                        <span>🏷️ 標籤【<span class="interactive-item" data-type="tag" data-value="${tag}" style="margin:0; padding:1px 5px; background:#2e3440; border-color:#4c566a; color:#d8dee9;">${tag}</span>】極稀有：</span>
+                        <span>🏷️ ${l.rareAlertTag}【<span class="interactive-item" data-type="tag" data-value="${tag}" style="margin:0; padding:1px 5px; background:#2e3440; border-color:#4c566a; color:#d8dee9;">${tag}</span>】${l.rareAlertExt}</span>
                     </div>
                     ${itemsString}
                 </div>`;
@@ -530,47 +632,86 @@
         });
 
         if (!hasRare) {
-            rareHtml = "<span style='color:#888;'>當前等級內暫無高度稀有的孤品標籤。</span>";
+            rareHtml = `<span style='color:#888;'>${l.noRare}</span>`;
         }
         rareContent.innerHTML = rareHtml;
 
         rareContent.querySelectorAll('.interactive-item').forEach(el => {
-            el.addEventListener('click', function(e) {
-                e.stopPropagation();
-                triggerHighlight(this.getAttribute('data-type'), this.getAttribute('data-value'));
-            });
+            el.addEventListener('click', function(e) { e.stopPropagation(); triggerHighlight(this.getAttribute('data-type'), this.getAttribute('data-value')); });
         });
     }
 
     function renderTable() {
+        const l = i18n[currentLang];
+        const containerTbody = document.getElementById('containerTableBody');
+        const foodTbody = document.getElementById('foodTableBody');
+        const wineTbody = document.getElementById('wineTableBody');
+        
+        containerTbody.innerHTML = '';
         foodTbody.innerHTML = '';
         wineTbody.innerHTML = '';
 
+        // 1. 🏺 渲染容器獨立大表
+        Object.keys(containerDatabase).forEach((key) => {
+            const level = parseInt(key.replace("容器", ""));
+            if (level > currentUserLevel) return;
+
+            const dbInfo = containerDatabase[key];
+            const tr = document.createElement('tr');
+            tr.setAttribute('data-container-key', key);
+            
+            let levelDisplay = level + l.levelText;
+            if (level === 1 || level === 2) levelDisplay = `<span class="shop-level">🏪 ${level}</span>`;
+            
+            const rankClass = getRankClass(level);
+            
+            let recipeHtml = dbInfo.recipe[currentLang].split('、').map(r => {
+                const coreMat = r.replace(/[0-9]/g, '').trim();
+                return `<span class="interactive-item" data-type="item" data-value="${coreMat}">${r}</span>`;
+            }).join(' ');
+
+            tr.innerHTML = `
+                <td class="${rankClass}" style="font-weight:bold;">${dbInfo.name[currentLang]}</td>
+                <td><span class="type-badge type-container">${currentLang === 'zh' ? '容器' : 'Box'}</span></td>
+                <td>${levelDisplay}</td>
+                <td>${recipeHtml}</td>
+            `;
+            containerTbody.appendChild(tr);
+        });
+
+        // 2. 🍳 & 🍶 渲染料理與酒水表
         productData.forEach((product, idx) => {
             if (product.level > currentUserLevel) return;
             
             const tr = document.createElement('tr');
             tr.setAttribute('data-idx', idx);
             
-            let levelDisplay = product.level;
-            if (product.level === 1 || product.level === 2) {
-                levelDisplay = `<span class="shop-level">🏪 ${product.level}</span>`;
-            }
+            let levelDisplay = product.level + l.levelText;
+            if (product.level === 1 || product.level === 2) levelDisplay = `<span class="shop-level">🏪 ${product.level}</span>`;
 
-            let tagsHtml = product.tags.map(t => `<span class="interactive-item" data-type="tag" data-value="${t}">${t}</span>`).join('');
-            if(product.tags.length === 0) tagsHtml = '<span style="color:#555;">-</span>';
+            let tagsHtml = product.tags[currentLang].map(t => `<span class="interactive-item" data-type="tag" data-value="${t}">${t}</span>`).join('');
+            if(product.tags[currentLang].length === 0) tagsHtml = '<span style="color:#555;">-</span>';
 
-            let itemsHtml = product.items.map(i => {
-                const coreName = i.replace(/[0-9]/g, '');
+            let itemsHtml = product.items[currentLang].map((i, iIdx) => {
+                const rawItemCode = product.items['zh'][iIdx];
+                if (rawItemCode.startsWith("容器")) {
+                    const dbInfo = containerDatabase[rawItemCode];
+                    if (dbInfo) {
+                        const hoverText = `【${dbInfo.name[currentLang]}】(Lv.${product.level})\n${dbInfo.recipe[currentLang]}`;
+                        const rankClass = getRankClass(product.level);
+                        return `<span class="interactive-item container-tip ${rankClass}" data-type="item" data-value="${rawItemCode}" title="${hoverText}">${dbInfo.name[currentLang]}</span>`;
+                    }
+                }
+                const coreName = i.replace(/[0-9]/g, '').trim();
                 return `<span class="interactive-item" data-type="item" data-value="${coreName}">${i}</span>`;
             }).join('');
-            if(product.items.length === 0) itemsHtml = '<span style="color:#555;">-</span>';
+            if(product.items[currentLang].length === 0) itemsHtml = '<span style="color:#555;">-</span>';
 
             const rankClass = getRankClass(product.level);
 
             tr.innerHTML = `
-                <td class="${rankClass}" style="font-weight:bold;">${product.name}</td>
-                <td><span class="type-badge ${product.type === '料理' ? 'type-food' : 'type-wine'}">${product.type}</span></td>
+                <td class="${rankClass}" style="font-weight:bold;">${product.name[currentLang]}</td>
+                <td><span class="type-badge ${product.type === '料理' ? 'type-food' : 'type-wine'}">${currentLang === 'zh' ? product.type : (product.type === '料理' ? 'Food' : 'Wine')}</span></td>
                 <td>${levelDisplay}</td>
                 <td>${tagsHtml}</td>
                 <td>${itemsHtml}</td>
@@ -605,17 +746,32 @@
     }
 
     function refreshHighlightUI() {
-        const rows = document.querySelectorAll('tbody tr');
-        rows.forEach(row => {
+        const l = i18n[currentLang];
+        
+        document.querySelectorAll('#foodTableBody tr, #wineTableBody tr').forEach(row => {
             const idx = row.getAttribute('data-idx');
             const product = productData[idx];
             row.classList.remove('highlighted-row');
             
             let isRowMatch = false;
             if (currentHighlightText) {
-                if (currentHighlightType === 'tag' && product.tags.includes(currentHighlightText)) isRowMatch = true;
+                if (currentHighlightType === 'tag' && product.tags[currentLang].includes(currentHighlightText)) isRowMatch = true;
                 else if (currentHighlightType === 'item') {
-                    if (product.items.some(i => i.replace(/[0-9]/g, '') === currentHighlightText)) isRowMatch = true;
+                    if (product.items['zh'].includes(currentHighlightText) || product.items[currentLang].some(i => i.replace(/[0-9]/g, '').trim() === currentHighlightText)) isRowMatch = true;
+                }
+            }
+            if (isRowMatch) row.classList.add('highlighted-row');
+        });
+
+        document.querySelectorAll('#containerTableBody tr').forEach(row => {
+            const key = row.getAttribute('data-container-key');
+            const dbInfo = containerDatabase[key];
+            row.classList.remove('highlighted-row');
+            
+            let isRowMatch = false;
+            if (currentHighlightText && currentHighlightType === 'item') {
+                if (key === currentHighlightText || dbInfo.recipe[currentLang].split('、').some(r => r.replace(/[0-9]/g, '').trim() === currentHighlightText)) {
+                    isRowMatch = true;
                 }
             }
             if (isRowMatch) row.classList.add('highlighted-row');
@@ -647,6 +803,7 @@
     }
 
     function calculateLogic() {
+        const l = i18n[currentLang];
         const checkedLabels = document.querySelectorAll('.tag-label');
         const activeTags = [];
         
@@ -672,7 +829,7 @@
         const availablePool = productData.filter(p => p.level <= currentUserLevel);
 
         let scoredProducts = availablePool.map(p => {
-            const matchCount = p.tags.filter(t => activeTags.includes(t)).length;
+            const matchCount = p.tags[currentLang].filter(t => activeTags.includes(t)).length;
             return { ...p, matchCount };
         }).filter(p => p.matchCount > 0);
 
@@ -680,27 +837,28 @@
 
         let html = "";
         if (scoredProducts.length === 0) {
-            html = `⚠️ 在您目前的家業等級限制下，沒有任何菜品符合勾選標籤。`;
+            html = l.noMatch;
             recContent.innerHTML = html;
             return;
         }
 
-        html += `<strong>🎯 優先推薦單品：</strong><br><ul style="margin:5px 0 15px 20px; padding:0;">`;
+        html += `<strong>${l.recSingle}</strong><br><ul style="margin:5px 0 15px 20px; padding:0;">`;
         const maxMatch = scoredProducts[0].matchCount;
         scoredProducts.forEach(p => {
             if (p.matchCount === maxMatch) {
-                const shopHint = (p.level <= 2) ? " <span style='color:#60a5fa;'>[🏪 商店直接拉]</span>" : "";
-                html += `<li style="margin-bottom:4px;"><span style="color:#fff; font-weight:bold;">${p.name}</span> (${p.type}) - Lv.${p.level}${shopHint} <span class="match-badge">符合 ${p.matchCount} 個標籤</span></li>`;
+                const shopHint = (p.level <= 2) ? ` <span style='color:#60a5fa;'>${l.shopPull}</span>` : "";
+                const typeText = currentLang === 'zh' ? p.type : (p.type === '料理' ? 'Food' : 'Wine');
+                html += `<li style="margin-bottom:4px;"><span style="color:#fff; font-weight:bold;">${p.name[currentLang]}</span> (${typeText}) - Lv.${p.level}${shopHint} <span class="match-badge">${currentLang === 'zh' ? '符合' : 'Match'} ${p.matchCount} ${currentLang === 'zh' ? '個標籤' : 'Tags'}</span></li>`;
             }
         });
         html += `</ul>`;
 
-        html += `<strong>💡 最省力組合建議：</strong><br>`;
+        html += `<strong>${l.recCombo}</strong><br>`;
         let uncoveredTags = [...activeTags];
         let comboList = [];
         let pool = availablePool.map(p => ({
             ...p,
-            getMatches: function(tags) { return this.tags.filter(t => tags.includes(t)); }
+            getMatches: function(tags) { return this.tags[currentLang].filter(t => tags.includes(t)); }
         }));
 
         while (uncoveredTags.length > 0) {
@@ -709,24 +867,27 @@
             let matches = best ? best.getMatches(uncoveredTags) : [];
             if (!best || matches.length === 0) break; 
 
-            comboList.push({ name: best.name, type: best.type, level: best.level, covered: matches });
+            comboList.push({ name: best.name[currentLang], level: best.level, covered: matches });
             uncoveredTags = uncoveredTags.filter(t => !matches.includes(t));
         }
 
         if (comboList.length > 0) {
             html += `<div style="background:#111827; padding:10px; border-radius:6px; border:1px solid #374151; margin-top:5px;">`;
             comboList.forEach((c, i) => {
-                const shopHint = (c.level <= 2) ? " <span style='color:#60a5fa; font-size:12px;'>[🏪 商店可拉]</span>" : "";
-                html += `${i+1}. <span style="color:#fbbf24; font-weight:bold;">${c.name}</span> - Lv.${c.level}${shopHint} → 解決標籤: <span style="color:#a7f3d0;">${c.covered.join('、')}</span><br>`;
+                const shopHint = (c.level <= 2) ? ` <span style='color:#60a5fa; font-size:12px;'>${l.shopCanPull}</span>` : "";
+                html += `${i+1}. <span style="color:#fbbf24; font-weight:bold;">${c.name}</span> - Lv.${c.level}${shopHint} → ${l.tagSolved}: <span style="color:#a7f3d0;">${c.covered.join('、')}</span><br>`;
             });
             if (uncoveredTags.length > 0) {
-                html += `<span style="color:#ef4444; font-size:12px; font-weight:bold; display:block; margin-top:5px;">⚠️ 剩餘標籤 [ ${uncoveredTags.join('、')} ] 當前等級內無解。</span>`;
+                html += `<span style="color:#ef4444; font-size:12px; font-weight:bold; display:block; margin-top:5px;">${l.tagUnsolved} [ ${uncoveredTags.join('、')} ]</span>`;
             }
             html += `</div>`;
         }
         recContent.innerHTML = html;
     }
 
+    // 初始化啟動
+    applyLanguage();
+    rebuildTagUI();
     renderRareTagsAlert();
     renderTable();
 </script>
