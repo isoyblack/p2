@@ -27,7 +27,7 @@
             position: relative;
         }
         
-        /* 🌐 右上角快捷導航區 */
+        /* 🌐 右上角快捷導航區與語系切換 */
         .top-nav-links {
             position: absolute;
             top: 25px;
@@ -46,6 +46,7 @@
             border: 1px solid #444;
             transition: all 0.2s;
             font-weight: bold;
+            cursor: pointer;
         }
         .nav-link-btn:hover {
             background: #fbbf24;
@@ -53,7 +54,7 @@
             border-color: #fbbf24;
         }
 
-        @media (max-width: 600px) {
+        @media (max-width: 768px) {
             .top-nav-links {
                 position: static;
                 text-align: center;
@@ -270,6 +271,7 @@
 <div class="container">
     <div class="top-nav-links">
         <a href="https://isoyblack.github.io/" target="_blank" class="nav-link-btn" id="navPromoBtn">🎁 燕雲十六聲兌換碼小助手</a>
+        <span class="nav-link-btn" onclick="toggleLanguage()">繁中 / English</span>
     </div>
 
     <h2 id="mainTitle">《燕雲十六聲》家業客棧助手</h2>
@@ -298,7 +300,7 @@
             </div>
 
             <div class="rare-box">
-                <div class="section-title" id="lblRareSectionTitle" style="color: #d08770; border-left-color: #d08770;">🕒 孤品/稀有標籤預警（建議提早囤貨）</div>
+                <div class="section-title" id="lblRareSectionTitle" style="color: #d08770; border-left-color: #d08770;"> 孤品/稀有標籤</div>
                 <div class="rare-list" id="rareListContent">正在計算稀有標籤...</div>
             </div>
         </div>
@@ -309,7 +311,40 @@
         </div>
 
         <div>
-            <!-- 🍳 料理總覽移動到上方 -->
+            <div class="collapse-title" onclick="toggleSection('giftSection')">
+                <span id="titleGiftSection">🎁 家業開壇宴送禮清單 （15）</span><span class="collapse-arrow">▲</span>
+            </div>
+            <div class="collapse-content" id="giftSection">
+                <div style="overflow-x:auto;">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th id="thGiftNpc">NPC</th>
+                                <th id="thGiftItem">推薦伴手禮</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>趙大哥</td><td>冰弦膏</td></tr>
+                            <tr><td>晉中原</td><td>散佚古譜</td></tr>
+                            <tr><td>姚藥藥</td><td>江米涼糕</td></tr>
+                            <tr><td>盈盈</td><td>東闕公子話本集</td></tr>
+                            <tr><td>蕭史</td><td>止血定痛丸</td></tr>
+                            <tr><td>沈玉</td><td>文房四寶</td></tr>
+                            <tr><td>天不收</td><td>新釀離人淚</td></tr>
+                            <tr><td>狗狗</td><td>小狗飯碗</td></tr>
+                            <tr><td>大強</td><td>毛線球</td></tr>
+                            <tr><td>張龍</td><td>《孤獨文學家為什麼你說話別人不愛聽》</td></tr>
+                            <tr><td>張虎</td><td>焰火一枝春</td></tr>
+                            <tr><td>張豹</td><td>螂的誘惑</td></tr>
+                            <tr><td>張安康</td><td>把子肉飯</td></tr>
+                            <tr><td>鄭然</td><td>梨花酥</td></tr>
+                            <tr><td>趙承宗</td><td>五年科舉十年模擬</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- 🍳 料理總覽 -->
             <div class="collapse-title" onclick="toggleSection('foodSection')">
                 <span id="titleFoodSection">🍳 全家業料理總覽</span>
                 <span class="collapse-arrow">▲</span>
@@ -319,11 +354,11 @@
                     <table>
                         <thead>
                             <tr>
-                                <th style="width: 20%;" class="th-name">產品名稱</th>
+                                <th style="width: 25%;" class="th-name">產品名稱</th>
                                 <th style="width: 10%;" class="th-type">類型</th>
-                                <th style="width: 10%;" class="th-level">家業等級</th>
-                                <th style="width: 25%;" class="th-tags">標籤</th>
-                                <th style="width: 35%;" class="th-items">材料清單</th>
+                                <th style="width: 15%;" class="th-level">家業等級</th>
+                                <th style="width: 20%;" class="th-tags">標籤</th>
+                                <th style="width: 30%;" class="th-items">材料清單</th>
                             </tr>
                         </thead>
                         <tbody id="foodTableBody"></tbody>
@@ -331,7 +366,7 @@
                 </div>
             </div>
 
-            <!-- 🍶 酒品總覽在中間 -->
+            <!-- 🍶 酒品總覽 -->
             <div class="collapse-title" onclick="toggleSection('wineSection')">
                 <span id="titleWineSection">🍶 全家業酒品總覽</span>
                 <span class="collapse-arrow">▲</span>
@@ -341,11 +376,11 @@
                     <table>
                         <thead>
                             <tr>
-                                <th style="width: 20%;" class="th-name">產品名稱</th>
+                                <th style="width: 25%;" class="th-name">產品名稱</th>
                                 <th style="width: 10%;" class="th-type">類型</th>
-                                <th style="width: 10%;" class="th-level">家業等級</th>
-                                <th style="width: 25%;" class="th-tags">標籤</th>
-                                <th style="width: 35%;" class="th-items">材料清單</th>
+                                <th style="width: 15%;" class="th-level">家業等級</th>
+                                <th style="width: 20%;" class="th-tags">標籤</th>
+                                <th style="width: 30%;" class="th-items">材料清單</th>
                             </tr>
                         </thead>
                         <tbody id="wineTableBody"></tbody>
@@ -353,7 +388,7 @@
                 </div>
             </div>
 
-            <!-- 🏺 容器總覽已成功移動到最下方 -->
+            <!-- 🏺 容器總覽 -->
             <div class="collapse-title" onclick="toggleSection('containerSection')">
                 <span id="titleContainerSection">🏺 全家業容器總覽</span>
                 <span class="collapse-arrow">▲</span>
@@ -381,13 +416,12 @@
             🔗 其他連結：<a href="https://isoyblack.github.io/" target="_blank">燕雲十六聲兌換碼小助手</a>
         </div>
         <div class="footer-right">
-            Made by <span>豆漿紅</span> × AI ｜ v0.95
+            Made by <span>豆漿紅</span> × AI ｜ v0.97
         </div>
     </footer>
 </div>
 
 <script>
-    // 🌐 字典定義（已移除英文切換對應，僅保留核心結構與繁中）
     const i18n = {
         zh: {
             pageTitle: "《燕雲十六聲》家業客棧助手",
@@ -395,11 +429,14 @@
             mainSubtitle: "設定家業等級自動篩選 ｜ 稀有孤品安全預警 ｜ 點擊標籤材料全網頁連動高亮",
             lblUserLevel: "🛠️ 請設定您目前的家業等級：",
             lblTagSectionTitle: "每週活動隨機標籤勾選 (可複選)",
-            lblRareSectionTitle: "🕒 孤品/稀有標籤預警（建議提早囤貨）",
+            lblRareSectionTitle: "孤品/稀有標籤預警",
             lblRecSectionTitle: "活動速解組合推薦",
+            titleGiftSection: "🎁 家業開壇宴送禮清單 （15）",
             titleContainerSection: "🏺 全家業容器總覽",
             titleFoodSection: "🍳 全家業料理總覽",
             titleWineSection: "🍶 全家業酒品總覽",
+            thGiftNpc: "NPC",
+            thGiftItem: "推薦伴手禮",
             thName: "產品名稱",
             thType: "類型",
             thLevel: "家業等級",
@@ -419,82 +456,128 @@
             levelText: " 級",
             levelDisplayAll: "10 級 (顯示全部)",
             rareAlertTag: "標籤",
-            rareAlertExt: "限定料理堤供："
+            rareAlertExt: "限定料理提供："
+        },
+        en: {
+            pageTitle: "Where Winds Meet",
+            mainTitle: "Where Winds Meet",
+            mainSubtitle: "Auto-filter by level | Rare tags warning | Interactive tags & materials highlighting",
+            lblUserLevel: "🛠️ Set current level:",
+            lblTagSectionTitle: "Weekly Random Tags (Multi-select)",
+            lblRareSectionTitle: "🕒 Rare Tags Warning (Stock up early)",
+            lblRecSectionTitle: "Recommended Combinations",
+            titleGiftSection: "🎁 Banquets Gift List (15)",
+            titleContainerSection: "🏺 All Containers Overview",
+            titleFoodSection: "🍳 All Foods Overview",
+            titleWineSection: "🍶 All Wines Overview",
+            thGiftNpc: "NPC",
+            thGiftItem: "Recommended Gift",
+            thName: "Product Name",
+            thType: "Type",
+            thLevel: "Level",
+            thTags: "Tags",
+            thItems: "Materials List",
+            navPromoBtn: "🎁Redemption Code Manager",
+            footerLinks: "🔗 Links: ",
+            shopDirect: "🏪Shop Direct",
+            noRare: "No rare unique tags within the current level restriction.",
+            noMatch: "⚠️ No dishes match the selected tags within your current level restriction.",
+            recSingle: "🎯 Top Pick Single Items:",
+            recCombo: "💡 Most Efficient Combos:",
+            shopPull: "[🏪 Buy from Shop]",
+            shopCanPull: "[🏪 Available in Shop]",
+            tagSolved: "Resolved Tags",
+            tagUnsolved: "⚠️ Unresolved Tags (No options at this level)",
+            levelText: "",
+            levelDisplayAll: "10 (Show All)",
+            rareAlertTag: "Tag",
+            rareAlertExt: "Exclusive from:"
         }
     };
 
     let currentLang = 'zh';
 
-    // 🏺 容器資料庫：不論等級原木配方數量皆已修正為 1 
     const containerDatabase = {
-        "容器1": { name: { zh: "木理紋酒壺" }, recipe: { zh: "粗曠1、原木1" } },
-        "容器2": { name: { zh: "白釉執壺" }, recipe: { zh: "酒香玉1、粗曠1、原木1" } },
-        "容器3": { name: { zh: "藍玉雲紋壺" }, recipe: { zh: "獨山藍玉1、粗曠1、原木1" } },
-        "容器4": { name: { zh: "青釉雞首壺" }, recipe: { zh: "獨山玉1、粗曠1、原木1" } },
-        "容器5": { name: { zh: "青瓷刻花酒壺" }, recipe: { zh: "青礞石1、粗曠1、原木1" } },
-        "容器6": { name: { zh: "青黃釉銅嘴壺" }, recipe: { zh: "黃銅1、粗曠1、原木1" } },
-        "容器7": { name: { zh: "銅胎陶膽松紋壺" }, recipe: { zh: "黃銅1、粗曠1、原木1" } },
-        "容器8": { name: { zh: "藍釉執壺" }, recipe: { zh: "寒鐵1、粗曠1、原木1" } },
-        "容器9": { name: { zh: "三彩酒壺" }, recipe: { zh: "寒鐵1、粗曠1、原木1" } },
-        "容器10": { name: { zh: "描金刻花執壺" }, recipe: { zh: "寒鐵1、粗曠1、原木1" } }
+        "容器1": { name: { zh: "木理紋酒壺", en: "LV 1 Woodgrain Wine Pot" }, recipe: { zh: "粗曠1、原木1", en: "Raw Ore 1, Timber 1" } },
+        "容器2": { name: { zh: "白釉執壺", en: "LV 2 White-Glaze Ewer" }, recipe: { zh: "酒香玉1、粗曠1、原木1", en: "Wine-Scented Jade 1, Raw Ore 1, Timber 1" } },
+        "容器3": { name: { zh: "藍玉雲紋壺", en: "LV 3 Sapphire Cloud Flask" }, recipe: { zh: "獨山藍玉1、粗曠1、原木1", en: "LV3 Dushan Blue Jade 1, Raw Ore 1, Timber 1" } },
+        "容器4": { name: { zh: "青釉雞首壺", en: "LV 4 Celadon Rooster Ewer" }, recipe: { zh: "獨山玉1、粗曠1、原木1", en: "LV3 Dushan Jade 1, Raw Ore 1, Timber 1" } },
+        "容器5": { name: { zh: "青瓷刻花酒壺", en: "LV 5 Carved Celadon Wine Jug" }, recipe: { zh: "青礞石1、粗曠1、原木1", en: "LV 4 Chlorite Schist 1, Raw Ore 1, Timber 1" } },
+        "容器6": { name: { zh: "青黃釉銅嘴壺", en: "LV 6 Amber-Glazed Brazz Jug" }, recipe: { zh: "黃銅1、粗曠1、原木1", en: "LV 6 Copper Ore 1, Raw Ore 1, Timber 1" } },
+        "容器7": { name: { zh: "銅胎陶膽松紋壺", en: "LV 7 Bronze-Clad Pine Jug" }, recipe: { zh: "黃銅1、粗曠1、原木1", en: "Copper Ore 1, Raw Ore 1, Timber 1" } },
+        "容器8": { name: { zh: "藍釉執壺", en: "LV 8 Blue Glaze Ewer" }, recipe: { zh: "寒鐵1、粗曠1、原木1", en: "Cold Iron 1, Raw Ore 1, Timber 1" } },
+        "容器9": { name: { zh: "三彩酒壺", en: "LV 9 Sancai Ewer" }, recipe: { zh: "寒鐵1、粗曠1、原木1", en: "Cold Iron 1, Raw Ore 1, Timber 1" } },
+        "容器10": { name: { zh: "描金刻花執壺", en: "LV 10 Gilded Carved Ewer" }, recipe: { zh: "寒鐵1、粗曠1、原木1", en: "Cold Iron 1, Raw Ore 1, Timber 1" } }
     };
 
     const productData = [
-        { name: { zh: "漿果麥羹" }, type: "料理", level: 1, tags: { zh: ["清淡", "湯類"] }, items: { zh: ["小麥6"] } },
-        { name: { zh: "燉馬鈴薯" }, type: "料理", level: 1, tags: { zh: [] }, items: { zh: ["馬鈴薯2"] } },
-        { name: { zh: "生薑煨魚" }, type: "料理", level: 1, tags: { zh: ["燜菜", "鮮香"] }, items: { zh: [] } },
-        { name: { zh: "豬肉餡餅" }, type: "料理", level: 1, tags: { zh: ["小吃", "酥脆"] }, items: { zh: [] } },
-        { name: { zh: "馬鈴薯煨肉" }, type: "料理", level: 1, tags: { zh: ["鹹香", "燜菜"] }, items: { zh: [] } },
-        { name: { zh: "梨薑肉膾" }, type: "料理", level: 2, tags: { zh: ["炒菜", "鮮香"] }, items: { zh: [] } },
-        { name: { zh: "清蒸鱸魚" }, type: "料理", level: 2, tags: { zh: ["鮮香", "蒸煮"] }, items: { zh: [] } },
-        { name: { zh: "胡蘿蔔燉肉" }, type: "料理", level: 2, tags: { zh: ["鹹香", "燴菜"] }, items: { zh: [] } },
-        { name: { zh: "薑絲鱸膾" }, type: "料理", level: 2, tags: { zh: ["湯類", "滋補"] }, items: { zh: [] } },
-        { name: { zh: "紅燒麋肉" }, type: "料理", level: 3, tags: { zh: [] }, items: { zh: ["大豆6", "生薑3", "大麋肉2"] } },
-        { name: { zh: "胡蘿蔔絲炒肉" }, type: "料理", level: 3, tags: { zh: [] }, items: { zh: ["胡蘿蔔6", "生薑3", "厚脂肉塊2"] } },
-        { name: { zh: "豆薑鱸魚湯" }, type: "料理", level: 3, tags: { zh: [] }, items: { zh: ["大豆6", "生薑3", "江鱸2"] } },
-        { name: { zh: "大豆燉烏鱧" }, type: "料理", level: 4, tags: { zh: [] }, items: { zh: ["大豆6", "大蒜3", "烏鱧2"] } },
-        { name: { zh: "蒜蓉茄子" }, type: "料理", level: 4, tags: { zh: [] }, items: { zh: ["茄子6", "大蒜3", "碎肉塊2"] } },
-        { name: { zh: "雙瓜蒜蓉炙" }, type: "料理", level: 4, tags: { zh: [] }, items: { zh: ["寒瓜6", "大蒜3", "東陵瓜2"] } },
-        { name: { zh: "鴇府燴紫茄" }, type: "料理", level: 4, tags: { zh: [] }, items: { zh: ["茄子6", "大蒜3", "野鴇肉2"] } },
-        { name: { zh: "梨蒜蒸鳙鱠" }, type: "料理", level: 5, tags: { zh: ["蒸煮", "清香"] }, items: { zh: ["梨花6", "大蒜3", "鳙魚2"] } },
-        { name: { zh: "番茄燴鹿腩" }, type: "料理", level: 5, tags: { zh: ["酸甜", "燴菜"] }, items: { zh: ["番茄6", "大蒜3", "吠鹿肉2"] } },
-        { name: { zh: "番茄魚片湯" }, type: "料理", level: 5, tags: { zh: ["酸甜", "湯類"] }, items: { zh: ["番茄6", "大蒜3", "洛口石首魚2"] } },
-        { name: { zh: "鴇片炒油菜" }, type: "料理", level: 5, tags: { zh: ["鮮香", "炒菜"] }, items: { zh: ["油菜6", "大蒜3", "野鴇肉2"] } },
-        { name: { zh: "洋蔥燉鹿肉" }, type: "料理", level: 6, tags: { zh: ["滋補", "燜菜"] }, items: { zh: ["洋蔥6", "大蒜3", "吠鹿肉2"] } },
-        { name: { zh: "洋蔥蒸鯚魚" }, type: "料理", level: 6, tags: { zh: ["蒸煮", "滋補"] }, items: { zh: ["洋蔥6", "大蒜3", "鯚魚2"] } },
-        { name: { zh: "蕈菇炒油菜" }, type: "料理", level: 6, tags: { zh: ["鮮香", "炒菜"] }, items: { zh: ["油菜6", "大蒜3", "蕈菇2"] } },
-        { name: { zh: "闖肉寒瓜炙" }, type: "料理", level: 6, tags: { zh: ["鹹香", "炒菜"] }, items: { zh: ["寒瓜6", "大蒜3", "大麋肉2"] } },
-        { name: { zh: "桃脯炒肉" }, type: "料理", level: 7, tags: { zh: ["甜香", "炒菜"] }, items: { zh: ["桃子6", "辣椒3", "豬肉2"] } },
-        { name: { zh: "河豚辣伴瓜" }, type: "料理", level: 7, tags: { zh: ["香辣", "小吃"] }, items: { zh: ["黃瓜6", "辣椒3", "河豚2"] } },
-        { name: { zh: "紫茄河豚辣膾" }, type: "料理", level: 7, tags: { zh: ["麻辣", "炒菜"] }, items: { zh: ["茄子6", "辣椒3", "河豚2"] } },
-        { name: { zh: "辣子麥飯" }, type: "料理", level: 7, tags: { zh: ["香辣", "炒飯"] }, items: { zh: ["小麥6", "辣椒3", "豬肉2"] } },
-        { name: { zh: "參炒胡蘿蔔" }, type: "料理", level: 8, tags: { zh: ["香辣", "炒菜"] }, items: { zh: ["胡蘿蔔6", "辣椒3", "野山參2"] } },
-        { name: { zh: "山參辣茄膾" }, type: "料理", level: 8, tags: { zh: ["香辣", "小吃"] }, items: { zh: ["茄子6", "辣椒3", "野山參2"] } },
-        { name: { zh: "辣炙鯉魚" }, type: "料理", level: 8, tags: { zh: ["香辣", "燒烤"] }, items: { zh: ["洋蔥6", "辣椒3", "鯉魚2"] } },
-        { name: { zh: "馬鈴薯炒魚酥" }, type: "料理", level: 8, tags: { zh: ["酥脆", "炒菜"] }, items: { zh: ["馬鈴薯6", "辣椒3", "鯉魚2"] } },
-        { name: { zh: "茶辣鯽魚膾" }, type: "料理", level: 9, tags: { zh: ["醬香", "燜菜"] }, items: { zh: ["茶樹6", "辣椒3", "鯽魚2"] } },
-        { name: { zh: "辣伴菜菇" }, type: "料理", level: 9, tags: { zh: ["香辣", "小吃"] }, items: { zh: ["生菜6", "辣椒3", "蕈菇2"] } },
-        { name: { zh: "香烤兔肉" }, type: "料理", level: 9, tags: { zh: ["鹹香", "燒烤"] }, items: { zh: ["生菜6", "辣椒3", "兔肉2"] } },
-        { name: { zh: "香辣鹿肉" }, type: "料理", level: 9, tags: { zh: ["香辣", "炒菜"] }, items: { zh: ["茶樹6", "辣椒3", "大麋肉2"] } },
-        { name: { zh: "番茄燴兔丁" }, type: "料理", level: 10, tags: { zh: ["燴菜", "炒菜"] }, items: { zh: ["番茄6", "辣椒3", "兔肉2"] } },
-        { name: { zh: "豆酥煨鯰腩" }, type: "料理", level: 10, tags: { zh: ["燜菜", "醇香"] }, items: { zh: ["大豆6", "辣椒3", "鯰魚2"] } },
-        { name: { zh: "野鴇炒黃瓜" }, type: "料理", level: 10, tags: { zh: ["鮮香", "炒菜"] }, items: { zh: ["黃瓜6", "辣椒3", "野鴇肉2"] } },
-        { name: { zh: "鯚魚伴生菜" }, type: "料理", level: 10, tags: { zh: ["鮮香", "蒸煮"] }, items: { zh: ["生菜6", "辣椒3", "鯚魚2"] } },
-        { name: { zh: "麥酒" }, type: "酒", level: 1, tags: { zh: ["糧食酒"] }, items: { zh: ["小麥6", "玉米3", "容器1"] } },
-        { name: { zh: "苞穀酒" }, type: "酒", level: 2, tags: { zh: ["糧食酒"] }, items: { zh: ["梨花6", "玉米3", "容器2"] } },
-        { name: { zh: "桑落酒" }, type: "酒", level: 3, tags: { zh: ["混合酒"] }, items: { zh: ["棉花6", "玉米3", "容器3"] } },
-        { name: { zh: "西瓜果釀" }, type: "酒", level: 4, tags: { zh: ["果酒"] }, items: { zh: ["寒瓜6", "水稻3", "容器4"] } },
-        { name: { zh: "新豐酒" }, type: "酒", level: 5, tags: { zh: ["糧食酒"] }, items: { zh: ["油菜6", "水稻3", "容器5"] } },
-        { name: { zh: "青紅酒" }, type: "酒", level: 6, tags: { zh: ["糧食酒"] }, items: { zh: ["番茄6", "水稻3", "容器6"] } },
-        { name: { zh: "杜康酒" }, type: "酒", level: 7, tags: { zh: ["糧食酒"] }, items: { zh: ["甘蔗6", "高粱3", "容器7"] } },
-        { name: { zh: "鵝黃酒" }, type: "酒", level: 8, tags: { zh: ["經濟作物酒"] }, items: { zh: ["枇杷6", "高粱3", "容器8"] } },
-        { name: { zh: "松醪酒" }, type: "酒", level: 9, tags: { zh: ["經濟作物酒"] }, items: { zh: ["茶樹6", "高粱3", "容器9"] } },
-        { name: { zh: "屠蘇酒" }, type: "酒", level: 10, tags: { zh: ["經濟作物酒"] }, items: { zh: ["櫻桃6", "高粱3", "容器10"] } }
+	{ name: { zh: "燉馬鈴薯", en: "Stewed Potato" }, type: "料理", level: 1, tags: { zh: ["燜菜", "鹹香"], en: ["Simmered Dishes", "Salty & Aromatic"] }, items: { zh: ["馬鈴薯2"], en: ["Potato 2"] } },
+	{ name: { zh: "馬鈴薯煨肉", en: "Braised Pork & Potato" }, type: "料理", level: 1, tags: { zh: ["鹹香", "燜菜"], en: ["Salty & Aromatic", "Simmered Dishes"] }, items: { zh: ["厚脂肉塊4"], en: ["Prime Meat Cut 4"] } },
+	{ name: { zh: "豬肉餡餅", en: "Pork Pie" }, type: "料理", level: 1, tags: { zh: ["小吃", "酥脆"], en: ["Snacks", "Crispy"] }, items: { zh: ["小麥6", "生薑3", "厚脂肉塊4" ], en: ["Ginger 3", "Wheat 6", "Prime Meat Cut 4"] } },
+	{ name: { zh: "生薑煨魚", en: "Gingered River Stew" }, type: "料理", level: 1, tags: { zh: ["燜菜", "鮮香"], en: ["Simmered Dishes", "Savory & Fragrant"] }, items: { zh: ["馬鈴薯6", "生薑3", "河魚2"], en: ["Potato 6", "Ginger 3", "Live Fish 2"] } },
+        { name: { zh: "薑果麥羹", en: "Ginger Wheat Porridge" }, type: "料理", level: 1, tags: { zh: ["清淡", "湯類"], en: ["Light", "Soup"] }, items: { zh: ["小麥6", "生薑3", "野果2"], en: ["Wheat 6", "Ginger 3", "Wild Berries 2"] } },
+        { name: { zh: "清蒸鱸魚", en: "Steamed Bass" }, type: "料理", level: 2, tags: { zh: ["鮮香", "蒸煮"], en: ["Savory & Fragrant", "Steaming"] }, items: { zh: ["梨花6", "生薑3", "江鱸2"], en: ["River Bass 2", "Garlic 3", "Ginger 3"] } },
+	{ name: { zh: "梨薑肉膾", en: "Stir-fried Pork with Pear" }, type: "料理", level: 2, tags: { zh: ["炒菜", "鮮香"], en: ["Stir-Fry", "Savory & Fragrant"] }, items: { zh: ["梨花6", "生薑3", "碎肉塊2"], en: ["Pear Blossoms 6", "Ginger 3", "Prime Meat Cut 2"] } },
+	{ name: { zh: "薑絲鱸膾", en: "Pan-Fried Pearch Slices" }, type: "料理", level: 2, tags: { zh: ["湯類", "滋補"], en: ["Soup", "Nutritive"] }, items: { zh: ["胡蘿蔔6", "生薑3", "江鱸2"], en: ["River Bass 2", "Ginger 3", "Scallion 3"] } },
+        { name: { zh: "胡蘿蔔燉肉", en: "Braised Pork & Carrot" }, type: "料理", level: 2, tags: { zh: ["鹹香", "燴菜"], en: ["Salty & Aromatic", "Braised Dishes"] }, items: { zh: ["胡蘿蔔6", "生薑3", "碎肉塊2"], en: ["Carrot 6", "Ginger 3", "Prime Meat Cut 2"] } },
+	{ name: { zh: "豆薑鱸魚湯", en: "Soy-Ginger Perch Soup" }, type: "料理", level: 3, tags: { zh: ["湯類", "滋補"], en: ["Soup", "Nutritive"] }, items: { zh: ["大豆6", "生薑3", "江鱸2"], en: ["Soybean 6", "Ginger 3", "River Bass 2"] } },
+	{ name: { zh: "薑爆金鱗", en: "Ginger-fried Golden Carp" }, type: "料理", level: 3, tags: { zh: ["炒菜", "酥脆"], en: ["Stir-Fry", "Crispy"] }, items: { zh: ["大豆6", "生薑3", "鯉魚2"], en: ["Soybean 6", "Ginger 3", "Carp 2"] } },
+	{ name: { zh: "紅燒麋肉", en: "Braised Venison" }, type: "料理", level: 3, tags: { zh: ["燴菜", "醇香"], en: ["Braised Dishes", "Mellow & Aromatic"] }, items: { zh: ["大豆6", "生薑3", "大麋肉2"], en: ["Soybean 6", "Ginger 3", "Milu Meat 2"] } },
+        { name: { zh: "胡蘿蔔絲炒肉", en: "Pork & Carrot Stir-Fry" }, type: "料理", level: 3, tags: { zh: ["炒菜", "鹹香"], en: ["Stir-fry", "Salty & Aromatic"] }, items: { zh: ["胡蘿蔔6", "生薑3", "厚脂肉塊2"], en: ["Carrot 6", "Ginger 3", "Prime Meat Cut 2"] } },
+        { name: { zh: "雙瓜蒜蓉炙", en: "Garlic Melon Stir-Fry" }, type: "料理", level: 4, tags: { zh: ["清香", "燴菜"], en: ["Delicate", "Braised Dishes"] }, items: { zh: ["寒瓜6", "大蒜3", "東陵瓜2"], en: ["Watermelon 6", "Garlic 3", "Dongling Melon 2"] } },
+        { name: { zh: "鴇府燴紫茄", en: "Bustard Eggplant Stew" }, type: "料理", level: 4, tags: { zh: ["濃香", "燴菜"], en: ["Rich & Aromatic", "Braised Dishes"] }, items: { zh: ["茄子6", "大蒜3", "野鴇肉2"], en: ["Eggplant 6", "Garlic 3", "Wild Bustard Meat 2"] } },
+	{ name: { zh: "蒜蓉茄子", en: "Garlic Eggplant" }, type: "料理", level: 4, tags: { zh: ["燜菜", "蒜香"], en: ["Simmered Dishes", "Garlicky"] }, items: { zh: ["茄子6", "大蒜3", "碎肉塊2"], en: ["Eggplant 6", "Garlic 3", "Minced Meat 2"] } },
+        { name: { zh: "大豆燉烏鱧", en: "Soybean Snakehead Stew" }, type: "料理", level: 4, tags: { zh: ["聯菜", "鮮香"], en: ["Simmered Dishes", "Savory & Fragrant"] }, items: { zh: ["大豆6", "大蒜3", "烏鱧2"], en: ["Soybean 6", "Garlic 3", "Snakehead 2"] } },
+	{ name: { zh: "梨蒜蒸鳙鱠", en: "Steamed Carp with Pear" }, type: "料理", level: 5, tags: { zh: ["蒸煮", "清香"], en: ["Steaming", "Delicate"] }, items: { zh: ["梨花6", "大蒜3", "鳙魚2"], en: ["Pear Blossoms 6", "Garlic 3", "Bighead Carp 2"] } },
+        { name: { zh: "番茄燴鹿腩", en: "Tomato Venison Stew" }, type: "料理", level: 5, tags: { zh: ["酸甜", "燴菜"], en: ["Sweet & Sour", "Braised Dishes"] }, items: { zh: ["番茄6", "大蒜3", "吠鹿肉2"], en: ["Tomato 6", "Garlic 3", "Barking Deer Meat 2"] } },
+        { name: { zh: "番茄魚片湯", en: "Tomato Fish Soup" }, type: "料理", level: 5, tags: { zh: ["酸甜", "湯類"], en: ["Sweet & Sour", "Soup"] }, items: { zh: ["番茄6", "大蒜3", "洛口石首魚2"], en: ["Tomato 6", "Garlic 3", "Luokou Croaker 2"] } },
+        { name: { zh: "鴇片炒油菜", en: "Bustard & Green Stir-Fry" }, type: "料理", level: 5, tags: { zh: ["鮮香", "炒菜"], en: ["Savory & Fragrant", "Stir-Fry"] }, items: { zh: ["油菜6", "大蒜3", "野鴇肉2"], en: ["Canola 6", "Garlic 3", "Wild Bustard Meat 2"] } },
+	{ name: { zh: "麋肉寒瓜炙", en: "Seared Milu & Melon" }, type: "料理", level: 6, tags: { zh: ["鹹香", "炒菜"], en: ["Salty & Aromatic", "Stir-Fry"] }, items: { zh: ["寒瓜6", "大蒜3", "大麋肉2"], en: ["Watermelon 6", "Garlic 3", "Milu Meat 2"] } },
+        { name: { zh: "洋蔥燉鹿肉", en: "Onion Venison Stew" }, type: "料理", level: 6, tags: { zh: ["滋補", "燜菜"], en: ["Nutritive", "Simmered Dishes"] }, items: { zh: ["洋蔥6", "大蒜3", "吠鹿肉2"], en: ["Onion 6", "Garlic 3", "Barking Deer Meat 2"] } },
+        { name: { zh: "洋蔥蒸鯚魚", en: "Onion & Mandarin Fish" }, type: "料理", level: 6, tags: { zh: ["蒸煮", "滋補"], en: ["Steaming", "Nutritive"] }, items: { zh: ["洋蔥6", "大蒜3", "鯚魚2"], en: ["Onion 6", "Garlic 3", "Mandarin Fish 2"] } },
+	 { name: { zh: "蕈菇炒油菜", en: "Mushrooms & Green" }, type: "料理", level: 6, tags: { zh: ["鮮香", "炒菜"], en: ["Savory & Fragrant", "Stir-Fry"] }, items: { zh: ["油菜6", "大蒜3", "蕈菇2"], en: ["Canola 6", "Garlic 3", "Mushrooms 2"] } },
+	{ name: { zh: "河豚辣伴瓜", en: "Spicy Pufferfish" }, type: "料理", level: 7, tags: { zh: ["香辣", "小吃"], en: ["Spicy", "Snacks"] }, items: { zh: ["黃瓜6", "辣椒3", "河豚2"], en: ["Cucumber 6", "Chili 3", "Pufferfish 2"] } },
+	{ name: { zh: "辣子麥飯", en: "Spicy Pork & Wheat Rice" }, type: "料理", level: 7, tags: { zh: ["香辣", "炒飯"], en: ["Spicy", "Fried Rice"] }, items: { zh: ["小麥6", "辣椒3", "豬肉2"], en: ["Wheat 6", "Chili 3", "Pork 2"] } },
+	{ name: { zh: "紫茄河豚辣膾", en: "Pufferfish & Eggplant" }, type: "料理", level: 7, tags: { zh: ["麻辣", "炒菜"], en: ["Numbing & Spicy", "Stir-Fry"] }, items: { zh: ["茄子6", "辣椒3", "河豚2"], en: ["Eggplant 6", "Chili 3", "Pufferfish 2"] } },
+	{ name: { zh: "桃脯炒肉", en: "Pork & peach Stir-Fry" }, type: "料理", level: 7, tags: { zh: ["甜香", "炒菜"], en: ["Sweet & Fragrant", "Stir-Fry"] }, items: { zh: ["桃子6", "辣椒3", "豬肉2"], en: ["Peach 6", "Chili 3", "Pork 2"] } },
+        { name: { zh: "辣炙鯉魚", en: "Spicy Grilled Carp" }, type: "料理", level: 8, tags: { zh: ["香辣", "燒烤"], en: ["Spicy", "Grilling"] }, items: { zh: ["洋蔥6", "辣椒3", "鯉魚2"], en: ["Onion 6", "Chili 3", "Carp 2"] } },
+        { name: { zh: "山參辣茄膾", en: "Spicy Ginseng & Eggplant" }, type: "料理", level: 8, tags: { zh: ["香辣", "小吃"], en: ["Spicy", "Snacks"] }, items: { zh: ["茄子6", "辣椒3", "野山參2"], en: ["Eggplant 6", "Chili 3", "Ginseng 2"] } },
+        { name: { zh: "馬鈴薯炒魚酥", en: "Stri-Fried Carp & Potato" }, type: "料理", level: 8, tags: { zh: ["酥脆", "炒菜"], en: ["Crispy", "Stir-Fry"] }, items: { zh: ["馬鈴薯6", "辣椒3", "鯉魚2"], en: ["Potato 6", "Chili 3", "Carp 2"] } },
+	{ name: { zh: "參炒胡蘿蔔", en: "Ginseng & Carrot Stir-Fry" }, type: "料理", level: 8, tags: { zh: ["香辣", "炒菜"], en: ["Spicy", "Stir-Fry"] }, items: { zh: ["胡蘿蔔6", "辣椒3", "野山參2"], en: ["Carrot 6", "Chili 3", "Ginseng 2"] } },
+        { name: { zh: "香辣鹿肉", en: "Spiced Venison" }, type: "料理", level: 9, tags: { zh: ["香辣", "炒菜"], en: ["Spicy", "Stir-Fry"] }, items: { zh: ["茶樹6", "辣椒3", "大麋肉2"], en: ["Tea Tree 6", "Chili 3", "Milu Meat 2"] } },
+        { name: { zh: "辣伴菜菇", en: "Spicy Mushrooms" }, type: "料理", level: 9, tags: { zh: ["香辣", "小吃"], en: ["Spicy", "Snacks"] }, items: { zh: ["生菜6", "辣椒3", "蕈菇2"], en: ["Lettuce 6", "Chili 3", "Mushrooms 2"] } },
+        { name: { zh: "茶辣鯽魚膾", en: "Tea-Braised Crucian Carp" }, type: "料理", level: 9, tags: { zh: ["醬香", "燜菜"], en: ["Sauce-Fragrant", "Simmered Dishes"] }, items: { zh: ["茶樹6", "辣椒3", "鯽魚2"], en: ["Tea Tree 6", "Chili 3", "Crucian Carp 2"] } },
+	{ name: { zh: "香烤兔肉", en: "Spiced Roasted Rabbit" }, type: "料理", level: 9, tags: { zh: ["鹹香", "燒烤"], en: ["Salty & Aromatic", "Grilling"] }, items: { zh: ["生菜6", "辣椒3", "兔肉2"], en: ["Lettuce 6", "Chili 3", "Rabbit 2"] } },
+        { name: { zh: "鯚魚伴生菜", en: "Cold Bream Salad" }, type: "料理", level: 10, tags: { zh: ["鮮香", "蒸煮"], en: ["Savory & Fragrant", "Steaming"] }, items: { zh: ["生菜6", "辣椒3", "鯚魚2"], en: ["Lettuce 6", "Chili 3", "Mandarin Fish 2"] } },
+	{ name: { zh: "番茄燴兔丁", en: "Tomato Rabbit Stew" }, type: "料理", level: 10, tags: { zh: ["燴菜", "炒菜"], en: ["Braised Dishes", "Stir-Fry"] }, items: { zh: ["番茄6", "辣椒3", "兔肉2"], en: ["Tomato 6", "Chili 3", "Rabbit 2"] } },
+	{ name: { zh: "野鴇炒黃瓜", en: "Bustard & Cucumber" }, type: "料理", level: 10, tags: { zh: ["鮮香", "炒菜"], en: ["Savory & Fragrant", "Stir-Fry"] }, items: { zh: ["黃瓜6", "辣椒3", "野鴇肉2"], en: ["Cucumber 6", "Chili 3", "Wild Bustard Meat 2"] } },
+        { name: { zh: "豆酥煨鯰腩", en: "Soybean Catfish Stew" }, type: "料理", level: 10, tags: { zh: ["燜菜", "醇香"], en: ["Simmered Dishes", "Mellow & Aromatic"] }, items: { zh: ["大豆6", "辣椒3", "鯰魚2"], en: ["Soybean 6", "Chili 3", "Catfish 2"] } },
+        
+        
+        { name: { zh: "麥酒", en: "Malt Wine" }, type: "酒", level: 1, tags: { zh: ["糧食酒"], en: ["Grain Wine"] }, items: { zh: ["小麥6", "玉米3", "容器1"], en: ["Wheat 6", "Corn 3", "容器1"] } },
+        { name: { zh: "苞穀酒", en: "Corn Wine" }, type: "酒", level: 2, tags: { zh: ["糧食酒"], en: ["Grain Wine"] }, items: { zh: ["梨花6", "玉米3", "容器2"], en: ["Pear Blossoms 6", "Corn 3", "容器2"] } },
+        { name: { zh: "桑落酒", en: "Mulberry Wine" }, type: "酒", level: 3, tags: { zh: ["混合酒"], en: ["Blended Wine"] }, items: { zh: ["棉花6", "玉米3", "容器3"], en: ["Cotton 6", "Corn 3", "容器3"] } },
+        { name: { zh: "西瓜果釀", en: "Watermelon Wine" }, type: "酒", level: 4, tags: { zh: ["果酒"], en: ["Fruit Wine"] }, items: { zh: ["寒瓜6", "水稻3", "容器4"], en: ["Watermelon 6", "Rice 3", "容器4"] } },
+        { name: { zh: "新豐酒", en: "Xinfeng Wine" }, type: "酒", level: 5, tags: { zh: ["糧食酒"], en: ["Grain Wine"] }, items: { zh: ["油菜6", "水稻3", "容器5"], en: ["Canola 6", "Rice 3", "容器5"] } },
+        { name: { zh: "青紅酒", en: "Red Rice Wine" }, type: "酒", level: 6, tags: { zh: ["糧食酒"], en: ["Grain Wine"] }, items: { zh: ["番茄6", "水稻3", "容器6"], en: ["Tomato 6", "Rice 3", "容器6"] } },
+        { name: { zh: "杜康酒", en: "Dukang Wine" }, type: "酒", level: 7, tags: { zh: ["糧食酒"], en: ["Grain Wine"] }, items: { zh: ["甘蔗6", "高粱3", "容器7"], en: ["Sugarcane 6", "Sorghum 3", "容器7"] } },
+        { name: { zh: "鵝黃酒", en: "Pale Gold Wine" }, type: "酒", level: 8, tags: { zh: ["經濟作物酒"], en: ["Herbal Wine"] }, items: { zh: ["枇杷6", "高粱3", "容器8"], en: ["Loquat 6", "Sorghum 3", "容器8"] } },
+        { name: { zh: "松醪酒", en: "Pine Brew" }, type: "酒", level: 9, tags: { zh: ["經濟作物酒"], en: ["Herbal Wine"] }, items: { zh: ["茶樹6", "高粱3", "容器9"], en: ["Tea Tree 6", "Sorghum 3", "容器9"] } },
+        { name: { zh: "屠蘇酒", en: "Tusu Wine" }, type: "酒", level: 10, tags: { zh: ["經濟作物酒"], en: ["Herbal Wine"] }, items: { zh: ["櫻桃6", "高粱3", "容器10"], en: ["Cherry 6", "Sorghum 3", "容器10"] } }
     ];
 
     let currentHighlightText = null;
     let currentHighlightType = null;
     let currentUserLevel = 10;
+
+    function toggleLanguage() {
+        currentLang = (currentLang === 'zh') ? 'en' : 'zh';
+        applyLanguage();
+        rebuildTagUI();
+        renderRareTagsAlert();
+        renderTable();
+        calculateLogic();
+    }
 
     function applyLanguage() {
         const l = i18n[currentLang];
@@ -506,9 +589,13 @@
         document.getElementById('lblRareSectionTitle').textContent = l.lblRareSectionTitle;
         document.getElementById('lblRecSectionTitle').textContent = l.lblRecSectionTitle;
         
+        document.getElementById('titleGiftSection').textContent = l.titleGiftSection;
         document.getElementById('titleContainerSection').textContent = l.titleContainerSection;
         document.getElementById('titleFoodSection').textContent = l.titleFoodSection;
         document.getElementById('titleWineSection').textContent = l.titleWineSection;
+
+        document.getElementById('thGiftNpc').textContent = l.thGiftNpc;
+        document.getElementById('thGiftItem').textContent = l.thGiftItem;
         
         document.querySelectorAll('.th-name').forEach(el => el.textContent = l.thName);
         document.querySelectorAll('.th-type').forEach(el => el.textContent = l.thType);
@@ -615,9 +702,9 @@
                     return `<div style="margin-left: 15px; margin-top: 2px;">
                         → <span class="${rankClass}" style="font-weight:bold;">${item.name}</span>${shopHint}
                         <span style="margin-left:10px;">
-                            <button class="counter-btn" onclick="updateStockCount('${item.rawName}', -1)">-</button>
+                            <button class="counter-btn" onclick="updateStockCount('${item.rawName}', -1); event.stopPropagation();">-</button>
                             <span class="counter-val">${count}</span>
-                            <button class="counter-btn" onclick="updateStockCount('${item.rawName}', 1)">+</button>
+                            <button class="counter-btn" onclick="updateStockCount('${item.rawName}', 1); event.stopPropagation();">+</button>
                         </span>
                     </div>`;
                 }).join('');
@@ -661,18 +748,21 @@
             tr.setAttribute('data-container-key', key);
             
             let levelDisplay = level + l.levelText;
-            if (level === 1 || level === 2) levelDisplay = `<span class="shop-level">🏪 ${level}</span>`;
+            if (level === 1 || level === 2) {
+                levelDisplay = `<span class="shop-level">1 級</span>`;
+                if (level === 2) levelDisplay = `<span class="shop-level">2 級</span>`;
+            }
             
             const rankClass = getRankClass(level);
             
-            let recipeHtml = dbInfo.recipe[currentLang].split('、').map(r => {
+            let recipeHtml = dbInfo.recipe[currentLang].split(/、|,/).map(r => {
                 const coreMat = r.replace(/[0-9]/g, '').trim();
-                return `<span class="interactive-item" data-type="item" data-value="${coreMat}">${r}</span>`;
+                return `<span class="interactive-item" data-type="item" data-value="${coreMat}">${r.trim()}</span>`;
             }).join(' ');
 
             tr.innerHTML = `
                 <td class="${rankClass}" style="font-weight:bold;">${dbInfo.name[currentLang]}</td>
-                <td><span class="type-badge type-container">${currentLang === 'zh' ? '容器' : 'Box'}</span></td>
+                <td><span class="type-badge type-container">${currentLang === 'zh' ? '容器' : 'Container'}</span></td>
                 <td>${levelDisplay}</td>
                 <td>${recipeHtml}</td>
             `;
@@ -687,17 +777,17 @@
             tr.setAttribute('data-idx', idx);
             
             let levelDisplay = product.level + l.levelText;
-            if (product.level === 1 || product.level === 2) levelDisplay = `<span class="shop-level">🏪 ${product.level}</span>`;
+            if (product.level === 1 || product.level === 2) levelDisplay = `<span class="shop-level">🏪 ${product.level}${l.levelText}</span>`;
 
             let tagsHtml = product.tags[currentLang].map(t => `<span class="interactive-item" data-type="tag" data-value="${t}">${t}</span>`).join('');
             if(product.tags[currentLang].length === 0) tagsHtml = '<span style="color:#555;">-</span>';
 
             let itemsHtml = product.items[currentLang].map((i, iIdx) => {
                 const rawItemCode = product.items['zh'][iIdx];
-                if (rawItemCode.startsWith("容器")) {
+                if (rawItemCode && rawItemCode.startsWith("容器")) {
                     const dbInfo = containerDatabase[rawItemCode];
                     if (dbInfo) {
-                        const hoverText = `【${dbInfo.name[currentLang]}】(Lv.${product.level})\n${dbInfo.recipe[currentLang]}`;
+                        const hoverText = `【${dbInfo.name[currentLang]}】\n${dbInfo.recipe[currentLang]}`;
                         const rankClass = getRankClass(product.level);
                         return `<span class="interactive-item container-tip ${rankClass}" data-type="item" data-value="${rawItemCode}" title="${hoverText}">${dbInfo.name[currentLang]}</span>`;
                     }
@@ -746,8 +836,6 @@
     }
 
     function refreshHighlightUI() {
-        const l = i18n[currentLang];
-        
         document.querySelectorAll('#foodTableBody tr, #wineTableBody tr').forEach(row => {
             const idx = row.getAttribute('data-idx');
             const product = productData[idx];
@@ -758,6 +846,7 @@
                 if (currentHighlightType === 'tag' && product.tags[currentLang].includes(currentHighlightText)) isRowMatch = true;
                 else if (currentHighlightType === 'item') {
                     if (product.items['zh'].includes(currentHighlightText) || product.items[currentLang].some(i => i.replace(/[0-9]/g, '').trim() === currentHighlightText)) isRowMatch = true;
+                    if (product.items['zh'].some(i => i.startsWith("容器") && i === currentHighlightText)) isRowMatch = true;
                 }
             }
             if (isRowMatch) row.classList.add('highlighted-row');
@@ -770,7 +859,7 @@
             
             let isRowMatch = false;
             if (currentHighlightText && currentHighlightType === 'item') {
-                if (key === currentHighlightText || dbInfo.recipe[currentLang].split('、').some(r => r.replace(/[0-9]/g, '').trim() === currentHighlightText)) {
+                if (key === currentHighlightText || dbInfo.recipe[currentLang].split(/、|,/).some(r => r.replace(/[0-9]/g, '').trim() === currentHighlightText)) {
                     isRowMatch = true;
                 }
             }
@@ -848,7 +937,7 @@
             if (p.matchCount === maxMatch) {
                 const shopHint = (p.level <= 2) ? ` <span style='color:#60a5fa;'>${l.shopPull}</span>` : "";
                 const typeText = currentLang === 'zh' ? p.type : (p.type === '料理' ? 'Food' : 'Wine');
-                html += `<li style="margin-bottom:4px;"><span style="color:#fff; font-weight:bold;">${p.name[currentLang]}</span> (${typeText}) - Lv.${p.level}${shopHint} <span class="match-badge">${currentLang === 'zh' ? '符合' : 'Match'} ${p.matchCount} ${currentLang === 'zh' ? '個標籤' : 'Tags'}</span></li>`;
+                html += `<li style="margin-bottom:4px;"><span style="color:#fff; font-weight:bold;">${p.name[currentLang]}</span> (${typeText}) - ${p.level}${l.levelText}${shopHint} <span class="match-badge">${currentLang === 'zh' ? '符合' : 'Match'} ${p.matchCount} ${currentLang === 'zh' ? '個標籤' : 'Tags'}</span></li>`;
             }
         });
         html += `</ul>`;
@@ -875,7 +964,7 @@
             html += `<div style="background:#111827; padding:10px; border-radius:6px; border:1px solid #374151; margin-top:5px;">`;
             comboList.forEach((c, i) => {
                 const shopHint = (c.level <= 2) ? ` <span style='color:#60a5fa; font-size:12px;'>${l.shopCanPull}</span>` : "";
-                html += `${i+1}. <span style="color:#fbbf24; font-weight:bold;">${c.name}</span> - Lv.${c.level}${shopHint} → ${l.tagSolved}: <span style="color:#a7f3d0;">${c.covered.join('、')}</span><br>`;
+                html += `${i+1}. <span style="color:#fbbf24; font-weight:bold;">${c.name}</span> - ${c.level}${l.levelText}${shopHint} → ${l.tagSolved}: <span style="color:#a7f3d0;">${c.covered.join('、')}</span><br>`;
             });
             if (uncoveredTags.length > 0) {
                 html += `<span style="color:#ef4444; font-size:12px; font-weight:bold; display:block; margin-top:5px;">${l.tagUnsolved} [ ${uncoveredTags.join('、')} ]</span>`;
@@ -885,7 +974,7 @@
         recContent.innerHTML = html;
     }
 
-    // 初始化啟動
+    // 初始化
     applyLanguage();
     rebuildTagUI();
     renderRareTagsAlert();
