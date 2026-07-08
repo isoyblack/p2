@@ -311,10 +311,10 @@
         </div>
 
         <div>
-            <div class="collapse-title" onclick="toggleSection('giftSection')">
-                <span id="titleGiftSection">🎁 家業開壇宴送禮清單 （15）</span><span class="collapse-arrow">▲</span>
+            <div class="collapse-title collapsed" onclick="toggleSection('giftSection')">
+                <span id="titleGiftSection">🎁 家業開壇宴送禮清單 （15）</span><span class="collapse-arrow">▼</span>
             </div>
-            <div class="collapse-content" id="giftSection">
+            <div class="collapse-content" id="giftSection" style="max-height: 0px;">
                 <div style="overflow-x:auto;">
                     <table>
                         <thead>
@@ -323,28 +323,12 @@
                                 <th id="thGiftItem">推薦伴手禮</th>
                             </tr>
                         </thead>
-                        <tbody>
-                            <tr><td>趙大哥</td><td>冰弦膏</td></tr>
-                            <tr><td>晉中原</td><td>散佚古譜</td></tr>
-                            <tr><td>姚藥藥</td><td>江米涼糕</td></tr>
-                            <tr><td>盈盈</td><td>東闕公子話本集</td></tr>
-                            <tr><td>蕭史</td><td>止血定痛丸</td></tr>
-                            <tr><td>沈玉</td><td>文房四寶</td></tr>
-                            <tr><td>天不收</td><td>新釀離人淚</td></tr>
-                            <tr><td>狗狗</td><td>小狗飯碗</td></tr>
-                            <tr><td>大強</td><td>毛線球</td></tr>
-                            <tr><td>張龍</td><td>《孤獨文學家為什麼你說話別人不愛聽》</td></tr>
-                            <tr><td>張虎</td><td>焰火一枝春</td></tr>
-                            <tr><td>張豹</td><td>螂的誘惑</td></tr>
-                            <tr><td>張安康</td><td>把子肉飯</td></tr>
-                            <tr><td>鄭然</td><td>梨花酥</td></tr>
-                            <tr><td>趙承宗</td><td>五年科舉十年模擬</td></tr>
-                        </tbody>
+                        <tbody id="giftTableBody">
+                            </tbody>
                     </table>
                 </div>
             </div>
 
-            <!-- 🍳 料理總覽 -->
             <div class="collapse-title" onclick="toggleSection('foodSection')">
                 <span id="titleFoodSection">🍳 全家業料理總覽</span>
                 <span class="collapse-arrow">▲</span>
@@ -366,7 +350,6 @@
                 </div>
             </div>
 
-            <!-- 🍶 酒品總覽 -->
             <div class="collapse-title" onclick="toggleSection('wineSection')">
                 <span id="titleWineSection">🍶 全家業酒品總覽</span>
                 <span class="collapse-arrow">▲</span>
@@ -388,7 +371,6 @@
                 </div>
             </div>
 
-            <!-- 🏺 容器總覽 -->
             <div class="collapse-title" onclick="toggleSection('containerSection')">
                 <span id="titleContainerSection">🏺 全家業容器總覽</span>
                 <span class="collapse-arrow">▲</span>
@@ -416,7 +398,7 @@
             🔗 其他連結：<a href="https://isoyblack.github.io/" target="_blank">燕雲十六聲兌換碼小助手</a>
         </div>
         <div class="footer-right">
-            Made by <span>豆漿紅</span> × AI ｜ v0.96
+            Made by <span>豆漿紅</span> × AI ｜ v1.0
         </div>
     </footer>
 </div>
@@ -459,8 +441,8 @@
             rareAlertExt: "限定料理提供："
         },
         en: {
-            pageTitle: "Where Winds Meet",
-            mainTitle: "Where Winds Meet",
+            pageTitle: "Where Winds Meet - Inn Assistant",
+            mainTitle: "Where Winds Meet - Inn Assistant",
             mainSubtitle: "Auto-filter by level | Rare tags warning | Interactive tags & materials highlighting",
             lblUserLevel: "🛠️ Set current level:",
             lblTagSectionTitle: "Weekly Random Tags (Multi-select)",
@@ -496,6 +478,24 @@
     };
 
     let currentLang = 'zh';
+
+    const giftDatabase = [
+        { npc: { zh: "趙大哥", en: "Big Zhao" }, item: { zh: "冰弦膏", en: "Clearstring Balm" } },
+        { npc: { zh: "晉中原", en: "Jin" }, item: { zh: "散佚古譜", en: "Scattered Ancient Scores" } },
+        { npc: { zh: "姚藥藥", en: "Yao Yaoyao" }, item: { zh: "江米涼糕", en: "Chilled Rice Cake" } },
+        { npc: { zh: "盈盈", en: "Yingying" }, item: { zh: "東闕公子話本集", en: "The Ember Chroniceles" } },
+        { npc: { zh: "蕭史", en: "Xiao Shi" }, item: { zh: "止血定痛丸", en: "Mending Pills" } },
+        { npc: { zh: "沈玉", en: "Shen Yu" }, item: { zh: "文房四寶", en: "Scholar's Four Treasures" } },
+        { npc: { zh: "天不收", en: "Unfated Tian" }, item: { zh: "新釀離人淚", en: "Fresh Parting Tears" } },
+        { npc: { zh: "踏雪", en: "Icepaw" }, item: { zh: "小狗飯碗", en: "Puppy Bowl" } },
+        { npc: { zh: "大強", en: "Dax" }, item: { zh: "毛線球", en: "Yarn Ball" } },
+        { npc: { zh: "張龍", en: "Zhang Long" }, item: { zh: "《孤獨文學家為什麼你說話別人不愛聽》", en: "Deep Thoughts: Unheeded" } },
+        { npc: { zh: "張虎", en: "Zhang Hu" }, item: { zh: "焰火一枝春", en: "A Spark of Spring" } },
+        { npc: { zh: "張豹", en: "Zhang Bao" }, item: { zh: "螂的誘惑", en: "Mystery Barbecue" } },
+        { npc: { zh: "張安康", en: "Zhang Ankang" }, item: { zh: "把子肉飯", en: "Braised Pork Belly Rice" } },
+        { npc: { zh: "鄭然", en: "Pear" }, item: { zh: "梨花酥", en: "Blossom Pastry" } },
+        { npc: { zh: "趙承宗", en: "Zhao Chengzong" }, item: { zh: "五年科舉十年模擬", en: "Advanced Imperial Exam Cram Guide" } }
+    ];
 
     const containerDatabase = {
         "容器1": { name: { zh: "木理紋酒壺", en: "LV 1 Woodgrain Wine Pot" }, recipe: { zh: "粗曠1、原木1", en: "Raw Ore 1, Timber 1" } },
@@ -611,6 +611,9 @@
             select.options[i].text = (i + 1) + l.levelText;
         }
         select.options[9].text = l.levelDisplayAll;
+
+        // 重新渲染送禮清單語系
+        renderGiftTable();
     }
 
     function toggleSection(id) {
@@ -725,6 +728,16 @@
 
         rareContent.querySelectorAll('.interactive-item').forEach(el => {
             el.addEventListener('click', function(e) { e.stopPropagation(); triggerHighlight(this.getAttribute('data-type'), this.getAttribute('data-value')); });
+        });
+    }
+
+    function renderGiftTable() {
+        const tbody = document.getElementById('giftTableBody');
+        tbody.innerHTML = '';
+        giftDatabase.forEach(g => {
+            const tr = document.createElement('tr');
+            tr.innerHTML = `<td>${g.npc[currentLang]}</td><td>${g.item[currentLang]}</td>`;
+            tbody.appendChild(tr);
         });
     }
 
