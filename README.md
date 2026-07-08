@@ -3,7 +3,9 @@
 ## 🌐 線上使用也可離線
 👉 https://isoyblack.github.io/p2/
 
-<img width="1514" height="1078" alt="image" src="https://github.com/user-attachments/assets/6c78b2c2-12b9-4652-adbf-d6cc001d0bdd" />
+<img width="1882" height="1439" alt="image" src="https://github.com/user-attachments/assets/9052fd3a-045f-4ecd-a98a-6d01e606c5aa" />
+<img width="1868" height="1435" alt="image" src="https://github.com/user-attachments/assets/7f119006-e4d8-4bbd-ad96-bdc5c541c09d" />
+
 
 
 ---
