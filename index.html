@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="zh-TW">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -17,16 +18,17 @@
             min-height: 100vh;
             box-sizing: border-box;
         }
+
         .container {
             width: 100%;
             max-width: 1000px;
             background: #1e1e1e;
             padding: 25px;
             border-radius: 12px;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.5);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
             position: relative;
         }
-        
+
         /* 🌐 右上角快捷導航區與語系切換 */
         .top-nav-links {
             position: absolute;
@@ -37,6 +39,7 @@
             gap: 10px;
             align-items: center;
         }
+
         .nav-link-btn {
             background: #252526;
             color: #fbbf24;
@@ -48,6 +51,7 @@
             font-weight: bold;
             cursor: pointer;
         }
+
         .nav-link-btn:hover {
             background: #fbbf24;
             color: #121212;
@@ -63,22 +67,36 @@
             }
         }
 
-        h2 { text-align: center; color: #fff; margin-top: 0; margin-bottom: 5px; }
-        .subtitle { text-align: center; color: #888; font-size: 13px; margin-bottom: 20px; }
-        
+        h2 {
+            text-align: center;
+            color: #fff;
+            margin-top: 0;
+            margin-bottom: 5px;
+        }
+
+        .subtitle {
+            text-align: center;
+            color: #888;
+            font-size: 13px;
+            margin-bottom: 20px;
+        }
+
         .main-layout {
             display: flex;
             flex-direction: column;
             gap: 20px;
         }
-        
+
         .panel-grid {
             display: grid;
             grid-template-columns: 1fr;
             gap: 20px;
         }
+
         @media (min-width: 768px) {
-            .panel-grid { grid-template-columns: 1.8fr 1.2fr; }
+            .panel-grid {
+                grid-template-columns: 1.8fr 1.2fr;
+            }
         }
 
         .control-panel {
@@ -87,6 +105,7 @@
             padding: 18px;
             border-radius: 8px;
         }
+
         .filter-row {
             display: flex;
             align-items: center;
@@ -95,12 +114,27 @@
             padding-bottom: 15px;
             border-bottom: 1px solid #2d2d2d;
         }
-        .filter-label { font-size: 14px; font-weight: bold; color: #fff; }
-        select.level-select {
-            background: #2d2d2d; color: #fff; border: 1px solid #444;
-            padding: 6px 12px; border-radius: 6px; font-size: 14px; cursor: pointer; outline: none;
+
+        .filter-label {
+            font-size: 14px;
+            font-weight: bold;
+            color: #fff;
         }
-        select.level-select:focus { border-color: #4f46e5; }
+
+        select.level-select {
+            background: #2d2d2d;
+            color: #fff;
+            border: 1px solid #444;
+            padding: 6px 12px;
+            border-radius: 6px;
+            font-size: 14px;
+            cursor: pointer;
+            outline: none;
+        }
+
+        select.level-select:focus {
+            border-color: #4f46e5;
+        }
 
         .section-title {
             font-size: 15px;
@@ -110,7 +144,7 @@
             border-left: 4px solid #fbbf24;
             padding-left: 8px;
         }
-        
+
         .collapse-title {
             font-size: 15px;
             font-weight: bold;
@@ -127,37 +161,65 @@
             border-radius: 4px;
             user-select: none;
         }
+
         .collapse-title:hover {
             background: #2d2d2d;
         }
+
         .collapse-arrow {
             font-size: 12px;
             color: #888;
             transition: transform 0.2s;
         }
+
         .collapsed .collapse-arrow {
             transform: rotate(-90deg);
         }
-        
+
         .collapse-content {
             overflow: hidden;
             transition: max-height 0.3s ease-out;
             max-height: 3000px;
         }
-        .collapsed + .collapse-content {
+
+        .collapsed+.collapse-content {
             max-height: 0 !important;
             margin-bottom: 0 !important;
         }
 
-        .tag-group { display: flex; flex-wrap: wrap; gap: 8px; }
-        .tag-label {
-            display: flex; align-items: center; gap: 4px; background: #2d2d2d;
-            padding: 5px 10px; border-radius: 20px; cursor: pointer; font-size: 13px;
-            user-select: none; border: 1px solid #444; transition: all 0.2s;
+        .tag-group {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
         }
-        .tag-label:hover { border-color: #4f46e5; }
-        .tag-label input { display: none; }
-        .tag-label.checked { background: #4f46e5; color: #fff; border-color: #6366f1; }
+
+        .tag-label {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            background: #2d2d2d;
+            padding: 5px 10px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-size: 13px;
+            user-select: none;
+            border: 1px solid #444;
+            transition: all 0.2s;
+        }
+
+        .tag-label:hover {
+            border-color: #4f46e5;
+        }
+
+        .tag-label input {
+            display: none;
+        }
+
+        .tag-label.checked {
+            background: #4f46e5;
+            color: #fff;
+            border-color: #6366f1;
+        }
 
         .rare-box {
             background: #1e2530;
@@ -165,17 +227,20 @@
             padding: 18px;
             border-radius: 8px;
         }
+
         .rare-list {
             font-size: 13px;
             line-6: 1.6;
             max-height: 320px;
             overflow-y: auto;
         }
+
         .rare-item {
             margin-bottom: 10px;
             padding-bottom: 8px;
             border-bottom: 1px solid #2e3440;
         }
+
         .rare-header {
             display: flex;
             align-items: center;
@@ -184,14 +249,28 @@
         }
 
         .counter-btn {
-            background: #2e3440; color: #d8dee9; border: 1px solid #4c566a;
-            padding: 1px 6px; font-size: 11px; cursor: pointer; border-radius: 3px;
+            background: #2e3440;
+            color: #d8dee9;
+            border: 1px solid #4c566a;
+            padding: 1px 6px;
+            font-size: 11px;
+            cursor: pointer;
+            border-radius: 3px;
             margin-left: 2px;
         }
-        .counter-btn:hover { background: #434c5e; color: #fff; }
+
+        .counter-btn:hover {
+            background: #434c5e;
+            color: #fff;
+        }
+
         .counter-val {
-            display: inline-block; min-width: 16px; text-align: center;
-            font-weight: bold; color: #a3be8c; margin: 0 2px;
+            display: inline-block;
+            min-width: 16px;
+            text-align: center;
+            font-weight: bold;
+            color: #a3be8c;
+            margin: 0 2px;
         }
 
         .recommend-box {
@@ -201,506 +280,605 @@
             border-radius: 8px;
             display: none;
         }
+
         .match-badge {
-            background: #10b981; color: #fff; font-size: 11px;
-            padding: 2px 6px; border-radius: 4px; font-weight: bold; margin-left: 6px;
+            background: #10b981;
+            color: #fff;
+            font-size: 11px;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-weight: bold;
+            margin-left: 6px;
         }
 
-        table { width: 100%; border-collapse: collapse; margin-top: 5px; font-size: 13px; margin-bottom: 15px; }
-        th, td { padding: 8px 10px; text-align: left; border-bottom: 1px solid #333; }
-        th { background-color: #252526; color: #fff; font-weight: bold; }
-        tr:hover { background-color: #252526; }
-        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 5px;
+            font-size: 13px;
+            margin-bottom: 15px;
+        }
+
+        th,
+        td {
+            padding: 8px 10px;
+            text-align: left;
+            border-bottom: 1px solid #333;
+        }
+
+        th {
+            background-color: #252526;
+            color: #fff;
+            font-weight: bold;
+        }
+
+        tr:hover {
+            background-color: #252526;
+        }
+
         .shop-level {
-            color: #3b82f6; font-weight: bold; background: #1e3a8a;
-            padding: 2px 6px; border-radius: 4px; display: inline-flex; align-items: center; font-size: 12px;
+            color: #3b82f6;
+            font-weight: bold;
+            background: #1e3a8a;
+            padding: 2px 6px;
+            border-radius: 4px;
+            display: inline-flex;
+            align-items: center;
+            font-size: 12px;
             white-space: nowrap;
         }
-        
+
         .interactive-item {
-            display: inline-block; background: #2a2a2a; padding: 2px 6px;
-            border-radius: 4px; margin-right: 4px; margin-bottom: 4px;
-            cursor: pointer; border: 1px solid #444; font-size: 12px;
+            display: inline-block;
+            background: #2a2a2a;
+            padding: 2px 6px;
+            border-radius: 4px;
+            margin-right: 4px;
+            margin-bottom: 4px;
+            cursor: pointer;
+            border: 1px solid #444;
+            font-size: 12px;
             position: relative;
         }
-        .interactive-item:hover { background: #3a3a3a; border-color: #888; }
-        
+
+        .interactive-item:hover {
+            background: #3a3a3a;
+            border-color: #888;
+        }
+
         .container-tip {
             border-bottom: 1px dashed currentColor !important;
         }
-        
-        tr.highlighted-row { background-color: #3f2d13 !important; border-left: 4px solid #fbbf24; }
-        .interactive-item.active-highlight { background-color: #fbbf24 !important; color: #121212 !important; font-weight: bold; border-color: #fbbf24 !important; }
-        .tag-label.active-highlight { background-color: #fbbf24 !important; color: #121212 !important; font-weight: bold; border-color: #fbbf24; }
 
-        .type-badge { font-size: 11px; padding: 2px 5px; border-radius: 4px; font-weight: bold; }
-        .type-food { background: #b45309; color: #fff; }
-        .type-wine { background: #047857; color: #fff; }
-        .type-container { background: #4b5563; color: #fff; }
+        tr.highlighted-row {
+            background-color: #3f2d13 !important;
+            border-left: 4px solid #fbbf24;
+        }
+
+        .interactive-item.active-highlight {
+            background-color: #fbbf24 !important;
+            color: #121212 !important;
+            font-weight: bold;
+            border-color: #fbbf24 !important;
+        }
+
+        .tag-label.active-highlight {
+            background-color: #fbbf24 !important;
+            color: #121212 !important;
+            font-weight: bold;
+            border-color: #fbbf24;
+        }
+
+        .type-badge {
+            font-size: 11px;
+            padding: 2px 5px;
+            border-radius: 4px;
+            font-weight: bold;
+        }
+
+        .type-food {
+            background: #b45309;
+            color: #fff;
+        }
+
+        .type-wine {
+            background: #047857;
+            color: #fff;
+        }
+
+        .type-container {
+            background: #4b5563;
+            color: #fff;
+        }
 
         /* 🎮 RPG 裝備階級色 */
-        .color-rank-1 { color: #e5e7eb !important; }
-        .color-rank-2 { color: #a3be8c !important; }
-        .color-rank-3 { color: #81a1c1 !important; }
-        .color-rank-4 { color: #b48ead !important; }
-        .color-rank-5 { color: #ebcb8b !important; }
+        .color-rank-1 {
+            color: #e5e7eb !important;
+        }
 
-        footer { 
-            margin-top: 30px; 
+        .color-rank-2 {
+            color: #a3be8c !important;
+        }
+
+        .color-rank-3 {
+            color: #81a1c1 !important;
+        }
+
+        .color-rank-4 {
+            color: #b48ead !important;
+        }
+
+        .color-rank-5 {
+            color: #ebcb8b !important;
+        }
+
+        footer {
+            margin-top: 30px;
             width: 100%;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            font-size: 12px; 
-            color: #555; 
+            font-size: 12px;
+            color: #555;
         }
+
         footer .footer-left a {
             color: #888;
             text-decoration: none;
             transition: color 0.2s;
         }
+
         footer .footer-left a:hover {
             color: #fbbf24;
             text-decoration: underline;
         }
-        footer .footer-right span { color: #4f46e5; font-weight: 500; }
+
+        footer .footer-right span {
+            color: #4f46e5;
+            font-weight: 500;
+        }
     </style>
 </head>
+
 <body>
 
-<div class="container">
-    <div class="top-nav-links">
-        <a href="https://isoyblack.github.io/" target="_blank" class="nav-link-btn" id="navPromoBtn">🎁 燕雲十六聲兌換碼小助手</a>
-        <span class="nav-link-btn" onclick="toggleLanguage()">繁中 / English</span>
-    </div>
+    <div class="container">
+        <div class="top-nav-links">
+            <a href="https://isoyblack.github.io/" target="_blank" class="nav-link-btn" id="navPromoBtn">🎁
+                燕雲十六聲兌換碼小助手</a>
+            <span class="nav-link-btn" onclick="toggleLanguage()">繁中 / English</span>
+        </div>
 
-    <h2 id="mainTitle">《燕雲十六聲》家業客棧助手</h2>
-    <div class="subtitle" id="mainSubtitle">設定家業等級自動篩選 ｜ 稀有孤品安全預警 ｜ 點擊標籤材料全網頁連動高亮</div>
+        <h2 id="mainTitle">《燕雲十六聲》家業客棧助手</h2>
+        <div class="subtitle" id="mainSubtitle">設定家業等級自動篩選 ｜ 稀有孤品安全預警 ｜ 點擊標籤材料全網頁連動高亮</div>
 
-    <div class="main-layout">
-        <div class="panel-grid">
-            <div class="control-panel">
-                <div class="filter-row">
-                    <span class="filter-label" id="lblUserLevel">🛠️ 請設定您目前的家業等級：</span>
-                    <select id="userLevelSelect" class="level-select" onchange="handleLevelChange()">
-                        <option value="1">1 級</option>
-                        <option value="2">2 級</option>
-                        <option value="3">3 級</option>
-                        <option value="4">4 級</option>
-                        <option value="5">5 級</option>
-                        <option value="6">6 級</option>
-                        <option value="7">7 級</option>
-                        <option value="8">8 級</option>
-                        <option value="9">9 級</option>
-                        <option value="10" selected>10 級 (顯示全部)</option>
-                    </select>
+        <div class="main-layout">
+            <div class="panel-grid">
+                <div class="control-panel">
+                    <div class="filter-row">
+                        <span class="filter-label" id="lblUserLevel">🛠️ 請設定您目前的家業等級：</span>
+                        <select id="userLevelSelect" class="level-select" onchange="handleLevelChange()">
+                            <option value="1">1 級</option>
+                            <option value="2">2 級</option>
+                            <option value="3">3 級</option>
+                            <option value="4">4 級</option>
+                            <option value="5">5 級</option>
+                            <option value="6">6 級</option>
+                            <option value="7">7 級</option>
+                            <option value="8">8 級</option>
+                            <option value="9">9 級</option>
+                            <option value="10" selected>10 級 (顯示全部)</option>
+                        </select>
+                    </div>
+                    <div class="section-title" id="lblTagSectionTitle" style="margin-bottom: 10px;">每週活動隨機標籤勾選 (可複選)
+                    </div>
+                    <div class="tag-group" id="tagGroup"></div>
                 </div>
-                <div class="section-title" id="lblTagSectionTitle" style="margin-bottom: 10px;">每週活動隨機標籤勾選 (可複選)</div>
-                <div class="tag-group" id="tagGroup"></div>
+
+                <div class="rare-box">
+                    <div class="section-title" id="lblRareSectionTitle"
+                        style="color: #d08770; border-left-color: #d08770;"> 孤品/稀有標籤</div>
+                    <div class="rare-list" id="rareListContent">正在計算稀有標籤...</div>
+                </div>
             </div>
 
-            <div class="rare-box">
-                <div class="section-title" id="lblRareSectionTitle" style="color: #d08770; border-left-color: #d08770;"> 孤品/稀有標籤</div>
-                <div class="rare-list" id="rareListContent">正在計算稀有標籤...</div>
+            <div class="recommend-box" id="recommendBox">
+                <div class="section-title" id="lblRecSectionTitle" style="color: #6ee7b7; border-left-color: #6ee7b7;">
+                    活動速解組合推薦</div>
+                <div id="recommendContent" style="font-size: 14px; line-height: 1.6;"></div>
             </div>
-        </div>
 
-        <div class="recommend-box" id="recommendBox">
-            <div class="section-title" id="lblRecSectionTitle" style="color: #6ee7b7; border-left-color: #6ee7b7;">活動速解組合推薦</div>
-            <div id="recommendContent" style="font-size: 14px; line-height: 1.6;"></div>
-        </div>
-
-        <div>
-            <div class="collapse-title collapsed" onclick="toggleSection('giftSection')">
-                <span id="titleGiftSection">🎁 家業開壇宴送禮清單 （15）</span><span class="collapse-arrow">▼</span>
-            </div>
-            <div class="collapse-content" id="giftSection" style="max-height: 0px;">
-                <div style="overflow-x:auto;">
-                    <table>
-                        <thead>
-                            <tr>
-                                <th id="thGiftNpc">NPC</th>
-                                <th id="thGiftItem">推薦伴手禮</th>
-                            </tr>
-                        </thead>
-                        <tbody id="giftTableBody">
+            <div>
+                <div class="collapse-title collapsed" onclick="toggleSection('giftSection')">
+                    <span id="titleGiftSection">🎁 家業開壇宴送禮清單 （15）</span><span class="collapse-arrow">▼</span>
+                </div>
+                <div class="collapse-content" id="giftSection" style="max-height: 0px;">
+                    <div style="overflow-x:auto;">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th id="thGiftNpc">NPC</th>
+                                    <th id="thGiftItem">推薦伴手禮</th>
+                                </tr>
+                            </thead>
+                            <tbody id="giftTableBody">
                             </tbody>
-                    </table>
+                        </table>
+                    </div>
                 </div>
-            </div>
 
-            <div class="collapse-title" onclick="toggleSection('foodSection')">
-                <span id="titleFoodSection">🍳 全家業料理總覽</span>
-                <span class="collapse-arrow">▲</span>
-            </div>
-            <div class="collapse-content" id="foodSection">
-                <div style="overflow-x: auto;">
-                    <table>
-                        <thead>
-                            <tr>
-                                <th style="width: 25%;" class="th-name">產品名稱</th>
-                                <th style="width: 10%;" class="th-type">類型</th>
-                                <th style="width: 15%;" class="th-level">家業等級</th>
-                                <th style="width: 20%;" class="th-tags">標籤</th>
-                                <th style="width: 30%;" class="th-items">材料清單</th>
-                            </tr>
-                        </thead>
-                        <tbody id="foodTableBody"></tbody>
-                    </table>
+                <div class="collapse-title" onclick="toggleSection('foodSection')">
+                    <span id="titleFoodSection">🍳 全家業料理總覽</span>
+                    <span class="collapse-arrow">▲</span>
                 </div>
-            </div>
-
-            <div class="collapse-title" onclick="toggleSection('wineSection')">
-                <span id="titleWineSection">🍶 全家業酒品總覽</span>
-                <span class="collapse-arrow">▲</span>
-            </div>
-            <div class="collapse-content" id="wineSection">
-                <div style="overflow-x: auto;">
-                    <table>
-                        <thead>
-                            <tr>
-                                <th style="width: 25%;" class="th-name">產品名稱</th>
-                                <th style="width: 10%;" class="th-type">類型</th>
-                                <th style="width: 15%;" class="th-level">家業等級</th>
-                                <th style="width: 20%;" class="th-tags">標籤</th>
-                                <th style="width: 30%;" class="th-items">材料清單</th>
-                            </tr>
-                        </thead>
-                        <tbody id="wineTableBody"></tbody>
-                    </table>
+                <div class="collapse-content" id="foodSection">
+                    <div style="overflow-x: auto;">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th style="width: 25%;" class="th-name">產品名稱</th>
+                                    <th style="width: 10%;" class="th-type">類型</th>
+                                    <th style="width: 15%;" class="th-level">家業等級</th>
+                                    <th style="width: 20%;" class="th-tags">標籤</th>
+                                    <th style="width: 30%;" class="th-items">材料清單</th>
+                                </tr>
+                            </thead>
+                            <tbody id="foodTableBody"></tbody>
+                        </table>
+                    </div>
                 </div>
-            </div>
 
-            <div class="collapse-title" onclick="toggleSection('containerSection')">
-                <span id="titleContainerSection">🏺 全家業容器總覽</span>
-                <span class="collapse-arrow">▲</span>
-            </div>
-            <div class="collapse-content" id="containerSection">
-                <div style="overflow-x: auto;">
-                    <table>
-                        <thead>
-                            <tr>
-                                <th style="width: 25%;" class="th-name">產品名稱</th>
-                                <th style="width: 10%;" class="th-type">類型</th>
-                                <th style="width: 15%;" class="th-level">家業等級</th>
-                                <th style="width: 50%;" class="th-items">製作材料</th>
-                            </tr>
-                        </thead>
-                        <tbody id="containerTableBody"></tbody>
-                    </table>
+                <div class="collapse-title" onclick="toggleSection('wineSection')">
+                    <span id="titleWineSection">🍶 全家業酒品總覽</span>
+                    <span class="collapse-arrow">▲</span>
+                </div>
+                <div class="collapse-content" id="wineSection">
+                    <div style="overflow-x: auto;">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th style="width: 25%;" class="th-name">產品名稱</th>
+                                    <th style="width: 10%;" class="th-type">類型</th>
+                                    <th style="width: 15%;" class="th-level">家業等級</th>
+                                    <th style="width: 20%;" class="th-tags">標籤</th>
+                                    <th style="width: 30%;" class="th-items">材料清單</th>
+                                </tr>
+                            </thead>
+                            <tbody id="wineTableBody"></tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="collapse-title" onclick="toggleSection('containerSection')">
+                    <span id="titleContainerSection">🏺 全家業容器總覽</span>
+                    <span class="collapse-arrow">▲</span>
+                </div>
+                <div class="collapse-content" id="containerSection">
+                    <div style="overflow-x: auto;">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th style="width: 25%;" class="th-name">產品名稱</th>
+                                    <th style="width: 10%;" class="th-type">類型</th>
+                                    <th style="width: 15%;" class="th-level">家業等級</th>
+                                    <th style="width: 50%;" class="th-items">製作材料</th>
+                                </tr>
+                            </thead>
+                            <tbody id="containerTableBody"></tbody>
+                        </table>
+                    </div>
                 </div>
             </div>
         </div>
+
+        <footer>
+            <div class="footer-left" id="footerLinks">
+                🔗 其他連結：<a href="https://isoyblack.github.io/" target="_blank">燕雲十六聲兌換碼小助手</a>
+            </div>
+            <div class="footer-right">
+                Made by <span>豆漿紅</span> × AI ｜ v1.1
+            </div>
+        </footer>
     </div>
 
-    <footer>
-        <div class="footer-left" id="footerLinks">
-            🔗 其他連結：<a href="https://isoyblack.github.io/" target="_blank">燕雲十六聲兌換碼小助手</a>
-        </div>
-        <div class="footer-right">
-            Made by <span>豆漿紅</span> × AI ｜ v1.0
-        </div>
-    </footer>
-</div>
-
-<script>
-    const i18n = {
-        zh: {
-            pageTitle: "《燕雲十六聲》家業客棧助手",
-            mainTitle: "《燕雲十六聲》家業客棧助手",
-            mainSubtitle: "設定家業等級自動篩選 ｜ 稀有孤品安全預警 ｜ 點擊標籤材料全網頁連動高亮",
-            lblUserLevel: "🛠️ 請設定您目前的家業等級：",
-            lblTagSectionTitle: "每週活動隨機標籤勾選 (可複選)",
-            lblRareSectionTitle: "孤品/稀有標籤預警",
-            lblRecSectionTitle: "活動速解組合推薦",
-            titleGiftSection: "🎁 家業開壇宴送禮清單 （15）",
-            titleContainerSection: "🏺 全家業容器總覽",
-            titleFoodSection: "🍳 全家業料理總覽",
-            titleWineSection: "🍶 全家業酒品總覽",
-            thGiftNpc: "NPC",
-            thGiftItem: "推薦伴手禮",
-            thName: "產品名稱",
-            thType: "類型",
-            thLevel: "家業等級",
-            thTags: "標籤",
-            thItems: "材料清單",
-            navPromoBtn: "🎁 燕雲十六聲兌換碼小助手",
-            footerLinks: "🔗 其他連結：",
-            shopDirect: "🏪商店直購",
-            noRare: "當前等級內暫無高度稀有的孤品標籤。",
-            noMatch: "⚠️ 在您目前的家業等級限制下，沒有任何菜品符合勾選標籤。",
-            recSingle: "🎯 優先推薦單品：",
-            recCombo: "💡 最省力組合建議：",
-            shopPull: "[🏪 商店直接拉]",
-            shopCanPull: "[🏪 商店可拉]",
-            tagSolved: "解決標籤",
-            tagUnsolved: "⚠️ 剩餘標籤 當前等級內無解。",
-            levelText: " 級",
-            levelDisplayAll: "10 級 (顯示全部)",
-            rareAlertTag: "標籤",
-            rareAlertExt: "限定料理提供："
-        },
-        en: {
-            pageTitle: "Where Winds Meet - Inn Assistant",
-            mainTitle: "Where Winds Meet - Inn Assistant",
-            mainSubtitle: "Auto-filter by level | Rare tags warning | Interactive tags & materials highlighting",
-            lblUserLevel: "🛠️ Set current level:",
-            lblTagSectionTitle: "Weekly Random Tags (Multi-select)",
-            lblRareSectionTitle: "🕒 Rare Tags Warning (Stock up early)",
-            lblRecSectionTitle: "Recommended Combinations",
-            titleGiftSection: "🎁 Banquets Gift List (15)",
-            titleContainerSection: "🏺 All Containers Overview",
-            titleFoodSection: "🍳 All Foods Overview",
-            titleWineSection: "🍶 All Wines Overview",
-            thGiftNpc: "NPC",
-            thGiftItem: "Recommended Gift",
-            thName: "Product Name",
-            thType: "Type",
-            thLevel: "Level",
-            thTags: "Tags",
-            thItems: "Materials List",
-            navPromoBtn: "🎁Redemption Code Manager",
-            footerLinks: "🔗 Links: ",
-            shopDirect: "🏪Shop Direct",
-            noRare: "No rare unique tags within the current level restriction.",
-            noMatch: "⚠️ No dishes match the selected tags within your current level restriction.",
-            recSingle: "🎯 Top Pick Single Items:",
-            recCombo: "💡 Most Efficient Combos:",
-            shopPull: "[🏪 Buy from Shop]",
-            shopCanPull: "[🏪 Available in Shop]",
-            tagSolved: "Resolved Tags",
-            tagUnsolved: "⚠️ Unresolved Tags (No options at this level)",
-            levelText: "",
-            levelDisplayAll: "10 (Show All)",
-            rareAlertTag: "Tag",
-            rareAlertExt: "Exclusive from:"
-        }
-    };
-
-    let currentLang = 'zh';
-
-    const giftDatabase = [
-        { npc: { zh: "趙大哥", en: "Big Zhao" }, item: { zh: "冰弦膏", en: "Clearstring Balm" } },
-        { npc: { zh: "晉中原", en: "Jin" }, item: { zh: "散佚古譜", en: "Scattered Ancient Scores" } },
-        { npc: { zh: "姚藥藥", en: "Yao Yaoyao" }, item: { zh: "江米涼糕", en: "Chilled Rice Cake" } },
-        { npc: { zh: "盈盈", en: "Yingying" }, item: { zh: "東闕公子話本集", en: "The Ember Chroniceles" } },
-        { npc: { zh: "蕭史", en: "Xiao Shi" }, item: { zh: "止血定痛丸", en: "Mending Pills" } },
-        { npc: { zh: "沈玉", en: "Shen Yu" }, item: { zh: "文房四寶", en: "Scholar's Four Treasures" } },
-        { npc: { zh: "天不收", en: "Unfated Tian" }, item: { zh: "新釀離人淚", en: "Fresh Parting Tears" } },
-        { npc: { zh: "踏雪", en: "Icepaw" }, item: { zh: "小狗飯碗", en: "Puppy Bowl" } },
-        { npc: { zh: "大強", en: "Dax" }, item: { zh: "毛線球", en: "Yarn Ball" } },
-        { npc: { zh: "張龍", en: "Zhang Long" }, item: { zh: "《孤獨文學家為什麼你說話別人不愛聽》", en: "Deep Thoughts: Unheeded" } },
-        { npc: { zh: "張虎", en: "Zhang Hu" }, item: { zh: "焰火一枝春", en: "A Spark of Spring" } },
-        { npc: { zh: "張豹", en: "Zhang Bao" }, item: { zh: "螂的誘惑", en: "Mystery Barbecue" } },
-        { npc: { zh: "張安康", en: "Zhang Ankang" }, item: { zh: "把子肉飯", en: "Braised Pork Belly Rice" } },
-        { npc: { zh: "鄭然", en: "Pear" }, item: { zh: "梨花酥", en: "Blossom Pastry" } },
-        { npc: { zh: "趙承宗", en: "Zhao Chengzong" }, item: { zh: "五年科舉十年模擬", en: "Advanced Imperial Exam Cram Guide" } }
-    ];
-
-    const containerDatabase = {
-        "容器1": { name: { zh: "木理紋酒壺", en: "LV 1 Woodgrain Wine Pot" }, recipe: { zh: "粗曠1、原木1", en: "Raw Ore 1, Timber 1" } },
-        "容器2": { name: { zh: "白釉執壺", en: "LV 2 White-Glaze Ewer" }, recipe: { zh: "酒香玉1、粗曠1、原木1", en: "Wine-Scented Jade 1, Raw Ore 1, Timber 1" } },
-        "容器3": { name: { zh: "藍玉雲紋壺", en: "LV 3 Sapphire Cloud Flask" }, recipe: { zh: "獨山藍玉1、粗曠1、原木1", en: "LV3 Dushan Blue Jade 1, Raw Ore 1, Timber 1" } },
-        "容器4": { name: { zh: "青釉雞首壺", en: "LV 4 Celadon Rooster Ewer" }, recipe: { zh: "獨山玉1、粗曠1、原木1", en: "LV3 Dushan Jade 1, Raw Ore 1, Timber 1" } },
-        "容器5": { name: { zh: "青瓷刻花酒壺", en: "LV 5 Carved Celadon Wine Jug" }, recipe: { zh: "青礞石1、粗曠1、原木1", en: "LV 4 Chlorite Schist 1, Raw Ore 1, Timber 1" } },
-        "容器6": { name: { zh: "青黃釉銅嘴壺", en: "LV 6 Amber-Glazed Brazz Jug" }, recipe: { zh: "黃銅1、粗曠1、原木1", en: "LV 6 Copper Ore 1, Raw Ore 1, Timber 1" } },
-        "容器7": { name: { zh: "銅胎陶膽松紋壺", en: "LV 7 Bronze-Clad Pine Jug" }, recipe: { zh: "黃銅1、粗曠1、原木1", en: "Copper Ore 1, Raw Ore 1, Timber 1" } },
-        "容器8": { name: { zh: "藍釉執壺", en: "LV 8 Blue Glaze Ewer" }, recipe: { zh: "寒鐵1、粗曠1、原木1", en: "Cold Iron 1, Raw Ore 1, Timber 1" } },
-        "容器9": { name: { zh: "三彩酒壺", en: "LV 9 Sancai Ewer" }, recipe: { zh: "寒鐵1、粗曠1、原木1", en: "Cold Iron 1, Raw Ore 1, Timber 1" } },
-        "容器10": { name: { zh: "描金刻花執壺", en: "LV 10 Gilded Carved Ewer" }, recipe: { zh: "寒鐵1、粗曠1、原木1", en: "Cold Iron 1, Raw Ore 1, Timber 1" } }
-    };
-
-    const productData = [
-	{ name: { zh: "燉馬鈴薯", en: "Stewed Potato" }, type: "料理", level: 1, tags: { zh: ["燜菜", "鹹香"], en: ["Simmered Dishes", "Salty & Aromatic"] }, items: { zh: ["馬鈴薯2"], en: ["Potato 2"] } },
-	{ name: { zh: "馬鈴薯煨肉", en: "Braised Pork & Potato" }, type: "料理", level: 1, tags: { zh: ["鹹香", "燜菜"], en: ["Salty & Aromatic", "Simmered Dishes"] }, items: { zh: ["厚脂肉塊4"], en: ["Prime Meat Cut 4"] } },
-	{ name: { zh: "豬肉餡餅", en: "Pork Pie" }, type: "料理", level: 1, tags: { zh: ["小吃", "酥脆"], en: ["Snacks", "Crispy"] }, items: { zh: ["小麥6", "生薑3", "厚脂肉塊4"], en: ["Ginger 3", "Wheat 6", "Prime Meat Cut 4"] } },
-	{ name: { zh: "生薑煨魚", en: "Gingered River Stew" }, type: "料理", level: 1, tags: { zh: ["燜菜", "鮮香"], en: ["Simmered Dishes", "Savory & Fragrant"] }, items: { zh: ["馬鈴薯6", "生薑3", "河魚2"], en: ["Potato 6", "Ginger 3", "Live Fish 2"] } },
-        { name: { zh: "薑果麥羹", en: "Ginger Wheat Porridge" }, type: "料理", level: 1, tags: { zh: ["清淡", "湯類"], en: ["Light", "Soup"] }, items: { zh: ["小麥6", "生薑3", "野果2"], en: ["Wheat 6", "Ginger 3", "Wild Berries 2"] } },
-        { name: { zh: "清蒸鱸魚", en: "Steamed Bass" }, type: "料理", level: 2, tags: { zh: ["鮮香", "蒸煮"], en: ["Savory & Fragrant", "Steaming"] }, items: { zh: ["梨花6", "生薑3", "江鱸2"], en: ["Pear Blossoms 6", "Ginger 3", "River Bass 2"] } },
-	{ name: { zh: "梨薑肉膾", en: "Stir-fried Pork with Pear" }, type: "料理", level: 2, tags: { zh: ["炒菜", "鮮香"], en: ["Stir-Fry", "Savory & Fragrant"] }, items: { zh: ["梨花6", "生薑3", "碎肉塊2"], en: ["Pear Blossoms 6", "Ginger 3", "Prime Meat Cut 2"] } },
-	{ name: { zh: "薑絲鱸膾", en: "Pan-Fried Pearch Slices" }, type: "料理", level: 2, tags: { zh: ["湯類", "滋補"], en: ["Soup", "Nutritive"] }, items: { zh: ["胡蘿蔔6", "生薑3", "江鱸2"], en: ["River Bass 2", "Ginger 3", "Scallion 3"] } },
-        { name: { zh: "胡蘿蔔燉肉", en: "Braised Pork & Carrot" }, type: "料理", level: 2, tags: { zh: ["鹹香", "燴菜"], en: ["Salty & Aromatic", "Braised Dishes"] }, items: { zh: ["胡蘿蔔6", "生薑3", "碎肉塊2"], en: ["Carrot 6", "Ginger 3", "Prime Meat Cut 2"] } },
-	{ name: { zh: "豆薑鱸魚湯", en: "Soy-Ginger Perch Soup" }, type: "料理", level: 3, tags: { zh: ["湯類", "滋補"], en: ["Soup", "Nutritive"] }, items: { zh: ["大豆6", "生薑3", "江鱸2"], en: ["Soybean 6", "Ginger 3", "River Bass 2"] } },
-	{ name: { zh: "薑爆金鱗", en: "Ginger-fried Golden Carp" }, type: "料理", level: 3, tags: { zh: ["炒菜", "酥脆"], en: ["Stir-Fry", "Crispy"] }, items: { zh: ["大豆6", "生薑3", "金鯉2"], en: ["Soybean 6", "Ginger 3", "Carp 2"] } },
-	{ name: { zh: "紅燒麋肉", en: "Braised Venison" }, type: "料理", level: 3, tags: { zh: ["燴菜", "醇香"], en: ["Braised Dishes", "Mellow & Aromatic"] }, items: { zh: ["大豆6", "生薑3", "大麋肉2"], en: ["Soybean 6", "Ginger 3", "Milu Meat 2"] } },
-        { name: { zh: "胡蘿蔔絲炒肉", en: "Pork & Carrot Stir-Fry" }, type: "料理", level: 3, tags: { zh: ["炒菜", "鹹香"], en: ["Stir-fry", "Salty & Aromatic"] }, items: { zh: ["胡蘿蔔6", "生薑3", "厚脂肉塊2"], en: ["Carrot 6", "Ginger 3", "Prime Meat Cut 2"] } },
-        { name: { zh: "雙瓜蒜蓉炙", en: "Garlic Melon Stir-Fry" }, type: "料理", level: 4, tags: { zh: ["清香", "燴菜"], en: ["Delicate", "Braised Dishes"] }, items: { zh: ["寒瓜6", "大蒜3", "東陵瓜2"], en: ["Watermelon 6", "Garlic 3", "Dongling Melon 2"] } },
-        { name: { zh: "鴇府燴紫茄", en: "Bustard Eggplant Stew" }, type: "料理", level: 4, tags: { zh: ["濃香", "燴菜"], en: ["Rich & Aromatic", "Braised Dishes"] }, items: { zh: ["茄子6", "大蒜3", "野鴇肉2"], en: ["Eggplant 6", "Garlic 3", "Wild Bustard Meat 2"] } },
-	{ name: { zh: "蒜蓉茄子", en: "Garlic Eggplant" }, type: "料理", level: 4, tags: { zh: ["聯菜", "蒜香"], en: ["Simmered Dishes", "Garlicky"] }, items: { zh: ["茄子6", "大蒜3", "碎肉塊2"], en: ["Eggplant 6", "Garlic 3", "Minced Meat 2"] } },
-        { name: { zh: "大豆燉烏鱧", en: "Soybean Snakehead Stew" }, type: "料理", level: 4, tags: { zh: ["燜菜", "鮮香"], en: ["Simmered Dishes", "Savory & Fragrant"] }, items: { zh: ["大豆6", "大蒜3", "烏鱧2"], en: ["Soybean 6", "Garlic 3", "Snakehead 2"] } },
-	{ name: { zh: "梨蒜蒸鳙鱠", en: "Steamed Carp with Pear" }, type: "料理", level: 5, tags: { zh: ["蒸煮", "清香"], en: ["Steaming", "Delicate"] }, items: { zh: ["梨花6", "大蒜3", "鳙魚2"], en: ["Pear Blossoms 6", "Garlic 3", "Bighead Carp 2"] } },
-        { name: { zh: "番茄燴鹿腩", en: "Tomato Venison Stew" }, type: "料理", level: 5, tags: { zh: ["酸甜", "燴菜"], en: ["Sweet & Sour", "Braised Dishes"] }, items: { zh: ["番茄6", "大蒜3", "吠鹿肉2"], en: ["Tomato 6", "Garlic 3", "Barking Deer Meat 2"] } },
-        { name: { zh: "番茄魚片湯", en: "Tomato Fish Soup" }, type: "料理", level: 5, tags: { zh: ["酸甜", "湯類"], en: ["Sweet & Sour", "Soup"] }, items: { zh: ["番茄6", "大蒜3", "洛口石首魚2"], en: ["Tomato 6", "Garlic 3", "Luokou Croaker 2"] } },
-        { name: { zh: "鴇片炒油菜", en: "Bustard & Green Stir-Fry" }, type: "料理", level: 5, tags: { zh: ["鮮香", "炒菜"], en: ["Savory & Fragrant", "Stir-Fry"] }, items: { zh: ["油菜6", "大蒜3", "野鴇肉2"], en: ["Canola 6", "Garlic 3", "Wild Bustard Meat 2"] } },
-	{ name: { zh: "麋肉寒瓜炙", en: "Seared Milu & Melon" }, type: "料理", level: 6, tags: { zh: ["鹹香", "炒菜"], en: ["Salty & Aromatic", "Stir-Fry"] }, items: { zh: ["寒瓜6", "大蒜3", "大麋肉2"], en: ["Watermelon 6", "Garlic 3", "Milu Meat 2"] } },
-        { name: { zh: "洋蔥燉鹿肉", en: "Onion Venison Stew" }, type: "料理", level: 6, tags: { zh: ["滋補", "燜菜"], en: ["Nutritive", "Simmered Dishes"] }, items: { zh: ["洋蔥6", "大蒜3", "吠鹿肉2"], en: ["Onion 6", "Garlic 3", "Barking Deer Meat 2"] } },
-        { name: { zh: "洋蔥蒸鯚魚", en: "Onion & Mandarin Fish" }, type: "料理", level: 6, tags: { zh: ["蒸煮", "滋補"], en: ["Steaming", "Nutritive"] }, items: { zh: ["洋蔥6", "大蒜3", "鯚魚2"], en: ["Onion 6", "Garlic 3", "Mandarin Fish 2"] } },
-	 { name: { zh: "蕈菇炒油菜", en: "Mushrooms & Green" }, type: "料理", level: 6, tags: { zh: ["鮮香", "炒菜"], en: ["Savory & Fragrant", "Stir-Fry"] }, items: { zh: ["油菜6", "大蒜3", "蕈菇2"], en: ["Canola 6", "Garlic 3", "Mushrooms 2"] } },
-	{ name: { zh: "河豚辣伴瓜", en: "Spicy Pufferfish" }, type: "料理", level: 7, tags: { zh: ["香辣", "小吃"], en: ["Spicy", "Snacks"] }, items: { zh: ["黃瓜6", "辣椒3", "河豚2"], en: ["Cucumber 6", "Chili 3", "Pufferfish 2"] } },
-	{ name: { zh: "辣子麥飯", en: "Spicy Pork & Wheat Rice" }, type: "料理", level: 7, tags: { zh: ["香辣", "炒飯"], en: ["Spicy", "Fried Rice"] }, items: { zh: ["小麥6", "辣椒3", "豬肉2"], en: ["Wheat 6", "Chili 3", "Pork 2"] } },
-	{ name: { zh: "紫茄河豚辣膾", en: "Pufferfish & Eggplant" }, type: "料理", level: 7, tags: { zh: ["麻辣", "炒菜"], en: ["Numbing & Spicy", "Stir-Fry"] }, items: { zh: ["茄子6", "辣椒3", "河豚2"], en: ["Eggplant 6", "Chili 3", "Pufferfish 2"] } },
-	{ name: { zh: "桃脯炒肉", en: "Pork & peach Stir-Fry" }, type: "料理", level: 7, tags: { zh: ["甜香", "炒菜"], en: ["Sweet & Fragrant", "Stir-Fry"] }, items: { zh: ["桃子6", "辣椒3", "豬肉2"], en: ["Peach 6", "Chili 3", "Pork 2"] } },
-        { name: { zh: "辣炙金鯉", en: "Spicy Grilled Carp" }, type: "料理", level: 8, tags: { zh: ["香辣", "燒烤"], en: ["Spicy", "Grilling"] }, items: { zh: ["洋蔥6", "辣椒3", "金鯉2"], en: ["Onion 6", "Chili 3", "Carp 2"] } },
-        { name: { zh: "山參辣茄膾", en: "Spicy Ginseng & Eggplant" }, type: "料理", level: 8, tags: { zh: ["香辣", "小吃"], en: ["Spicy", "Snacks"] }, items: { zh: ["茄子6", "辣椒3", "野山參2"], en: ["Eggplant 6", "Chili 3", "Ginseng 2"] } },
-        { name: { zh: "馬鈴薯炒魚酥", en: "Stri-Fried Carp & Potato" }, type: "料理", level: 8, tags: { zh: ["酥脆", "炒菜"], en: ["Crispy", "Stir-Fry"] }, items: { zh: ["馬鈴薯6", "辣椒3", "金鯉2"], en: ["Potato 6", "Chili 3", "Carp 2"] } },
-	{ name: { zh: "參炒胡蘿蔔", en: "Ginseng & Carrot Stir-Fry" }, type: "料理", level: 8, tags: { zh: ["香辣", "炒菜"], en: ["Spicy", "Stir-Fry"] }, items: { zh: ["胡蘿蔔6", "辣椒3", "野山參2"], en: ["Carrot 6", "Chili 3", "Ginseng 2"] } },
-        { name: { zh: "香辣鹿肉", en: "Spiced Venison" }, type: "料理", level: 9, tags: { zh: ["香辣", "炒菜"], en: ["Spicy", "Stir-Fry"] }, items: { zh: ["茶樹6", "辣椒3", "大麋肉2"], en: ["Tea Tree 6", "Chili 3", "Milu Meat 2"] } },
-        { name: { zh: "辣伴菜菇", en: "Spicy Mushrooms" }, type: "料理", level: 9, tags: { zh: ["香辣", "小吃"], en: ["Spicy", "Snacks"] }, items: { zh: ["生菜6", "辣椒3", "蕈菇2"], en: ["Lettuce 6", "Chili 3", "Mushrooms 2"] } },
-        { name: { zh: "茶辣鯽魚膾", en: "Tea-Braised Crucian Carp" }, type: "料理", level: 9, tags: { zh: ["醬香", "燜菜"], en: ["Sauce-Fragrant", "Simmered Dishes"] }, items: { zh: ["茶樹6", "辣椒3", "鯽魚2"], en: ["Tea Tree 6", "Chili 3", "Crucian Carp 2"] } },
-	{ name: { zh: "香烤兔肉", en: "Spiced Roasted Rabbit" }, type: "料理", level: 9, tags: { zh: ["鹹香", "燒烤"], en: ["Salty & Aromatic", "Grilling"] }, items: { zh: ["生菜6", "辣椒3", "兔肉2"], en: ["Lettuce 6", "Chili 3", "Rabbit 2"] } },
-        { name: { zh: "鯚魚伴生菜", en: "Cold Bream Salad" }, type: "料理", level: 10, tags: { zh: ["鮮香", "蒸煮"], en: ["Savory & Fragrant", "Steaming"] }, items: { zh: ["生菜6", "辣椒3", "鯚魚2"], en: ["Lettuce 6", "Chili 3", "Mandarin Fish 2"] } },
-	{ name: { zh: "番茄燴兔丁", en: "Tomato Rabbit Stew" }, type: "料理", level: 10, tags: { zh: ["燴菜", "炒菜"], en: ["Braised Dishes", "Stir-Fry"] }, items: { zh: ["番茄6", "辣椒3", "兔肉2"], en: ["Tomato 6", "Chili 3", "Rabbit 2"] } },
-	{ name: { zh: "野鴇炒黃瓜", en: "Bustard & Cucumber" }, type: "料理", level: 10, tags: { zh: ["鮮香", "炒菜"], en: ["Savory & Fragrant", "Stir-Fry"] }, items: { zh: ["黃瓜6", "辣椒3", "野鴇肉2"], en: ["Cucumber 6", "Chili 3", "Wild Bustard Meat 2"] } },
-        { name: { zh: "豆酥煨鯰腩", en: "Soybean Catfish Stew" }, type: "料理", level: 10, tags: { zh: ["燜菜", "醇香"], en: ["Simmered Dishes", "Mellow & Aromatic"] }, items: { zh: ["大豆6", "辣椒3", "鯰魚2"], en: ["Soybean 6", "Chili 3", "Catfish 2"] } },
-        
-        { name: { zh: "麥酒", en: "Malt Wine" }, type: "酒", level: 1, tags: { zh: ["糧食酒"], en: ["Grain Wine"] }, items: { zh: ["小麥6", "玉米3", "容器1"], en: ["Wheat 6", "Corn 3", "容器1"] } },
-        { name: { zh: "苞穀酒", en: "Corn Wine" }, type: "酒", level: 2, tags: { zh: ["糧食酒"], en: ["Grain Wine"] }, items: { zh: ["梨花6", "玉米3", "容器2"], en: ["Pear Blossoms 6", "Corn 3", "容器2"] } },
-        { name: { zh: "桑落酒", en: "Mulberry Wine" }, type: "酒", level: 3, tags: { zh: ["混合酒"], en: ["Blended Wine"] }, items: { zh: ["棉花6", "玉米3", "容器3"], en: ["Cotton 6", "Corn 3", "容器3"] } },
-        { name: { zh: "西瓜果釀", en: "Watermelon Wine" }, type: "酒", level: 4, tags: { zh: ["果酒"], en: ["Fruit Wine"] }, items: { zh: ["寒瓜6", "水稻3", "容器4"], en: ["Watermelon 6", "Rice 3", "容器4"] } },
-        { name: { zh: "新豐酒", en: "Xinfeng Wine" }, type: "酒", level: 5, tags: { zh: ["糧食酒"], en: ["Grain Wine"] }, items: { zh: ["油菜6", "水稻3", "容器5"], en: ["Canola 6", "Rice 3", "容器5"] } },
-        { name: { zh: "青紅酒", en: "Red Rice Wine" }, type: "酒", level: 6, tags: { zh: ["糧食酒"], en: ["Grain Wine"] }, items: { zh: ["番茄6", "水稻3", "容器6"], en: ["Tomato 6", "Rice 3", "容器6"] } },
-        { name: { zh: "杜康酒", en: "Dukang Wine" }, type: "酒", level: 7, tags: { zh: ["糧食酒"], en: ["Grain Wine"] }, items: { zh: ["甘蔗6", "高粱3", "容器7"], en: ["Sugarcane 6", "Sorghum 3", "容器7"] } },
-        { name: { zh: "鵝黃酒", en: "Pale Gold Wine" }, type: "酒", level: 8, tags: { zh: ["經濟作物酒"], en: ["Herbal Wine"] }, items: { zh: ["枇杷6", "高粱3", "容器8"], en: ["Loquat 6", "Sorghum 3", "容器8"] } },
-        { name: { zh: "松醪酒", en: "Pine Brew" }, type: "酒", level: 9, tags: { zh: ["經濟作物酒"], en: ["Herbal Wine"] }, items: { zh: ["茶樹6", "高粱3", "容器9"], en: ["Tea Tree 6", "Sorghum 3", "容器9"] } },
-        { name: { zh: "屠蘇酒", en: "Tusu Wine" }, type: "酒", level: 10, tags: { zh: ["經濟作物酒"], en: ["Herbal Wine"] }, items: { zh: ["櫻桃6", "高粱3", "容器10"], en: ["Cherry 6", "Sorghum 3", "容器10"] } }
-    ];
-
-    let currentHighlightText = null;
-    let currentHighlightType = null;
-    let currentUserLevel = 10;
-
-    function toggleLanguage() {
-        currentLang = (currentLang === 'zh') ? 'en' : 'zh';
-        applyLanguage();
-        rebuildTagUI();
-        renderRareTagsAlert();
-        renderTable();
-        calculateLogic();
-    }
-
-    function applyLanguage() {
-        const l = i18n[currentLang];
-        document.getElementById('pageTitle').textContent = l.pageTitle;
-        document.getElementById('mainTitle').textContent = l.mainTitle;
-        document.getElementById('mainSubtitle').textContent = l.mainSubtitle;
-        document.getElementById('lblUserLevel').textContent = l.lblUserLevel;
-        document.getElementById('lblTagSectionTitle').textContent = l.lblTagSectionTitle;
-        document.getElementById('lblRareSectionTitle').textContent = l.lblRareSectionTitle;
-        document.getElementById('lblRecSectionTitle').textContent = l.lblRecSectionTitle;
-        
-        document.getElementById('titleGiftSection').textContent = l.titleGiftSection;
-        document.getElementById('titleContainerSection').textContent = l.titleContainerSection;
-        document.getElementById('titleFoodSection').textContent = l.titleFoodSection;
-        document.getElementById('titleWineSection').textContent = l.titleWineSection;
-
-        document.getElementById('thGiftNpc').textContent = l.thGiftNpc;
-        document.getElementById('thGiftItem').textContent = l.thGiftItem;
-        
-        document.querySelectorAll('.th-name').forEach(el => el.textContent = l.thName);
-        document.querySelectorAll('.th-type').forEach(el => el.textContent = l.thType);
-        document.querySelectorAll('.th-level').forEach(el => el.textContent = l.thLevel);
-        document.querySelectorAll('.th-tags').forEach(el => el.textContent = l.thTags);
-        document.querySelectorAll('.th-items').forEach(el => el.textContent = l.thItems);
-        
-        document.getElementById('navPromoBtn').textContent = l.navPromoBtn;
-        document.getElementById('footerLinks').childNodes[0].nodeValue = l.footerLinks;
-
-        const select = document.getElementById('userLevelSelect');
-        for (let i = 0; i < 9; i++) {
-            select.options[i].text = (i + 1) + l.levelText;
-        }
-        select.options[9].text = l.levelDisplayAll;
-
-        renderGiftTable();
-    }
-
-    function toggleSection(id) {
-        const titleEl = document.querySelector(`[onclick="toggleSection('${id}')"]`);
-        const contentEl = document.getElementById(id);
-        const arrow = titleEl.querySelector('.collapse-arrow');
-        
-        if (titleEl.classList.contains('collapsed')) {
-            titleEl.classList.remove('collapsed');
-            arrow.textContent = '▲';
-            contentEl.style.maxHeight = "3000px";
-            setTimeout(() => { if (!titleEl.classList.contains('collapsed')) contentEl.style.maxHeight = "none"; }, 300);
-        } else {
-            contentEl.style.maxHeight = contentEl.scrollHeight + "px";
-            contentEl.offsetHeight; 
-            titleEl.classList.add('collapsed');
-            arrow.textContent = '▼';
-            contentEl.style.maxHeight = "0px";
-        }
-    }
-
-    function getRankClass(level) {
-        if (level <= 2) return 'color-rank-1';
-        if (level <= 4) return 'color-rank-2';
-        if (level <= 6) return 'color-rank-3';
-        if (level <= 8) return 'color-rank-4';
-        return 'color-rank-5';
-    }
-
-    function getStockCount(name) {
-        return parseInt(localStorage.getItem('inn_stock_' + name)) || 0;
-    }
-    function updateStockCount(name, change) {
-        let val = getStockCount(name) + change;
-        if (val < 0) val = 0;
-        localStorage.setItem('inn_stock_' + name, val);
-        renderRareTagsAlert();
-    }
-
-    function rebuildTagUI() {
-        let allTags = new Set();
-        productData.forEach(p => p.tags[currentLang].forEach(t => allTags.add(t)));
-        allTags = [...allTags].sort();
-
-        const tagGroupDiv = document.getElementById('tagGroup');
-        tagGroupDiv.innerHTML = '';
-        allTags.forEach(tag => {
-            const label = document.createElement('label');
-            label.className = 'tag-label';
-            label.setAttribute('data-tag', tag);
-            label.innerHTML = `<input type="checkbox" value="${tag}" onchange="calculateLogic()">${tag}`;
-            tagGroupDiv.appendChild(label);
-        });
-    }
-
-    function renderRareTagsAlert() {
-        const l = i18n[currentLang];
-        const rareContent = document.getElementById('rareListContent');
-        
-        let allTags = new Set();
-        productData.forEach(p => p.tags[currentLang].forEach(t => allTags.add(t)));
-        allTags = [...allTags].sort();
-
-        const tagCounts = {};
-        allTags.forEach(t => tagCounts[t] = { count: 0, items: [] });
-
-        productData.forEach(p => {
-            if (p.level <= currentUserLevel) {
-                p.tags[currentLang].forEach(t => {
-                    tagCounts[t].count++;
-                    tagCounts[t].items.push({ name: p.name[currentLang], rawName: p.name['zh'], level: p.level });
-                });
+    <script>
+        const i18n = {
+            zh: {
+                pageTitle: "《燕雲十六聲》家業客棧助手",
+                mainTitle: "《燕雲十六聲》家業客棧助手",
+                mainSubtitle: "設定家業等級自動篩選 ｜ 稀有孤品安全預警 ｜ 點擊標籤材料全網頁連動高亮",
+                lblUserLevel: "🛠️ 請設定您目前的家業等級：",
+                lblTagSectionTitle: "每週活動隨機標籤勾選 (可複選)",
+                lblRareSectionTitle: "孤品/稀有標籤預警",
+                lblRecSectionTitle: "活動速解組合推薦",
+                titleGiftSection: "🎁 家業開壇宴送禮清單 （15）",
+                titleContainerSection: "🏺 全家業容器總覽",
+                titleFoodSection: "🍳 全家業料理總覽",
+                titleWineSection: "🍶 全家業酒品總覽",
+                thGiftNpc: "NPC",
+                thGiftItem: "推薦伴手禮",
+                thName: "產品名稱",
+                thType: "類型",
+                thLevel: "家業等級",
+                thTags: "標籤",
+                thItems: "材料清單",
+                navPromoBtn: "🎁 燕雲十六聲兌換碼小助手",
+                footerLinks: "🔗 其他連結：",
+                shopDirect: "🏪商店直購",
+                noRare: "當前等級內暫無高度稀有的孤品標籤。",
+                noMatch: "⚠️ 在您目前的家業等級限制下，沒有任何菜品符合勾選標籤。",
+                recSingle: "🎯 優先推薦單品：",
+                recCombo: "💡 最省力組合建議：",
+                shopPull: "[🏪 商店直接拉]",
+                shopCanPull: "[🏪 商店可拉]",
+                tagSolved: "解決標籤",
+                tagUnsolved: "⚠️ 剩餘標籤 當前等級內無解。",
+                levelText: " 級",
+                levelDisplayAll: "10 級 (顯示全部)",
+                rareAlertTag: "標籤",
+                rareAlertExt: "限定料理提供："
+            },
+            en: {
+                pageTitle: "Where Winds Meet - Inn Assistant",
+                mainTitle: "Where Winds Meet - Inn Assistant",
+                mainSubtitle: "Auto-filter by level | Rare tags warning | Interactive tags & materials highlighting",
+                lblUserLevel: "🛠️ Set current level:",
+                lblTagSectionTitle: "Weekly Random Tags (Multi-select)",
+                lblRareSectionTitle: "🕒 Rare Tags Warning (Stock up early)",
+                lblRecSectionTitle: "Recommended Combinations",
+                titleGiftSection: "🎁 Banquets Gift List (15)",
+                titleContainerSection: "🏺 All Containers Overview",
+                titleFoodSection: "🍳 All Foods Overview",
+                titleWineSection: "🍶 All Wines Overview",
+                thGiftNpc: "NPC",
+                thGiftItem: "Recommended Gift",
+                thName: "Product Name",
+                thType: "Type",
+                thLevel: "Level",
+                thTags: "Tags",
+                thItems: "Materials List",
+                navPromoBtn: "🎁Redemption Code Manager",
+                footerLinks: "🔗 Links: ",
+                shopDirect: "🏪Shop Direct",
+                noRare: "No rare unique tags within the current level restriction.",
+                noMatch: "⚠️ No dishes match the selected tags within your current level restriction.",
+                recSingle: "🎯 Top Pick Single Items:",
+                recCombo: "💡 Most Efficient Combos:",
+                shopPull: "[🏪 Buy from Shop]",
+                shopCanPull: "[🏪 Available in Shop]",
+                tagSolved: "Resolved Tags",
+                tagUnsolved: "⚠️ Unresolved Tags (No options at this level)",
+                levelText: "",
+                levelDisplayAll: "10 (Show All)",
+                rareAlertTag: "Tag",
+                rareAlertExt: "Exclusive from:"
             }
-        });
+        };
 
-        let rareHtml = "";
-        let hasRare = false;
+        let currentLang = 'zh';
 
-        Object.keys(tagCounts).sort((a,b) => tagCounts[a].count - tagCounts[b].count).forEach(tag => {
-            const info = tagCounts[tag];
-            if (info.count > 0 && info.count <= 2) {
-                hasRare = true;
-                
-                let itemsString = info.items.map(item => {
-                    const count = getStockCount(item.rawName);
-                    const shopHint = (item.level <= 2) ? `<span style="color:#60a5fa; font-weight:normal; font-size:11px; margin-left:4px;">${l.shopDirect}</span>` : '';
-                    const rankClass = getRankClass(item.level);
-                    
-                    return `<div style="margin-left: 15px; margin-top: 2px;">
+        const giftDatabase = [
+            { npc: { zh: "趙大哥", en: "Big Zhao" }, item: { zh: "冰弦膏", en: "Clearstring Balm" } },
+            { npc: { zh: "晉中原", en: "Jin" }, item: { zh: "散佚古譜", en: "Scattered Ancient Scores" } },
+            { npc: { zh: "姚藥藥", en: "Yao Yaoyao" }, item: { zh: "江米涼糕", en: "Chilled Rice Cake" } },
+            { npc: { zh: "盈盈", en: "Yingying" }, item: { zh: "東闕公子話本集", en: "The Ember Chroniceles" } },
+            { npc: { zh: "蕭史", en: "Xiao Shi" }, item: { zh: "止血定痛丸", en: "Mending Pills" } },
+            { npc: { zh: "沈玉", en: "Shen Yu" }, item: { zh: "文房四寶", en: "Scholar's Four Treasures" } },
+            { npc: { zh: "天不收", en: "Unfated Tian" }, item: { zh: "新釀離人淚", en: "Fresh Parting Tears" } },
+            { npc: { zh: "踏雪", en: "Icepaw" }, item: { zh: "小狗飯碗", en: "Puppy Bowl" } },
+            { npc: { zh: "大強", en: "Dax" }, item: { zh: "毛線球", en: "Yarn Ball" } },
+            { npc: { zh: "張龍", en: "Zhang Long" }, item: { zh: "《孤獨文學家為什麼你說話別人不愛聽》", en: "Deep Thoughts: Unheeded" } },
+            { npc: { zh: "張虎", en: "Zhang Hu" }, item: { zh: "焰火一枝春", en: "A Spark of Spring" } },
+            { npc: { zh: "張豹", en: "Zhang Bao" }, item: { zh: "螂的誘惑", en: "Mystery Barbecue" } },
+            { npc: { zh: "張安康", en: "Zhang Ankang" }, item: { zh: "把子肉飯", en: "Braised Pork Belly Rice" } },
+            { npc: { zh: "鄭然", en: "Pear" }, item: { zh: "梨花酥", en: "Blossom Pastry" } },
+            { npc: { zh: "趙承宗", en: "Zhao Chengzong" }, item: { zh: "五年科舉十年模擬", en: "Advanced Imperial Exam Cram Guide" } }
+        ];
+
+        const containerDatabase = {
+            "容器1": { name: { zh: "木理紋酒壺", en: "LV 1 Woodgrain Wine Pot" }, recipe: { zh: "粗曠1、原木1", en: "Raw Ore 1, Timber 1" } },
+            "容器2": { name: { zh: "白釉執壺", en: "LV 2 White-Glaze Ewer" }, recipe: { zh: "酒香玉1、粗曠1、原木1", en: "Wine-Scented Jade 1, Raw Ore 1, Timber 1" } },
+            "容器3": { name: { zh: "藍玉雲紋壺", en: "LV 3 Sapphire Cloud Flask" }, recipe: { zh: "獨山藍玉1、粗曠1、原木1", en: "LV3 Dushan Blue Jade 1, Raw Ore 1, Timber 1" } },
+            "容器4": { name: { zh: "青釉雞首壺", en: "LV 4 Celadon Rooster Ewer" }, recipe: { zh: "獨山玉1、粗曠1、原木1", en: "LV3 Dushan Jade 1, Raw Ore 1, Timber 1" } },
+            "容器5": { name: { zh: "青瓷刻花酒壺", en: "LV 5 Carved Celadon Wine Jug" }, recipe: { zh: "青礞石1、粗曠1、原木1", en: "LV 4 Chlorite Schist 1, Raw Ore 1, Timber 1" } },
+            "容器6": { name: { zh: "青黃釉銅嘴壺", en: "LV 6 Amber-Glazed Brazz Jug" }, recipe: { zh: "黃銅1、粗曠1、原木1", en: "LV 6 Copper Ore 1, Raw Ore 1, Timber 1" } },
+            "容器7": { name: { zh: "銅胎陶膽松紋壺", en: "LV 7 Bronze-Clad Pine Jug" }, recipe: { zh: "黃銅1、粗曠1、原木1", en: "Copper Ore 1, Raw Ore 1, Timber 1" } },
+            "容器8": { name: { zh: "藍釉執壺", en: "LV 8 Blue Glaze Ewer" }, recipe: { zh: "寒鐵1、粗曠1、原木1", en: "Cold Iron 1, Raw Ore 1, Timber 1" } },
+            "容器9": { name: { zh: "三彩酒壺", en: "LV 9 Sancai Ewer" }, recipe: { zh: "寒鐵1、粗曠1、原木1", en: "Cold Iron 1, Raw Ore 1, Timber 1" } },
+            "容器10": { name: { zh: "描金刻花執壺", en: "LV 10 Gilded Carved Ewer" }, recipe: { zh: "寒鐵1、粗曠1、原木1", en: "Cold Iron 1, Raw Ore 1, Timber 1" } }
+        };
+
+        const productData = [
+            { name: { zh: "燉馬鈴薯", en: "Stewed Potato" }, type: "料理", level: 1, tags: { zh: ["燜菜", "鹹香"], en: ["Simmered Dishes", "Salty & Aromatic"] }, items: { zh: ["馬鈴薯2"], en: ["Potato 2"] } },
+            { name: { zh: "馬鈴薯煨肉", en: "Braised Pork & Potato" }, type: "料理", level: 1, tags: { zh: ["鹹香", "燜菜"], en: ["Salty & Aromatic", "Simmered Dishes"] }, items: { zh: ["厚脂肉塊4"], en: ["Prime Meat Cut 4"] } },
+            { name: { zh: "豬肉餡餅", en: "Pork Pie" }, type: "料理", level: 1, tags: { zh: ["小吃", "酥脆"], en: ["Snacks", "Crispy"] }, items: { zh: ["小麥6", "生薑3", "厚脂肉塊4"], en: ["Ginger 3", "Wheat 6", "Prime Meat Cut 4"] } },
+            { name: { zh: "生薑煨魚", en: "Gingered River Stew" }, type: "料理", level: 1, tags: { zh: ["燜菜", "鮮香"], en: ["Simmered Dishes", "Savory & Fragrant"] }, items: { zh: ["馬鈴薯6", "生薑3", "河魚2"], en: ["Potato 6", "Ginger 3", "Live Fish 2"] } },
+            { name: { zh: "薑果麥羹", en: "Ginger Wheat Porridge" }, type: "料理", level: 1, tags: { zh: ["清淡", "湯類"], en: ["Light", "Soup"] }, items: { zh: ["小麥6", "生薑3", "野果2"], en: ["Wheat 6", "Ginger 3", "Wild Berries 2"] } },
+            { name: { zh: "清蒸鱸魚", en: "Steamed Bass" }, type: "料理", level: 2, tags: { zh: ["鮮香", "蒸煮"], en: ["Savory & Fragrant", "Steaming"] }, items: { zh: ["梨花6", "生薑3", "江鱸2"], en: ["Pear Blossoms 6", "Ginger 3", "River Bass 2"] } },
+            { name: { zh: "梨薑肉膾", en: "Stir-fried Pork with Pear" }, type: "料理", level: 2, tags: { zh: ["炒菜", "鮮香"], en: ["Stir-Fry", "Savory & Fragrant"] }, items: { zh: ["梨花6", "生薑3", "碎肉塊2"], en: ["Pear Blossoms 6", "Ginger 3", "Prime Meat Cut 2"] } },
+            { name: { zh: "薑絲鱸膾", en: "Pan-Fried Pearch Slices" }, type: "料理", level: 2, tags: { zh: ["湯類", "滋補"], en: ["Soup", "Nutritive"] }, items: { zh: ["胡蘿蔔6", "生薑3", "江鱸2"], en: ["River Bass 2", "Ginger 3", "Scallion 3"] } },
+            { name: { zh: "胡蘿蔔燉肉", en: "Braised Pork & Carrot" }, type: "料理", level: 2, tags: { zh: ["鹹香", "燴菜"], en: ["Salty & Aromatic", "Braised Dishes"] }, items: { zh: ["胡蘿蔔6", "生薑3", "碎肉塊2"], en: ["Carrot 6", "Ginger 3", "Prime Meat Cut 2"] } },
+            { name: { zh: "豆薑鱸魚湯", en: "Soy-Ginger Perch Soup" }, type: "料理", level: 3, tags: { zh: ["湯類", "滋補"], en: ["Soup", "Nutritive"] }, items: { zh: ["大豆6", "生薑3", "江鱸2"], en: ["Soybean 6", "Ginger 3", "River Bass 2"] } },
+            { name: { zh: "薑爆金鱗", en: "Ginger-fried Golden Carp" }, type: "料理", level: 3, tags: { zh: ["炒菜", "酥脆"], en: ["Stir-Fry", "Crispy"] }, items: { zh: ["大豆6", "生薑3", "金鯉2"], en: ["Soybean 6", "Ginger 3", "Carp 2"] } },
+            { name: { zh: "紅燒麋肉", en: "Braised Venison" }, type: "料理", level: 3, tags: { zh: ["燴菜", "醇香"], en: ["Braised Dishes", "Mellow & Aromatic"] }, items: { zh: ["大豆6", "生薑3", "大麋肉2"], en: ["Soybean 6", "Ginger 3", "Milu Meat 2"] } },
+            { name: { zh: "胡蘿蔔絲炒肉", en: "Pork & Carrot Stir-Fry" }, type: "料理", level: 3, tags: { zh: ["炒菜", "鹹香"], en: ["Stir-fry", "Salty & Aromatic"] }, items: { zh: ["胡蘿蔔6", "生薑3", "厚脂肉塊2"], en: ["Carrot 6", "Ginger 3", "Prime Meat Cut 2"] } },
+            { name: { zh: "雙瓜蒜蓉炙", en: "Garlic Melon Stir-Fry" }, type: "料理", level: 4, tags: { zh: ["清香", "燴菜"], en: ["Delicate", "Braised Dishes"] }, items: { zh: ["寒瓜6", "大蒜3", "東陵瓜2"], en: ["Watermelon 6", "Garlic 3", "Dongling Melon 2"] } },
+            { name: { zh: "鴇府燴紫茄", en: "Bustard Eggplant Stew" }, type: "料理", level: 4, tags: { zh: ["濃香", "燴菜"], en: ["Rich & Aromatic", "Braised Dishes"] }, items: { zh: ["茄子6", "大蒜3", "野鴇肉2"], en: ["Eggplant 6", "Garlic 3", "Wild Bustard Meat 2"] } },
+            { name: { zh: "蒜蓉茄子", en: "Garlic Eggplant" }, type: "料理", level: 4, tags: { zh: ["燜菜", "蒜香"], en: ["Simmered Dishes", "Garlicky"] }, items: { zh: ["茄子6", "大蒜3", "碎肉塊2"], en: ["Eggplant 6", "Garlic 3", "Minced Meat 2"] } },
+            { name: { zh: "大豆燉烏鱧", en: "Soybean Snakehead Stew" }, type: "料理", level: 4, tags: { zh: ["燜菜", "鮮香"], en: ["Simmered Dishes", "Savory & Fragrant"] }, items: { zh: ["大豆6", "大蒜3", "烏鱧2"], en: ["Soybean 6", "Garlic 3", "Snakehead 2"] } },
+            { name: { zh: "梨蒜蒸鳙鱠", en: "Steamed Carp with Pear" }, type: "料理", level: 5, tags: { zh: ["蒸煮", "清香"], en: ["Steaming", "Delicate"] }, items: { zh: ["梨花6", "大蒜3", "鳙魚2"], en: ["Pear Blossoms 6", "Garlic 3", "Bighead Carp 2"] } },
+            { name: { zh: "番茄燴鹿腩", en: "Tomato Venison Stew" }, type: "料理", level: 5, tags: { zh: ["酸甜", "燴菜"], en: ["Sweet & Sour", "Braised Dishes"] }, items: { zh: ["番茄6", "大蒜3", "吠鹿肉2"], en: ["Tomato 6", "Garlic 3", "Barking Deer Meat 2"] } },
+            { name: { zh: "番茄魚片湯", en: "Tomato Fish Soup" }, type: "料理", level: 5, tags: { zh: ["酸甜", "湯類"], en: ["Sweet & Sour", "Soup"] }, items: { zh: ["番茄6", "大蒜3", "洛口石首魚2"], en: ["Tomato 6", "Garlic 3", "Luokou Croaker 2"] } },
+            { name: { zh: "鴇片炒油菜", en: "Bustard & Green Stir-Fry" }, type: "料理", level: 5, tags: { zh: ["鮮香", "炒菜"], en: ["Savory & Fragrant", "Stir-Fry"] }, items: { zh: ["油菜6", "大蒜3", "野鴇肉2"], en: ["Canola 6", "Garlic 3", "Wild Bustard Meat 2"] } },
+            { name: { zh: "麋肉寒瓜炙", en: "Seared Milu & Melon" }, type: "料理", level: 6, tags: { zh: ["鹹香", "炒菜"], en: ["Salty & Aromatic", "Stir-Fry"] }, items: { zh: ["寒瓜6", "大蒜3", "大麋肉2"], en: ["Watermelon 6", "Garlic 3", "Milu Meat 2"] } },
+            { name: { zh: "洋蔥燉鹿肉", en: "Onion Venison Stew" }, type: "料理", level: 6, tags: { zh: ["滋補", "燜菜"], en: ["Nutritive", "Simmered Dishes"] }, items: { zh: ["洋蔥6", "大蒜3", "吠鹿肉2"], en: ["Onion 6", "Garlic 3", "Barking Deer Meat 2"] } },
+            { name: { zh: "洋蔥蒸鯚魚", en: "Onion & Mandarin Fish" }, type: "料理", level: 6, tags: { zh: ["蒸煮", "滋補"], en: ["Steaming", "Nutritive"] }, items: { zh: ["洋蔥6", "大蒜3", "鯚魚2"], en: ["Onion 6", "Garlic 3", "Mandarin Fish 2"] } },
+            { name: { zh: "蕈菇炒油菜", en: "Mushrooms & Green" }, type: "料理", level: 6, tags: { zh: ["鮮香", "炒菜"], en: ["Savory & Fragrant", "Stir-Fry"] }, items: { zh: ["油菜6", "大蒜3", "蕈菇2"], en: ["Canola 6", "Garlic 3", "Mushrooms 2"] } },
+            { name: { zh: "河豚辣伴瓜", en: "Spicy Pufferfish" }, type: "料理", level: 7, tags: { zh: ["香辣", "小吃"], en: ["Spicy", "Snacks"] }, items: { zh: ["黃瓜6", "辣椒3", "河豚2"], en: ["Cucumber 6", "Chili 3", "Pufferfish 2"] } },
+            { name: { zh: "辣子麥飯", en: "Spicy Pork & Wheat Rice" }, type: "料理", level: 7, tags: { zh: ["香辣", "炒飯"], en: ["Spicy", "Fried Rice"] }, items: { zh: ["小麥6", "辣椒3", "豬肉2"], en: ["Wheat 6", "Chili 3", "Pork 2"] } },
+            { name: { zh: "紫茄河豚辣膾", en: "Pufferfish & Eggplant" }, type: "料理", level: 7, tags: { zh: ["麻辣", "炒菜"], en: ["Numbing & Spicy", "Stir-Fry"] }, items: { zh: ["茄子6", "辣椒3", "河豚2"], en: ["Eggplant 6", "Chili 3", "Pufferfish 2"] } },
+            { name: { zh: "桃脯炒肉", en: "Pork & peach Stir-Fry" }, type: "料理", level: 7, tags: { zh: ["甜香", "炒菜"], en: ["Sweet & Fragrant", "Stir-Fry"] }, items: { zh: ["桃子6", "辣椒3", "豬肉2"], en: ["Peach 6", "Chili 3", "Pork 2"] } },
+            { name: { zh: "辣炙金鯉", en: "Spicy Grilled Carp" }, type: "料理", level: 8, tags: { zh: ["香辣", "燒烤"], en: ["Spicy", "Grilling"] }, items: { zh: ["洋蔥6", "辣椒3", "金鯉2"], en: ["Onion 6", "Chili 3", "Carp 2"] } },
+            { name: { zh: "山參辣茄膾", en: "Spicy Ginseng & Eggplant" }, type: "料理", level: 8, tags: { zh: ["香辣", "小吃"], en: ["Spicy", "Snacks"] }, items: { zh: ["茄子6", "辣椒3", "野山參2"], en: ["Eggplant 6", "Chili 3", "Ginseng 2"] } },
+            { name: { zh: "馬鈴薯炒魚酥", en: "Stri-Fried Carp & Potato" }, type: "料理", level: 8, tags: { zh: ["酥脆", "炒菜"], en: ["Crispy", "Stir-Fry"] }, items: { zh: ["馬鈴薯6", "辣椒3", "金鯉2"], en: ["Potato 6", "Chili 3", "Carp 2"] } },
+            { name: { zh: "參炒胡蘿蔔", en: "Ginseng & Carrot Stir-Fry" }, type: "料理", level: 8, tags: { zh: ["香辣", "炒菜"], en: ["Spicy", "Stir-Fry"] }, items: { zh: ["胡蘿蔔6", "辣椒3", "野山參2"], en: ["Carrot 6", "Chili 3", "Ginseng 2"] } },
+            { name: { zh: "香辣鹿肉", en: "Spiced Venison" }, type: "料理", level: 9, tags: { zh: ["香辣", "炒菜"], en: ["Spicy", "Stir-Fry"] }, items: { zh: ["茶樹6", "辣椒3", "大麋肉2"], en: ["Tea Tree 6", "Chili 3", "Milu Meat 2"] } },
+            { name: { zh: "辣伴菜菇", en: "Spicy Mushrooms" }, type: "料理", level: 9, tags: { zh: ["香辣", "小吃"], en: ["Spicy", "Snacks"] }, items: { zh: ["生菜6", "辣椒3", "蕈菇2"], en: ["Lettuce 6", "Chili 3", "Mushrooms 2"] } },
+            { name: { zh: "茶辣鯽魚膾", en: "Tea-Braised Crucian Carp" }, type: "料理", level: 9, tags: { zh: ["醬香", "燜菜"], en: ["Sauce-Fragrant", "Simmered Dishes"] }, items: { zh: ["茶樹6", "辣椒3", "鯽魚2"], en: ["Tea Tree 6", "Chili 3", "Crucian Carp 2"] } },
+            { name: { zh: "香烤兔肉", en: "Spiced Roasted Rabbit" }, type: "料理", level: 9, tags: { zh: ["鹹香", "燒烤"], en: ["Salty & Aromatic", "Grilling"] }, items: { zh: ["生菜6", "辣椒3", "兔肉2"], en: ["Lettuce 6", "Chili 3", "Rabbit 2"] } },
+            { name: { zh: "鯚魚伴生菜", en: "Cold Bream Salad" }, type: "料理", level: 10, tags: { zh: ["鮮香", "蒸煮"], en: ["Savory & Fragrant", "Steaming"] }, items: { zh: ["生菜6", "辣椒3", "鯚魚2"], en: ["Lettuce 6", "Chili 3", "Mandarin Fish 2"] } },
+            { name: { zh: "番茄燴兔丁", en: "Tomato Rabbit Stew" }, type: "料理", level: 10, tags: { zh: ["燴菜", "炒菜"], en: ["Braised Dishes", "Stir-Fry"] }, items: { zh: ["番茄6", "辣椒3", "兔肉2"], en: ["Tomato 6", "Chili 3", "Rabbit 2"] } },
+            { name: { zh: "野鴇炒黃瓜", en: "Bustard & Cucumber" }, type: "料理", level: 10, tags: { zh: ["鮮香", "炒菜"], en: ["Savory & Fragrant", "Stir-Fry"] }, items: { zh: ["黃瓜6", "辣椒3", "野鴇肉2"], en: ["Cucumber 6", "Chili 3", "Wild Bustard Meat 2"] } },
+            { name: { zh: "豆酥煨鯰腩", en: "Soybean Catfish Stew" }, type: "料理", level: 10, tags: { zh: ["燜菜", "醇香"], en: ["Simmered Dishes", "Mellow & Aromatic"] }, items: { zh: ["大豆6", "辣椒3", "鯰魚2"], en: ["Soybean 6", "Chili 3", "Catfish 2"] } },
+
+            { name: { zh: "麥酒", en: "Malt Wine" }, type: "酒", level: 1, tags: { zh: ["糧食酒"], en: ["Grain Wine"] }, items: { zh: ["小麥6", "玉米3", "容器1"], en: ["Wheat 6", "Corn 3", "容器1"] } },
+            { name: { zh: "苞穀酒", en: "Corn Wine" }, type: "酒", level: 2, tags: { zh: ["糧食酒"], en: ["Grain Wine"] }, items: { zh: ["梨花6", "玉米3", "容器2"], en: ["Pear Blossoms 6", "Corn 3", "容器2"] } },
+            { name: { zh: "桑落酒", en: "Mulberry Wine" }, type: "酒", level: 3, tags: { zh: ["混合酒"], en: ["Blended Wine"] }, items: { zh: ["棉花6", "玉米3", "容器3"], en: ["Cotton 6", "Corn 3", "容器3"] } },
+            { name: { zh: "西瓜果釀", en: "Watermelon Wine" }, type: "酒", level: 4, tags: { zh: ["果酒"], en: ["Fruit Wine"] }, items: { zh: ["寒瓜6", "水稻3", "容器4"], en: ["Watermelon 6", "Rice 3", "容器4"] } },
+            { name: { zh: "新豐酒", en: "Xinfeng Wine" }, type: "酒", level: 5, tags: { zh: ["糧食酒"], en: ["Grain Wine"] }, items: { zh: ["油菜6", "水稻3", "容器5"], en: ["Canola 6", "Rice 3", "容器5"] } },
+            { name: { zh: "青紅酒", en: "Red Rice Wine" }, type: "酒", level: 6, tags: { zh: ["糧食酒"], en: ["Grain Wine"] }, items: { zh: ["番茄6", "水稻3", "容器6"], en: ["Tomato 6", "Rice 3", "容器6"] } },
+            { name: { zh: "杜康酒", en: "Dukang Wine" }, type: "酒", level: 7, tags: { zh: ["糧食酒"], en: ["Grain Wine"] }, items: { zh: ["甘蔗6", "高粱3", "容器7"], en: ["Sugarcane 6", "Sorghum 3", "容器7"] } },
+            { name: { zh: "鵝黃酒", en: "Pale Gold Wine" }, type: "酒", level: 8, tags: { zh: ["經濟作物酒"], en: ["Herbal Wine"] }, items: { zh: ["枇杷6", "高粱3", "容器8"], en: ["Loquat 6", "Sorghum 3", "容器8"] } },
+            { name: { zh: "松醪酒", en: "Pine Brew" }, type: "酒", level: 9, tags: { zh: ["經濟作物酒"], en: ["Herbal Wine"] }, items: { zh: ["茶樹6", "高粱3", "容器9"], en: ["Tea Tree 6", "Sorghum 3", "容器9"] } },
+            { name: { zh: "屠蘇酒", en: "Tusu Wine" }, type: "酒", level: 10, tags: { zh: ["經濟作物酒"], en: ["Herbal Wine"] }, items: { zh: ["櫻桃6", "高粱3", "容器10"], en: ["Cherry 6", "Sorghum 3", "容器10"] } }
+        ];
+
+        let currentHighlightText = null;
+        let currentHighlightType = null;
+        let currentUserLevel = 10;
+
+        function toggleLanguage() {
+            currentLang = (currentLang === 'zh') ? 'en' : 'zh';
+            applyLanguage();
+            rebuildTagUI();
+            renderRareTagsAlert();
+            renderTable();
+            calculateLogic();
+        }
+
+        function applyLanguage() {
+            const l = i18n[currentLang];
+            document.getElementById('pageTitle').textContent = l.pageTitle;
+            document.getElementById('mainTitle').textContent = l.mainTitle;
+            document.getElementById('mainSubtitle').textContent = l.mainSubtitle;
+            document.getElementById('lblUserLevel').textContent = l.lblUserLevel;
+            document.getElementById('lblTagSectionTitle').textContent = l.lblTagSectionTitle;
+            document.getElementById('lblRareSectionTitle').textContent = l.lblRareSectionTitle;
+            document.getElementById('lblRecSectionTitle').textContent = l.lblRecSectionTitle;
+
+            document.getElementById('titleGiftSection').textContent = l.titleGiftSection;
+            document.getElementById('titleContainerSection').textContent = l.titleContainerSection;
+            document.getElementById('titleFoodSection').textContent = l.titleFoodSection;
+            document.getElementById('titleWineSection').textContent = l.titleWineSection;
+
+            document.getElementById('thGiftNpc').textContent = l.thGiftNpc;
+            document.getElementById('thGiftItem').textContent = l.thGiftItem;
+
+            document.querySelectorAll('.th-name').forEach(el => el.textContent = l.thName);
+            document.querySelectorAll('.th-type').forEach(el => el.textContent = l.thType);
+            document.querySelectorAll('.th-level').forEach(el => el.textContent = l.thLevel);
+            document.querySelectorAll('.th-tags').forEach(el => el.textContent = l.thTags);
+            document.querySelectorAll('.th-items').forEach(el => el.textContent = l.thItems);
+
+            document.getElementById('navPromoBtn').textContent = l.navPromoBtn;
+            document.getElementById('footerLinks').childNodes[0].nodeValue = l.footerLinks;
+
+            const select = document.getElementById('userLevelSelect');
+            for (let i = 0; i < 9; i++) {
+                select.options[i].text = (i + 1) + l.levelText;
+            }
+            select.options[9].text = l.levelDisplayAll;
+
+            renderGiftTable();
+        }
+
+        function toggleSection(id) {
+            const titleEl = document.querySelector(`[onclick="toggleSection('${id}')"]`);
+            const contentEl = document.getElementById(id);
+            const arrow = titleEl.querySelector('.collapse-arrow');
+
+            if (titleEl.classList.contains('collapsed')) {
+                titleEl.classList.remove('collapsed');
+                arrow.textContent = '▲';
+                contentEl.style.maxHeight = "3000px";
+                setTimeout(() => { if (!titleEl.classList.contains('collapsed')) contentEl.style.maxHeight = "none"; }, 300);
+            } else {
+                contentEl.style.maxHeight = contentEl.scrollHeight + "px";
+                contentEl.offsetHeight;
+                titleEl.classList.add('collapsed');
+                arrow.textContent = '▼';
+                contentEl.style.maxHeight = "0px";
+            }
+        }
+
+        function getRankClass(level) {
+            if (level <= 2) return 'color-rank-1';
+            if (level <= 4) return 'color-rank-2';
+            if (level <= 6) return 'color-rank-3';
+            if (level <= 8) return 'color-rank-4';
+            return 'color-rank-5';
+        }
+
+        function getStockCount(name) {
+            return parseInt(localStorage.getItem('inn_stock_' + name)) || 0;
+        }
+        function updateStockCount(name, change) {
+            let val = getStockCount(name) + change;
+            if (val < 0) val = 0;
+            localStorage.setItem('inn_stock_' + name, val);
+            renderRareTagsAlert();
+        }
+
+        function rebuildTagUI() {
+            let allTags = new Set();
+            productData.forEach(p => p.tags[currentLang].forEach(t => allTags.add(t)));
+            allTags = [...allTags].sort();
+
+            const tagGroupDiv = document.getElementById('tagGroup');
+            tagGroupDiv.innerHTML = '';
+            allTags.forEach(tag => {
+                const label = document.createElement('label');
+                label.className = 'tag-label';
+                label.setAttribute('data-tag', tag);
+                label.innerHTML = `<input type="checkbox" value="${tag}" onchange="calculateLogic()">${tag}`;
+                tagGroupDiv.appendChild(label);
+            });
+        }
+
+        function renderRareTagsAlert() {
+            const l = i18n[currentLang];
+            const rareContent = document.getElementById('rareListContent');
+
+            let allTags = new Set();
+            productData.forEach(p => p.tags[currentLang].forEach(t => allTags.add(t)));
+            allTags = [...allTags].sort();
+
+            const tagCounts = {};
+            allTags.forEach(t => tagCounts[t] = { count: 0, items: [] });
+
+            productData.forEach(p => {
+                if (p.level <= currentUserLevel) {
+                    p.tags[currentLang].forEach(t => {
+                        tagCounts[t].count++;
+                        tagCounts[t].items.push({ name: p.name[currentLang], rawName: p.name['zh'], level: p.level });
+                    });
+                }
+            });
+
+            let rareHtml = "";
+            let hasRare = false;
+
+            Object.keys(tagCounts).sort((a, b) => tagCounts[a].count - tagCounts[b].count).forEach(tag => {
+                const info = tagCounts[tag];
+                if (info.count > 0 && info.count <= 2) {
+                    hasRare = true;
+
+                    let itemsString = info.items.map(item => {
+                        const count = getStockCount(item.rawName);
+                        const shopHint = (item.level <= 2) ? `<span style="color:#60a5fa; font-weight:normal; font-size:11px; margin-left:4px;">${l.shopDirect}</span>` : '';
+                        const rankClass = getRankClass(item.level);
+
+                        return `<div style="margin-left: 15px; margin-top: 2px;">
                         → <span class="${rankClass}" style="font-weight:bold;">${item.name}</span>${shopHint}
                         <span style="margin-left:10px;">
                             <button class="counter-btn" onclick="updateStockCount('${item.rawName}', -1); event.stopPropagation();">-</button>
@@ -708,109 +886,109 @@
                             <button class="counter-btn" onclick="updateStockCount('${item.rawName}', 1); event.stopPropagation();">+</button>
                         </span>
                     </div>`;
-                }).join('');
+                    }).join('');
 
-                rareHtml += `<div class="rare-item">
+                    rareHtml += `<div class="rare-item">
                     <div class="rare-header">
                         <span>🏷️ ${l.rareAlertTag}【<span class="interactive-item" data-type="tag" data-value="${tag}" style="margin:0; padding:1px 5px; background:#2e3440; border-color:#4c566a; color:#d8dee9;">${tag}</span>】${l.rareAlertExt}</span>
                     </div>
                     ${itemsString}
                 </div>`;
-            }
-        });
+                }
+            });
 
-        if (!hasRare) {
-            rareHtml = `<span style='color:#888;'>${l.noRare}</span>`;
+            if (!hasRare) {
+                rareHtml = `<span style='color:#888;'>${l.noRare}</span>`;
+            }
+            rareContent.innerHTML = rareHtml;
+
+            rareContent.querySelectorAll('.interactive-item').forEach(el => {
+                el.addEventListener('click', function (e) { e.stopPropagation(); triggerHighlight(this.getAttribute('data-type'), this.getAttribute('data-value')); });
+            });
         }
-        rareContent.innerHTML = rareHtml;
 
-        rareContent.querySelectorAll('.interactive-item').forEach(el => {
-            el.addEventListener('click', function(e) { e.stopPropagation(); triggerHighlight(this.getAttribute('data-type'), this.getAttribute('data-value')); });
-        });
-    }
+        function renderGiftTable() {
+            const tbody = document.getElementById('giftTableBody');
+            tbody.innerHTML = '';
+            giftDatabase.forEach(g => {
+                const tr = document.createElement('tr');
+                tr.innerHTML = `<td>${g.npc[currentLang]}</td><td>${g.item[currentLang]}</td>`;
+                tbody.appendChild(tr);
+            });
+        }
 
-    function renderGiftTable() {
-        const tbody = document.getElementById('giftTableBody');
-        tbody.innerHTML = '';
-        giftDatabase.forEach(g => {
-            const tr = document.createElement('tr');
-            tr.innerHTML = `<td>${g.npc[currentLang]}</td><td>${g.item[currentLang]}</td>`;
-            tbody.appendChild(tr);
-        });
-    }
+        function renderTable() {
+            const l = i18n[currentLang];
+            const containerTbody = document.getElementById('containerTableBody');
+            const foodTbody = document.getElementById('foodTableBody');
+            const wineTbody = document.getElementById('wineTableBody');
 
-    function renderTable() {
-        const l = i18n[currentLang];
-        const containerTbody = document.getElementById('containerTableBody');
-        const foodTbody = document.getElementById('foodTableBody');
-        const wineTbody = document.getElementById('wineTableBody');
-        
-        containerTbody.innerHTML = '';
-        foodTbody.innerHTML = '';
-        wineTbody.innerHTML = '';
+            containerTbody.innerHTML = '';
+            foodTbody.innerHTML = '';
+            wineTbody.innerHTML = '';
 
-        // 1. 🏺 渲染容器獨立大表
-        Object.keys(containerDatabase).forEach((key) => {
-            const level = parseInt(key.replace("容器", ""));
-            if (level > currentUserLevel) return;
+            // 1. 🏺 渲染容器獨立大表
+            Object.keys(containerDatabase).forEach((key) => {
+                const level = parseInt(key.replace("容器", ""));
+                if (level > currentUserLevel) return;
 
-            const dbInfo = containerDatabase[key];
-            const tr = document.createElement('tr');
-            tr.setAttribute('data-container-key', key);
-            
-            let levelDisplay = level + l.levelText;
-            if (level === 1 || level === 2) {
-                levelDisplay = `<span class="shop-level">1 級</span>`;
-                if (level === 2) levelDisplay = `<span class="shop-level">2 級</span>`;
-            }
-            
-            const rankClass = getRankClass(level);
-            
-            let recipeHtml = dbInfo.recipe[currentLang].split(/、|,/).map(r => {
-                const coreMat = r.replace(/[0-9]/g, '').trim();
-                return `<span class="interactive-item" data-type="item" data-value="${coreMat}">${r.trim()}</span>`;
-            }).join(' ');
+                const dbInfo = containerDatabase[key];
+                const tr = document.createElement('tr');
+                tr.setAttribute('data-container-key', key);
 
-            tr.innerHTML = `
+                let levelDisplay = level + l.levelText;
+                if (level === 1 || level === 2) {
+                    levelDisplay = `<span class="shop-level">1 級</span>`;
+                    if (level === 2) levelDisplay = `<span class="shop-level">2 級</span>`;
+                }
+
+                const rankClass = getRankClass(level);
+
+                let recipeHtml = dbInfo.recipe[currentLang].split(/、|,/).map(r => {
+                    const coreMat = r.replace(/[0-9]/g, '').trim();
+                    return `<span class="interactive-item" data-type="item" data-value="${coreMat}">${r.trim()}</span>`;
+                }).join(' ');
+
+                tr.innerHTML = `
                 <td class="${rankClass}" style="font-weight:bold;">${dbInfo.name[currentLang]}</td>
                 <td><span class="type-badge type-container">${currentLang === 'zh' ? '容器' : 'Container'}</span></td>
                 <td>${levelDisplay}</td>
                 <td>${recipeHtml}</td>
             `;
-            containerTbody.appendChild(tr);
-        });
+                containerTbody.appendChild(tr);
+            });
 
-        // 2. 🍳 & 🍶 渲染料理與酒水表
-        productData.forEach((product, idx) => {
-            if (product.level > currentUserLevel) return;
-            
-            const tr = document.createElement('tr');
-            tr.setAttribute('data-idx', idx);
-            
-            let levelDisplay = product.level + l.levelText;
-            if (product.level === 1 || product.level === 2) levelDisplay = `<span class="shop-level">🏪 ${product.level}${l.levelText}</span>`;
+            // 2. 🍳 & 🍶 渲染料理與酒水表
+            productData.forEach((product, idx) => {
+                if (product.level > currentUserLevel) return;
 
-            let tagsHtml = product.tags[currentLang].map(t => `<span class="interactive-item" data-type="tag" data-value="${t}">${t}</span>`).join('');
-            if(product.tags[currentLang].length === 0) tagsHtml = '<span style="color:#555;">-</span>';
+                const tr = document.createElement('tr');
+                tr.setAttribute('data-idx', idx);
 
-            let itemsHtml = product.items[currentLang].map((i, iIdx) => {
-                const rawItemCode = product.items['zh'][iIdx];
-                if (rawItemCode && rawItemCode.startsWith("容器")) {
-                    const dbInfo = containerDatabase[rawItemCode];
-                    if (dbInfo) {
-                        const hoverText = `【${dbInfo.name[currentLang]}】\n${dbInfo.recipe[currentLang]}`;
-                        const rankClass = getRankClass(product.level);
-                        return `<span class="interactive-item container-tip ${rankClass}" data-type="item" data-value="${rawItemCode}" title="${hoverText}">${dbInfo.name[currentLang]}</span>`;
+                let levelDisplay = product.level + l.levelText;
+                if (product.level === 1 || product.level === 2) levelDisplay = `<span class="shop-level">🏪 ${product.level}${l.levelText}</span>`;
+
+                let tagsHtml = product.tags[currentLang].map(t => `<span class="interactive-item" data-type="tag" data-value="${t}">${t}</span>`).join('');
+                if (product.tags[currentLang].length === 0) tagsHtml = '<span style="color:#555;">-</span>';
+
+                let itemsHtml = product.items[currentLang].map((i, iIdx) => {
+                    const rawItemCode = product.items['zh'][iIdx];
+                    if (rawItemCode && rawItemCode.startsWith("容器")) {
+                        const dbInfo = containerDatabase[rawItemCode];
+                        if (dbInfo) {
+                            const hoverText = `【${dbInfo.name[currentLang]}】\n${dbInfo.recipe[currentLang]}`;
+                            const rankClass = getRankClass(product.level);
+                            return `<span class="interactive-item container-tip ${rankClass}" data-type="item" data-value="${rawItemCode}" title="${hoverText}">${dbInfo.name[currentLang]}</span>`;
+                        }
                     }
-                }
-                const coreName = i.replace(/[0-9]/g, '').trim();
-                return `<span class="interactive-item" data-type="item" data-value="${coreName}">${i}</span>`;
-            }).join('');
-            if(product.items[currentLang].length === 0) itemsHtml = '<span style="color:#555;">-</span>';
+                    const coreName = i.replace(/[0-9]/g, '').trim();
+                    return `<span class="interactive-item" data-type="item" data-value="${coreName}">${i}</span>`;
+                }).join('');
+                if (product.items[currentLang].length === 0) itemsHtml = '<span style="color:#555;">-</span>';
 
-            const rankClass = getRankClass(product.level);
+                const rankClass = getRankClass(product.level);
 
-            tr.innerHTML = `
+                tr.innerHTML = `
                 <td class="${rankClass}" style="font-weight:bold;">${product.name[currentLang]}</td>
                 <td><span class="type-badge ${product.type === '料理' ? 'type-food' : 'type-wine'}">${currentLang === 'zh' ? product.type : (product.type === '料理' ? 'Food' : 'Wine')}</span></td>
                 <td>${levelDisplay}</td>
@@ -818,179 +996,180 @@
                 <td>${itemsHtml}</td>
             `;
 
-            if (product.type === '料理') {
-                foodTbody.appendChild(tr);
-            } else {
-                wineTbody.appendChild(tr);
-            }
-        });
-
-        document.querySelectorAll('tbody .interactive-item').forEach(el => {
-            el.addEventListener('click', function(e) {
-                e.stopPropagation();
-                triggerHighlight(this.getAttribute('data-type'), this.getAttribute('data-value'));
+                if (product.type === '料理') {
+                    foodTbody.appendChild(tr);
+                } else {
+                    wineTbody.appendChild(tr);
+                }
             });
-        });
 
-        if (currentHighlightText) refreshHighlightUI();
-    }
+            document.querySelectorAll('tbody .interactive-item').forEach(el => {
+                el.addEventListener('click', function (e) {
+                    e.stopPropagation();
+                    triggerHighlight(this.getAttribute('data-type'), this.getAttribute('data-value'));
+                });
+            });
 
-    function triggerHighlight(type, value) {
-        if (currentHighlightText === value && currentHighlightType === type) {
-            currentHighlightText = null;
-            currentHighlightType = null;
-        } else {
-            currentHighlightText = value;
-            currentHighlightType = type;
-        }
-        refreshHighlightUI();
-    }
-
-    function refreshHighlightUI() {
-        document.querySelectorAll('#foodTableBody tr, #wineTableBody tr').forEach(row => {
-            const idx = row.getAttribute('data-idx');
-            const product = productData[idx];
-            row.classList.remove('highlighted-row');
-            
-            let isRowMatch = false;
-            if (currentHighlightText) {
-                if (currentHighlightType === 'tag' && product.tags[currentLang].includes(currentHighlightText)) isRowMatch = true;
-                else if (currentHighlightType === 'item') {
-                    if (product.items['zh'].includes(currentHighlightText) || product.items[currentLang].some(i => i.replace(/[0-9]/g, '').trim() === currentHighlightText)) isRowMatch = true;
-                    if (product.items['zh'].some(i => i.startsWith("容器") && i === currentHighlightText)) isRowMatch = true;
-                }
-            }
-            if (isRowMatch) row.classList.add('highlighted-row');
-        });
-
-        document.querySelectorAll('#containerTableBody tr').forEach(row => {
-            const key = row.getAttribute('data-container-key');
-            const dbInfo = containerDatabase[key];
-            row.classList.remove('highlighted-row');
-            
-            let isRowMatch = false;
-            if (currentHighlightText && currentHighlightType === 'item') {
-                if (key === currentHighlightText || dbInfo.recipe[currentLang].split(/、|,/).some(r => r.replace(/[0-9]/g, '').trim() === currentHighlightText)) {
-                    isRowMatch = true;
-                }
-            }
-            if (isRowMatch) row.classList.add('highlighted-row');
-        });
-
-        document.querySelectorAll('.interactive-item').forEach(el => {
-            if (currentHighlightText && el.getAttribute('data-type') === currentHighlightType && el.getAttribute('data-value') === currentHighlightText) {
-                el.classList.add('active-highlight');
-            } else {
-                el.classList.remove('active-highlight');
-            }
-        });
-
-        document.querySelectorAll('.tag-label').forEach(label => {
-            const tagValue = label.getAttribute('data-tag');
-            if (currentHighlightText && currentHighlightType === 'tag' && tagValue === currentHighlightText) {
-                label.classList.add('active-highlight');
-            } else {
-                label.classList.remove('active-highlight');
-            }
-        });
-    }
-
-    function handleLevelChange() {
-        currentUserLevel = parseInt(document.getElementById('userLevelSelect').value);
-        renderRareTagsAlert(); 
-        renderTable();
-        calculateLogic();
-    }
-
-    function calculateLogic() {
-        const l = i18n[currentLang];
-        const checkedLabels = document.querySelectorAll('#tagGroup .tag-label');
-        const activeTags = [];
-        
-        checkedLabels.forEach(label => {
-            const input = label.querySelector('input');
-            if (input.checked) {
-                label.classList.add('checked');
-                activeTags.push(input.value);
-            } else {
-                label.classList.remove('checked');
-            }
-        });
-
-        const recBox = document.getElementById('recommendBox');
-        const recContent = document.getElementById('recommendContent');
-
-        if (activeTags.length === 0) {
-            recBox.style.display = 'none';
-            return;
+            if (currentHighlightText) refreshHighlightUI();
         }
 
-        recBox.style.display = 'block';
-        const availablePool = productData.filter(p => p.level <= currentUserLevel);
+        function triggerHighlight(type, value) {
+            if (currentHighlightText === value && currentHighlightType === type) {
+                currentHighlightText = null;
+                currentHighlightType = null;
+            } else {
+                currentHighlightText = value;
+                currentHighlightType = type;
+            }
+            refreshHighlightUI();
+        }
 
-        let scoredProducts = availablePool.map(p => {
-            const matchCount = p.tags[currentLang].filter(t => activeTags.includes(t)).length;
-            return { ...p, matchCount };
-        }).filter(p => p.matchCount > 0);
+        function refreshHighlightUI() {
+            document.querySelectorAll('#foodTableBody tr, #wineTableBody tr').forEach(row => {
+                const idx = row.getAttribute('data-idx');
+                const product = productData[idx];
+                row.classList.remove('highlighted-row');
 
-        scoredProducts.sort((a, b) => b.matchCount - a.matchCount || a.level - b.level);
+                let isRowMatch = false;
+                if (currentHighlightText) {
+                    if (currentHighlightType === 'tag' && product.tags[currentLang].includes(currentHighlightText)) isRowMatch = true;
+                    else if (currentHighlightType === 'item') {
+                        if (product.items['zh'].includes(currentHighlightText) || product.items[currentLang].some(i => i.replace(/[0-9]/g, '').trim() === currentHighlightText)) isRowMatch = true;
+                        if (product.items['zh'].some(i => i.startsWith("容器") && i === currentHighlightText)) isRowMatch = true;
+                    }
+                }
+                if (isRowMatch) row.classList.add('highlighted-row');
+            });
 
-        let html = "";
-        if (scoredProducts.length === 0) {
-            html = l.noMatch;
+            document.querySelectorAll('#containerTableBody tr').forEach(row => {
+                const key = row.getAttribute('data-container-key');
+                const dbInfo = containerDatabase[key];
+                row.classList.remove('highlighted-row');
+
+                let isRowMatch = false;
+                if (currentHighlightText && currentHighlightType === 'item') {
+                    if (key === currentHighlightText || dbInfo.recipe[currentLang].split(/、|,/).some(r => r.replace(/[0-9]/g, '').trim() === currentHighlightText)) {
+                        isRowMatch = true;
+                    }
+                }
+                if (isRowMatch) row.classList.add('highlighted-row');
+            });
+
+            document.querySelectorAll('.interactive-item').forEach(el => {
+                if (currentHighlightText && el.getAttribute('data-type') === currentHighlightType && el.getAttribute('data-value') === currentHighlightText) {
+                    el.classList.add('active-highlight');
+                } else {
+                    el.classList.remove('active-highlight');
+                }
+            });
+
+            document.querySelectorAll('.tag-label').forEach(label => {
+                const tagValue = label.getAttribute('data-tag');
+                if (currentHighlightText && currentHighlightType === 'tag' && tagValue === currentHighlightText) {
+                    label.classList.add('active-highlight');
+                } else {
+                    label.classList.remove('active-highlight');
+                }
+            });
+        }
+
+        function handleLevelChange() {
+            currentUserLevel = parseInt(document.getElementById('userLevelSelect').value);
+            renderRareTagsAlert();
+            renderTable();
+            calculateLogic();
+        }
+
+        function calculateLogic() {
+            const l = i18n[currentLang];
+            const checkedLabels = document.querySelectorAll('#tagGroup .tag-label');
+            const activeTags = [];
+
+            checkedLabels.forEach(label => {
+                const input = label.querySelector('input');
+                if (input.checked) {
+                    label.classList.add('checked');
+                    activeTags.push(input.value);
+                } else {
+                    label.classList.remove('checked');
+                }
+            });
+
+            const recBox = document.getElementById('recommendBox');
+            const recContent = document.getElementById('recommendContent');
+
+            if (activeTags.length === 0) {
+                recBox.style.display = 'none';
+                return;
+            }
+
+            recBox.style.display = 'block';
+            const availablePool = productData.filter(p => p.level <= currentUserLevel);
+
+            let scoredProducts = availablePool.map(p => {
+                const matchCount = p.tags[currentLang].filter(t => activeTags.includes(t)).length;
+                return { ...p, matchCount };
+            }).filter(p => p.matchCount > 0);
+
+            scoredProducts.sort((a, b) => b.matchCount - a.matchCount || a.level - b.level);
+
+            let html = "";
+            if (scoredProducts.length === 0) {
+                html = l.noMatch;
+                recContent.innerHTML = html;
+                return;
+            }
+
+            html += `<strong>${l.recSingle}</strong><br><ul style="margin:5px 0 15px 20px; padding:0;">`;
+            const maxMatch = scoredProducts[0].matchCount;
+            scoredProducts.forEach(p => {
+                if (p.matchCount === maxMatch) {
+                    const shopHint = (p.level <= 2) ? ` <span style='color:#60a5fa;'>${l.shopPull}</span>` : "";
+                    const typeText = currentLang === 'zh' ? p.type : (p.type === '料理' ? 'Food' : 'Wine');
+                    html += `<li style="margin-bottom:4px;"><span style="color:#fff; font-weight:bold;">${p.name[currentLang]}</span> (${typeText}) - ${p.level}${l.levelText}${shopHint} <span class="match-badge">${currentLang === 'zh' ? '符合' : 'Match'} ${p.matchCount} ${currentLang === 'zh' ? '個標籤' : 'Tags'}</span></li>`;
+                }
+            });
+            html += `</ul>`;
+
+            html += `<strong>${l.recCombo}</strong><br>`;
+            let uncoveredTags = [...activeTags];
+            let comboList = [];
+            let pool = availablePool.map(p => ({
+                ...p,
+                getMatches: function (tags) { return this.tags[currentLang].filter(t => tags.includes(t)); }
+            }));
+
+            while (uncoveredTags.length > 0) {
+                pool.sort((a, b) => b.getMatches(uncoveredTags).length - a.getMatches(uncoveredTags).length || a.level - b.level);
+                let best = pool[0];
+                let matches = best ? best.getMatches(uncoveredTags) : [];
+                if (!best || matches.length === 0) break;
+
+                comboList.push({ name: best.name[currentLang], level: best.level, covered: matches });
+                uncoveredTags = uncoveredTags.filter(t => !matches.includes(t));
+            }
+
+            if (comboList.length > 0) {
+                html += `<div style="background:#111827; padding:10px; border-radius:6px; border:1px solid #374151; margin-top:5px;">`;
+                comboList.forEach((c, i) => {
+                    const shopHint = (c.level <= 2) ? ` <span style='color:#60a5fa; font-size:12px;'>${l.shopCanPull}</span>` : "";
+                    html += `${i + 1}. <span style="color:#fbbf24; font-weight:bold;">${c.name}</span> - ${c.level}${l.levelText}${shopHint} → ${l.tagSolved}: <span style="color:#a7f3d0;">${c.covered.join('、')}</span><br>`;
+                });
+                if (uncoveredTags.length > 0) {
+                    html += `<span style="color:#ef4444; font-size:12px; font-weight:bold; display:block; margin-top:5px;">${l.tagUnsolved} [ ${uncoveredTags.join('、')} ]</span>`;
+                }
+                html += `</div>`;
+            }
             recContent.innerHTML = html;
-            return;
         }
 
-        html += `<strong>${l.recSingle}</strong><br><ul style="margin:5px 0 15px 20px; padding:0;">`;
-        const maxMatch = scoredProducts[0].matchCount;
-        scoredProducts.forEach(p => {
-            if (p.matchCount === maxMatch) {
-                const shopHint = (p.level <= 2) ? ` <span style='color:#60a5fa;'>${l.shopPull}</span>` : "";
-                const typeText = currentLang === 'zh' ? p.type : (p.type === '料理' ? 'Food' : 'Wine');
-                html += `<li style="margin-bottom:4px;"><span style="color:#fff; font-weight:bold;">${p.name[currentLang]}</span> (${typeText}) - ${p.level}${l.levelText}${shopHint} <span class="match-badge">${currentLang === 'zh' ? '符合' : 'Match'} ${p.matchCount} ${currentLang === 'zh' ? '個標籤' : 'Tags'}</span></li>`;
-            }
-        });
-        html += `</ul>`;
-
-        html += `<strong>${l.recCombo}</strong><br>`;
-        let uncoveredTags = [...activeTags];
-        let comboList = [];
-        let pool = availablePool.map(p => ({
-            ...p,
-            getMatches: function(tags) { return this.tags[currentLang].filter(t => tags.includes(t)); }
-        }));
-
-        while (uncoveredTags.length > 0) {
-            pool.sort((a, b) => b.getMatches(uncoveredTags).length - a.getMatches(uncoveredTags).length || a.level - b.level);
-            let best = pool[0];
-            let matches = best ? best.getMatches(uncoveredTags) : [];
-            if (!best || matches.length === 0) break; 
-
-            comboList.push({ name: best.name[currentLang], level: best.level, covered: matches });
-            uncoveredTags = uncoveredTags.filter(t => !matches.includes(t));
-        }
-
-        if (comboList.length > 0) {
-            html += `<div style="background:#111827; padding:10px; border-radius:6px; border:1px solid #374151; margin-top:5px;">`;
-            comboList.forEach((c, i) => {
-                const shopHint = (c.level <= 2) ? ` <span style='color:#60a5fa; font-size:12px;'>${l.shopCanPull}</span>` : "";
-                html += `${i+1}. <span style="color:#fbbf24; font-weight:bold;">${c.name}</span> - ${c.level}${l.levelText}${shopHint} → ${l.tagSolved}: <span style="color:#a7f3d0;">${c.covered.join('、')}</span><br>`;
-            });
-            if (uncoveredTags.length > 0) {
-                html += `<span style="color:#ef4444; font-size:12px; font-weight:bold; display:block; margin-top:5px;">${l.tagUnsolved} [ ${uncoveredTags.join('、')} ]</span>`;
-            }
-            html += `</div>`;
-        }
-        recContent.innerHTML = html;
-    }
-
-    // 初始化
-    applyLanguage();
-    rebuildTagUI();
-    renderRareTagsAlert();
-    renderTable();
-</script>
+        // 初始化
+        applyLanguage();
+        rebuildTagUI();
+        renderRareTagsAlert();
+        renderTable();
+    </script>
 
 </body>
+
 </html>
